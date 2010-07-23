@@ -1,0 +1,13 @@
+*.app
+*.mode[12]v3
+*.[oa]
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.swp
+*~
+*~.nib
+*~.xib
+Demo/build
+Demo/build/**/*
+.DS_Store
