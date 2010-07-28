@@ -7,14 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NAAnnotation.h"
+#import "NACallOutView.h"
 
 @interface NAPinAnnotationView : UIButton {
 	@private
-	CGPoint _origin;
+	NAAnnotation * _annotation;
+	NACallOutView * _callOutView;
 }
 
 - (CGRect)frameForPoint: (CGPoint)point;
 
-- (id)initWithPoint:(CGPoint)point;
+- (id)initWithAnnotation:(NAAnnotation *)annotation;
+
+- (IBAction)showCallOut:(id)sender;
+- (void)hideCallOut;
+
+@property (nonatomic, retain) NAAnnotation * annotation;
+@property (nonatomic, retain) NACallOutView * callOutView;
 
 @end

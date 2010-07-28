@@ -15,6 +15,11 @@
 		2899E5220DE3E06400AC0155 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* DemoViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* DemoViewController.m */; };
+		B30BB34211FFB97500D7FDF8 /* callout_anchor.png in Resources */ = {isa = PBXBuildFile; fileRef = B30BB34011FFB97500D7FDF8 /* callout_anchor.png */; };
+		B30BB34311FFB97500D7FDF8 /* callout_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B30BB34111FFB97500D7FDF8 /* callout_bg.png */; };
+		B39E24AE11FD474D00DEEF42 /* callout_left.png in Resources */ = {isa = PBXBuildFile; fileRef = B39E24AB11FD474D00DEEF42 /* callout_left.png */; };
+		B39E24AF11FD474D00DEEF42 /* callout_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B39E24AC11FD474D00DEEF42 /* callout_right.png */; };
+		B39E25F511FD64EF00DEEF42 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39E25F411FD64EF00DEEF42 /* QuartzCore.framework */; };
 		B3FA23D311F923720003376D /* NAAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FA23CB11F923720003376D /* NAAnnotation.m */; };
 		B3FA23D411F923720003376D /* NAMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FA23CD11F923720003376D /* NAMapView.m */; };
 		B3FA23D511F923720003376D /* NAPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FA23CF11F923720003376D /* NAPinAnnotationView.m */; };
@@ -22,6 +27,7 @@
 		B3FA23D711F923720003376D /* pinPurple.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FA23D111F923720003376D /* pinPurple.png */; };
 		B3FA23D811F923720003376D /* pinRed.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FA23D211F923720003376D /* pinRed.png */; };
 		B3FA23DB11F928A10003376D /* australia.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FA23DA11F928A10003376D /* australia.png */; };
+		B3FA247B11F94B270003376D /* NACallOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FA247A11F94B270003376D /* NACallOutView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +44,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Demo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Demo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B30BB34011FFB97500D7FDF8 /* callout_anchor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callout_anchor.png; sourceTree = "<group>"; };
+		B30BB34111FFB97500D7FDF8 /* callout_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callout_bg.png; sourceTree = "<group>"; };
+		B39E24AB11FD474D00DEEF42 /* callout_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callout_left.png; sourceTree = "<group>"; };
+		B39E24AC11FD474D00DEEF42 /* callout_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callout_right.png; sourceTree = "<group>"; };
+		B39E25F411FD64EF00DEEF42 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B3FA23CA11F923720003376D /* NAAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAnnotation.h; sourceTree = "<group>"; };
 		B3FA23CB11F923720003376D /* NAAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAnnotation.m; sourceTree = "<group>"; };
 		B3FA23CC11F923720003376D /* NAMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMapView.h; sourceTree = "<group>"; };
@@ -48,6 +59,8 @@
 		B3FA23D111F923720003376D /* pinPurple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinPurple.png; sourceTree = "<group>"; };
 		B3FA23D211F923720003376D /* pinRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinRed.png; sourceTree = "<group>"; };
 		B3FA23DA11F928A10003376D /* australia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = australia.png; sourceTree = "<group>"; };
+		B3FA247911F94B270003376D /* NACallOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACallOutView.h; sourceTree = "<group>"; };
+		B3FA247A11F94B270003376D /* NACallOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACallOutView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				B39E25F511FD64EF00DEEF42 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +136,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				B39E25F411FD64EF00DEEF42 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,6 +144,10 @@
 		B3FA23C911F923720003376D /* NAMapKit */ = {
 			isa = PBXGroup;
 			children = (
+				B30BB34011FFB97500D7FDF8 /* callout_anchor.png */,
+				B30BB34111FFB97500D7FDF8 /* callout_bg.png */,
+				B39E24AB11FD474D00DEEF42 /* callout_left.png */,
+				B39E24AC11FD474D00DEEF42 /* callout_right.png */,
 				B3FA23CA11F923720003376D /* NAAnnotation.h */,
 				B3FA23CB11F923720003376D /* NAAnnotation.m */,
 				B3FA23CC11F923720003376D /* NAMapView.h */,
@@ -138,6 +157,8 @@
 				B3FA23D011F923720003376D /* pinGreen.png */,
 				B3FA23D111F923720003376D /* pinPurple.png */,
 				B3FA23D211F923720003376D /* pinRed.png */,
+				B3FA247911F94B270003376D /* NACallOutView.h */,
+				B3FA247A11F94B270003376D /* NACallOutView.m */,
 			);
 			name = NAMapKit;
 			path = ../../NAMapKit;
@@ -191,6 +212,10 @@
 				B3FA23D711F923720003376D /* pinPurple.png in Resources */,
 				B3FA23D811F923720003376D /* pinRed.png in Resources */,
 				B3FA23DB11F928A10003376D /* australia.png in Resources */,
+				B39E24AE11FD474D00DEEF42 /* callout_left.png in Resources */,
+				B39E24AF11FD474D00DEEF42 /* callout_right.png in Resources */,
+				B30BB34211FFB97500D7FDF8 /* callout_anchor.png in Resources */,
+				B30BB34311FFB97500D7FDF8 /* callout_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +232,7 @@
 				B3FA23D311F923720003376D /* NAAnnotation.m in Sources */,
 				B3FA23D411F923720003376D /* NAMapView.m in Sources */,
 				B3FA23D511F923720003376D /* NAPinAnnotationView.m in Sources */,
+				B3FA247B11F94B270003376D /* NACallOutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

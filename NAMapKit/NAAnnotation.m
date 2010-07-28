@@ -11,8 +11,10 @@
 
 @implementation NAAnnotation
 
-@synthesize point = _point;
-@synthesize title = _title;
+@synthesize point    = _point;
+@synthesize title    = _title;
+@synthesize subtitle = _subtitle;
+@synthesize rightCalloutAccessoryView = _rightCalloutAccessoryView;
 
 +(id)annotationWithPoint:(CGPoint)point {
 	return [[[[self class] alloc] initWithPoint:point] autorelease];

@@ -39,10 +39,26 @@
 }
 
 -(void)addAnnotation:(NAAnnotation *)annotation{
-	NAPinAnnotationView * pinAnnotation = [[NAPinAnnotationView alloc] initWithPoint:annotation.point];
+	NAPinAnnotationView * pinAnnotation = [[NAPinAnnotationView alloc] initWithAnnotation:annotation];
 	[self addSubview:pinAnnotation];
 	[self addObserver:pinAnnotation forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 	[pinAnnotation release];
+}
+
+-(void)hideAnnotationCallOuts{
+	for(UIView *subview in self.subviews){
+		if ([subview class] == [NAPinAnnotationView class]) {
+			NAPinAnnotationView * pinAnnotation = (NAPinAnnotationView *) subview;
+			[pinAnnotation hideCallOut];
+		}
+	}
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {	
+	if (!self.dragging){
+		[self hideAnnotationCallOuts];
+	}
+	[super touchesEnded:touches withEvent:event];
 }
 
 - (void)dealloc {

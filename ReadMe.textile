@@ -4,7 +4,7 @@ Allows you to use custom maps in iphone applications and attempts to mimics some
 
 h2. Useage
 
-Create a NAMapView and give it a map to display. If you are using Interface Builder add a UIScrollView and change the class to NAMapView (see demo app).
+Create a NAMapView and give it a map to display. If you are using Interface Builder, add a UIScrollView and change the class to NAMapView (see demo app).
 
 h2. Attribution
 
@@ -15,3 +15,7 @@ When using this code please include the following attribution:
 h2. Copyright
 
 Copyright 2010 Neil Ang and Tony Arnold. See LICENSE for details.
+
+h2. Acknowledgements
+
+The UICallOutView was adapted from "MonoTouchCalloutView":http://github.com/edanuff/MonoTouchCalloutView

@@ -17,6 +17,7 @@
 
 -(void)displayMap:(UIImage *)map;
 -(void)addAnnotation:(NAAnnotation *)annotation;
+-(void)hideAnnotationCallOuts;
 
 @property (nonatomic, retain) UIImageView * customMap;
 @property (nonatomic, assign) CGSize orignalSize;
