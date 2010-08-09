@@ -86,7 +86,8 @@ static UIImage *CALLOUT_ANCHOR;
 	float x = positionX - (calloutWidth / 2) - 1; // TODO: refactor offsets
 	float y = positionY - CALLOUT_ANCHOR_HEIGHT - 25.0;
 	
-	self.frame = CGRectMake(x, y, calloutWidth, CALLOUT_ANCHOR_HEIGHT);
+	// rounding the position removes blur...
+	self.frame = CGRectMake(round(x), round(y), calloutWidth, CALLOUT_ANCHOR_HEIGHT);
 	
 	return;
 }

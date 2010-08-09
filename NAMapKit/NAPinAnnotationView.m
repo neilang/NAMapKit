@@ -59,7 +59,7 @@
 	float x = point.x - PIN_POINT_X;
 	float y = point.y - PIN_POINT_Y;
 	
-	return CGRectMake(x, y, PIN_WIDTH, PIN_HEIGHT);
+	return CGRectMake(round(x), round(y), PIN_WIDTH, PIN_HEIGHT);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
