@@ -11,14 +11,19 @@
 
 @implementation NAMapView
 
-@synthesize customMap;
-@synthesize orignalSize = _orignalSize;
+@synthesize customMap      = _customMap;
+@synthesize pinAnnotations = _pinAnnotations;
+@synthesize callout        = _callout;
+@synthesize orignalSize    = _orignalSize;
 
 #pragma mark NAMapView class
 
 
 - (void)awakeFromNib{
 	self.delegate = self;
+	self.showsHorizontalScrollIndicator = NO;
+	self.showsVerticalScrollIndicator   = NO;
+	self.pinAnnotations = [[NSMutableArray alloc] init];
 }
 
 -(void)displayMap:(UIImage *)map{
@@ -38,31 +43,54 @@
 	self.contentSize = self.orignalSize;
 }
 
--(void)addAnnotation:(NAAnnotation *)annotation{
-	NAPinAnnotationView * pinAnnotation = [[NAPinAnnotationView alloc] initWithAnnotation:annotation];
-	[self addSubview:pinAnnotation];
+-(void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate{
+	NAPinAnnotationView * pinAnnotation = [[NAPinAnnotationView alloc] initWithAnnotation:annotation onView:self animated:animate];
+	[self.pinAnnotations addObject:pinAnnotation];
 	[self addObserver:pinAnnotation forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 	[pinAnnotation release];
 }
 
--(void)hideAnnotationCallOuts{
-	for(UIView *subview in self.subviews){
-		if ([subview class] == [NAPinAnnotationView class]) {
-			NAPinAnnotationView * pinAnnotation = (NAPinAnnotationView *) subview;
-			[pinAnnotation hideCallOut];
+-(void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate{
+	for (NAAnnotation * annotation in annotations) {
+		[self addAnnotation:annotation animated:animate];
+	}
+}
+
+// The callout should belong to this class...
+-(IBAction)showCallOut:(id)sender{
+	for (NAPinAnnotationView * pin in self.pinAnnotations) {
+		if (pin == sender) {
+			if (!self.callout) {
+				// create the callout
+				self.callout = [[NACallOutView alloc] initWithAnnotation:pin.annotation onMap:self];
+				[self addObserver:self.callout forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+				[self addSubview:self.callout];
+			}
+			else {
+				[self hideCallOut];
+				[self.callout displayAnnotation:pin.annotation];				
+			}
+
+			break;
 		}
 	}
+}
+	
+-(void)hideCallOut{
+	self.callout.hidden = YES;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {	
 	if (!self.dragging){
-		[self hideAnnotationCallOuts];
+		[self hideCallOut];
 	}
 	[super touchesEnded:touches withEvent:event];
 }
 
 - (void)dealloc {
-	[customMap release];
+	[_pinAnnotations release];
+	[_customMap release];
+	[_callout release];
     [super dealloc];
 }
 

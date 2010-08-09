@@ -8,18 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import "NAAnnotation.h"
+#import "NACallOutView.h"
 
 @interface NAMapView : UIScrollView<UIScrollViewDelegate> {
 	@private
-	UIImageView * customMap;
+	UIImageView *_customMap;
+	NSMutableArray *_pinAnnotations;
 	CGSize _orignalSize;
+	NACallOutView *_callout;
 }
 
 -(void)displayMap:(UIImage *)map;
--(void)addAnnotation:(NAAnnotation *)annotation;
--(void)hideAnnotationCallOuts;
+-(void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
+-(void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate;
+-(void)hideCallOut;
+-(IBAction)showCallOut:(id)sender;
 
 @property (nonatomic, retain) UIImageView * customMap;
+@property (nonatomic, retain) NSMutableArray * pinAnnotations;
+@property (nonatomic, retain) NACallOutView *callout;
 @property (nonatomic, assign) CGSize orignalSize;
 
 @end

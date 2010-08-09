@@ -9,15 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "NAAnnotation.h"
 
+
+@class NAMapView;
+
 @interface NACallOutView : UIView {
 	@private
 	NAAnnotation * _annotation;
+	NAMapView * _mapView;
 }
 
-+(NACallOutView*) addCalloutView:(UIView*)parent point:(CGPoint)point annotation:(NAAnnotation *)annotation;
+-(id)initWithAnnotation:(NAAnnotation *)annotation onMap:(NAMapView *)mapView;
+-(void)displayAnnotation:(NAAnnotation *)annotation;
 
-- (id)initAtPoint:(CGPoint)point withAnnotation:(NAAnnotation *)annotation;
 
 @property (nonatomic, retain) NAAnnotation * annotation;
+@property (nonatomic, retain) NAMapView * mapView;
 
 @end

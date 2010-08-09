@@ -7,6 +7,8 @@
 //
 
 #import "NACallOutView.h"
+#import <QuartzCore/QuartzCore.h>
+#import "NAMapView.h"
 
 #define CALLOUT_HEIGHT 57
 #define CALLOUT_LEFT_IMAGE_WIDTH 17
@@ -40,6 +42,7 @@
 @implementation NACallOutView
 
 @synthesize annotation = _annotation;
+@synthesize mapView = _mapView;
 
 static UIImage *CALLOUT_LEFT_CAP;
 static UIImage *CALLOUT_RIGHT_CAP;
@@ -75,10 +78,16 @@ static UIImage *CALLOUT_ANCHOR;
 }
 
 -(void)setFramePositionForPoint:(CGPoint)point{
-	int width = [self calculateViewWidth];
-	int x = point.x - (width / 2);
-	int y = point.y - CALLOUT_ANCHOR_HEIGHT;
-	self.frame = CGRectMake(x, y, width, CALLOUT_ANCHOR_HEIGHT);
+
+	float positionX = (self.mapView.contentSize.width / self.mapView.orignalSize.width) * self.annotation.point.x;
+	float positionY = (self.mapView.contentSize.height / self.mapView.orignalSize.height) * self.annotation.point.y;
+	
+	float calloutWidth = [self calculateViewWidth];
+	float x = positionX - (calloutWidth / 2) - 1; // TODO: refactor offsets
+	float y = positionY - CALLOUT_ANCHOR_HEIGHT - 25.0;
+	
+	self.frame = CGRectMake(x, y, calloutWidth, CALLOUT_ANCHOR_HEIGHT);
+	
 	return;
 }
 
@@ -167,31 +176,57 @@ static UIImage *CALLOUT_ANCHOR;
 
 }
 
-- (id)initAtPoint:(CGPoint)point withAnnotation:(NAAnnotation *)annotation{
-	
+- (id)initWithAnnotation:(NAAnnotation *)annotation onMap:(NAMapView *)mapView{
 	if ((self = [super initWithFrame:CGRectMake(0, 0, 0, 0)])) {
-		self.annotation = annotation;
+		self.mapView = mapView;
+		
 		self.backgroundColor = [UIColor clearColor];
 		self.opaque = false;
 		
-		[self setFramePositionForPoint:point];
-		
-		// set the bg images
-		[self setBackgroundImages]; // TODO: think of better signature 
-		
-		[self setLabels];
+		[self displayAnnotation:annotation];	
 	}
 	
 	return self;
 }
 
-+(NACallOutView*) addCalloutView:(UIView*)parent point:(CGPoint)point annotation:(NAAnnotation *)annotation{
-	NACallOutView * callOutView = [[[NACallOutView alloc] initAtPoint:point withAnnotation:annotation] autorelease];
-	[parent addSubview:callOutView];
-	return callOutView;
+-(void)displayAnnotation:(NAAnnotation *)annotation{
+	
+	// Remove all subviews
+	for (UIView * view in self.subviews) {
+		[view removeFromSuperview];
+	}
+	
+	self.annotation = annotation;
+	
+	[self setFramePositionForPoint:annotation.point];
+	[self setBackgroundImages];
+	[self setLabels];
+	
+	self.hidden = NO;
+	
+	// Animate 
+	CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+	scale.duration = 0.1f;
+	scale.autoreverses = NO;
+	scale.removedOnCompletion = YES;
+	scale.fromValue = [NSNumber numberWithFloat:0.0f];
+	scale.toValue = [NSNumber numberWithFloat:1.0f];
+	scale.fillMode = kCAFillModeForwards;
+	
+	[self.layer addAnimation:scale forKey:@"scale"];
+	
+}
+
+// observe resizing
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+	if([keyPath isEqual:@"contentSize"]){
+		[self setFramePositionForPoint:self.annotation.point];
+	}
 }
 
 - (void)dealloc {
+	[_mapView release];
+	[_annotation release];
     [super dealloc];
 }
 

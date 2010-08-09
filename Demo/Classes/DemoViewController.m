@@ -16,19 +16,18 @@
 	NAAnnotation * melbourne = [NAAnnotation annotationWithPoint:CGPointMake(543, 489)];
 	melbourne.title = @"Melbourne";
 	melbourne.subtitle = @"I have a subtitle";
-	[mapView addAnnotation:melbourne];
+	[mapView addAnnotation:melbourne animated:NO];
 	
 	NAAnnotation * perth = [NAAnnotation annotationWithPoint:CGPointMake(63, 379)];
 	perth.title = @"Perth";
 	
-	// Setting disclosure buttons doesn't currently work, hopefully this will be fixed update soon
-	// perth.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+	perth.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 	
-	[mapView addAnnotation:perth];
+	[mapView addAnnotation:perth animated:YES];
 	
 	NAAnnotation * brisbane = [NAAnnotation annotationWithPoint:CGPointMake(679, 302)];
 	brisbane.title = @"Brisbane";
-	[mapView addAnnotation:brisbane];
+	[mapView addAnnotation:brisbane animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
