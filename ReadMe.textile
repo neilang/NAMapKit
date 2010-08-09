@@ -18,4 +18,4 @@ Copyright 2010 Neil Ang and Tony Arnold. See LICENSE for details.
 
 h2. Acknowledgements
 
-The UICallOutView was adapted from "MonoTouchCalloutView":http://github.com/edanuff/MonoTouchCalloutView
+The UICallOutView code was inspired by "MonoTouchCalloutView":http://github.com/edanuff/MonoTouchCalloutView

@@ -10,6 +10,9 @@
 	
 	[mapView displayMap:[UIImage imageNamed:@"australia.png"]];
 	
+	// Set the background the same colour blue as the water
+	mapView.backgroundColor = [UIColor colorWithRed:0.0f green:0.475f blue:0.761 alpha:1.0f];
+	
 	NAAnnotation * melbourne = [NAAnnotation annotationWithPoint:CGPointMake(543, 489)];
 	melbourne.title = @"Melbourne";
 	melbourne.subtitle = @"I have a subtitle";

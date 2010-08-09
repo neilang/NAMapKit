@@ -8,26 +8,25 @@
 
 #import "NACallOutView.h"
 
-#define CALLOUT_HEIGHT 70
-#define CALLOUT_LEFT_IMAGE_WIDTH 16
-#define CALLOUT_RIGHT_IMAGE_WIDTH 16
-#define CALLOUT_HEIGHT 70
+#define CALLOUT_HEIGHT 57
+#define CALLOUT_LEFT_IMAGE_WIDTH 17
+#define CALLOUT_RIGHT_IMAGE_WIDTH 17
 #define CALLOUT_MAX_WIDTH 220
-#define CALLOUT_ANCHOR_WIDTH 31
+#define CALLOUT_ANCHOR_WIDTH 41
 #define CALLOUT_ANCHOR_HEIGHT 70
-#define CALLOUT_ALPHA 0.85
+#define CALLOUT_ALPHA 1
 
 #define CALLOUT_LEFT_IMAGE @"callout_left.png"
 #define CALLOUT_RIGHT_IMAGE @"callout_right.png"
 #define CALLOUT_ANCHOR_IMAGE @"callout_anchor.png"
 #define CALLOUT_BG_IMAGE @"callout_bg.png"
 
-#define TITLE_STANDALONE_TOP_OFFSET 16.0
+#define TITLE_STANDALONE_TOP_OFFSET 14.0
 #define TITLE_STANDALONE_LABEL_HEIGHT 22.0
 #define TITLE_STANDALONE_FONT_SIZE 18.0
 
-#define TITLE_TOP_OFFSET 5.0
-#define TITLE_LABEL_HEIGHT 22.0
+#define TITLE_TOP_OFFSET 4.0
+#define TITLE_LABEL_HEIGHT 20.0
 #define TITLE_FONT_SIZE 17.0
 
 #define SUBTITLE_TOP_OFFSET 0.0+TITLE_LABEL_HEIGHT
@@ -111,8 +110,8 @@ static UIImage *CALLOUT_ANCHOR;
 	[anchor release];
 
 	if(centreWidth > CALLOUT_ANCHOR_WIDTH){
-		CGRect leftFrame  = CGRectMake(CALLOUT_LEFT_IMAGE_WIDTH, 0, centreOffsetWidth, CALLOUT_ANCHOR_HEIGHT);
-		CGRect rightFrame = CGRectMake(CALLOUT_LEFT_IMAGE_WIDTH+centreWidth-centreOffsetWidth, 0, centreOffsetWidth, CALLOUT_ANCHOR_HEIGHT);
+		CGRect leftFrame  = CGRectMake(CALLOUT_LEFT_IMAGE_WIDTH, 0, centreOffsetWidth, CALLOUT_HEIGHT);
+		CGRect rightFrame = CGRectMake(CALLOUT_LEFT_IMAGE_WIDTH+centreWidth-centreOffsetWidth, 0, centreOffsetWidth, CALLOUT_HEIGHT);
 		
 		UIImageView * leftBG = [[UIImageView alloc] initWithFrame:leftFrame];
 		leftBG.image = CALLOUT_BG;
