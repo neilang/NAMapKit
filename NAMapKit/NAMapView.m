@@ -70,6 +70,9 @@
 				[self hideCallOut];
 				[self.callout displayAnnotation:pin.annotation];				
 			}
+			
+			// centre the map
+			[self centreOnPoint:pin.annotation.point animated:YES];
 
 			break;
 		}
@@ -78,6 +81,12 @@
 	
 -(void)hideCallOut{
 	self.callout.hidden = YES;
+}
+
+-(void)centreOnPoint:(CGPoint)point animated:(BOOL)animate{
+	float x = (point.x * self.zoomScale) - (self.frame.size.width  / 2.0f);
+	float y = (point.y * self.zoomScale) - (self.frame.size.height / 2.0f);
+	[self setContentOffset:CGPointMake(x, y) animated:animate];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {	

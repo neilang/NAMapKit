@@ -23,6 +23,7 @@
 -(void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate;
 -(void)hideCallOut;
 -(IBAction)showCallOut:(id)sender;
+-(void)centreOnPoint:(CGPoint)point animated:(BOOL)animate;
 
 @property (nonatomic, retain) UIImageView * customMap;
 @property (nonatomic, retain) NSMutableArray * pinAnnotations;
