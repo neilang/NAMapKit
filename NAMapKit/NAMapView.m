@@ -97,6 +97,16 @@
 }
 
 - (void)dealloc {
+	
+	// Remove observers
+	if(self.callout){
+		[self removeObserver:self.callout forKeyPath:@"contentSize"];
+	}
+	
+	for (NAAnnotation *annotation in self.pinAnnotations) {
+		[self removeObserver:annotation forKeyPath:@"contentSize"];
+	}
+	
 	[_pinAnnotations release];
 	[_customMap release];
 	[_callout release];
