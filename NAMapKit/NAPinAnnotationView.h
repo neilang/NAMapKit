@@ -1,9 +1,9 @@
 //
-//  NAPinAnnotationView.h
-//  NAMapKit
+// NAPinAnnotationView.h
+// NAMapKit
 //
-//  Created by Neil Ang on 21/07/10.
-//  Copyright 2010 neilang.com. All rights reserved.
+// Created by Neil Ang on 21/07/10.
+// Copyright 2010 neilang.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -13,13 +13,13 @@
 
 @interface NAPinAnnotationView : UIButton {
 	@private
-	NAAnnotation * _annotation;
+	NAAnnotation *_annotation;
 }
 
-- (CGRect)frameForPoint: (CGPoint)point;
+- (CGRect)frameForPoint:(CGPoint)point;
 
 - (id)initWithAnnotation:(NAAnnotation *)annotation onView:(NAMapView *)mapView animated:(BOOL)animate;
 
-@property (nonatomic, retain) NAAnnotation * annotation;
+@property (nonatomic, retain) NAAnnotation *annotation;
 
 @end

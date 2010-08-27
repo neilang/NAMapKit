@@ -1,9 +1,9 @@
 //
-//  NACallOutView.h
-//  NAMapKit
+// NACallOutView.h
+// NAMapKit
 //
-//  Created by Neil Ang on 23/07/10.
-//  Copyright 2010 neilang.com. All rights reserved.
+// Created by Neil Ang on 23/07/10.
+// Copyright 2010 neilang.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,15 +14,15 @@
 
 @interface NACallOutView : UIView {
 	@private
-	NAAnnotation * _annotation;
-	NAMapView * _mapView;
+	NAAnnotation *_annotation;
+	NAMapView    *_mapView;
 }
 
--(id)initWithAnnotation:(NAAnnotation *)annotation onMap:(NAMapView *)mapView;
--(void)displayAnnotation:(NAAnnotation *)annotation;
+- (id)initWithAnnotation:(NAAnnotation *)annotation onMap:(NAMapView *)mapView;
+- (void)displayAnnotation:(NAAnnotation *)annotation;
 
 
-@property (nonatomic, retain) NAAnnotation * annotation;
-@property (nonatomic, retain) NAMapView * mapView;
+@property (nonatomic, retain) NAAnnotation *annotation;
+@property (nonatomic, retain) NAMapView    *mapView;
 
 @end
