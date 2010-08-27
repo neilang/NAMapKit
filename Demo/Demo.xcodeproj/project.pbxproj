@@ -17,6 +17,9 @@
 		28D7ACF80DDB3853001CB0EB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* DemoViewController.m */; };
 		B30BB34211FFB97500D7FDF8 /* callout_anchor.png in Resources */ = {isa = PBXBuildFile; fileRef = B30BB34011FFB97500D7FDF8 /* callout_anchor.png */; };
 		B30BB34311FFB97500D7FDF8 /* callout_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B30BB34111FFB97500D7FDF8 /* callout_bg.png */; };
+		B3851D6A1227A0D2008D5EB2 /* pinGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3851D671227A0D2008D5EB2 /* pinGreen@2x.png */; };
+		B3851D6B1227A0D2008D5EB2 /* pinPurple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3851D681227A0D2008D5EB2 /* pinPurple@2x.png */; };
+		B3851D6C1227A0D2008D5EB2 /* pinRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3851D691227A0D2008D5EB2 /* pinRed@2x.png */; };
 		B39E24AE11FD474D00DEEF42 /* callout_left.png in Resources */ = {isa = PBXBuildFile; fileRef = B39E24AB11FD474D00DEEF42 /* callout_left.png */; };
 		B39E24AF11FD474D00DEEF42 /* callout_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B39E24AC11FD474D00DEEF42 /* callout_right.png */; };
 		B39E25F511FD64EF00DEEF42 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39E25F411FD64EF00DEEF42 /* QuartzCore.framework */; };
@@ -46,6 +49,9 @@
 		8D1107310486CEB800E47090 /* Demo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Demo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B30BB34011FFB97500D7FDF8 /* callout_anchor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callout_anchor.png; sourceTree = "<group>"; };
 		B30BB34111FFB97500D7FDF8 /* callout_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callout_bg.png; sourceTree = "<group>"; };
+		B3851D671227A0D2008D5EB2 /* pinGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinGreen@2x.png"; sourceTree = "<group>"; };
+		B3851D681227A0D2008D5EB2 /* pinPurple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinPurple@2x.png"; sourceTree = "<group>"; };
+		B3851D691227A0D2008D5EB2 /* pinRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinRed@2x.png"; sourceTree = "<group>"; };
 		B39E24AB11FD474D00DEEF42 /* callout_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callout_left.png; sourceTree = "<group>"; };
 		B39E24AC11FD474D00DEEF42 /* callout_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callout_right.png; sourceTree = "<group>"; };
 		B39E25F411FD64EF00DEEF42 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -154,11 +160,14 @@
 				B3FA23CD11F923720003376D /* NAMapView.m */,
 				B3FA23CE11F923720003376D /* NAPinAnnotationView.h */,
 				B3FA23CF11F923720003376D /* NAPinAnnotationView.m */,
+				B3FA247911F94B270003376D /* NACallOutView.h */,
+				B3FA247A11F94B270003376D /* NACallOutView.m */,
 				B3FA23D011F923720003376D /* pinGreen.png */,
 				B3FA23D111F923720003376D /* pinPurple.png */,
 				B3FA23D211F923720003376D /* pinRed.png */,
-				B3FA247911F94B270003376D /* NACallOutView.h */,
-				B3FA247A11F94B270003376D /* NACallOutView.m */,
+				B3851D671227A0D2008D5EB2 /* pinGreen@2x.png */,
+				B3851D681227A0D2008D5EB2 /* pinPurple@2x.png */,
+				B3851D691227A0D2008D5EB2 /* pinRed@2x.png */,
 			);
 			name = NAMapKit;
 			path = ../../NAMapKit;
@@ -216,6 +225,9 @@
 				B39E24AF11FD474D00DEEF42 /* callout_right.png in Resources */,
 				B30BB34211FFB97500D7FDF8 /* callout_anchor.png in Resources */,
 				B30BB34311FFB97500D7FDF8 /* callout_bg.png in Resources */,
+				B3851D6A1227A0D2008D5EB2 /* pinGreen@2x.png in Resources */,
+				B3851D6B1227A0D2008D5EB2 /* pinPurple@2x.png in Resources */,
+				B3851D6C1227A0D2008D5EB2 /* pinRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
