@@ -9,6 +9,8 @@
 #import "NAMapView.h"
 #import "NAPinAnnotationView.h"
 
+#define ZOOM_STEP    1.5
+
 @implementation NAMapView
 
 @synthesize customMap      = _customMap;
@@ -24,6 +26,51 @@
 	self.showsHorizontalScrollIndicator = NO;
 	self.showsVerticalScrollIndicator   = NO;
 	self.pinAnnotations                 = [[NSMutableArray alloc] init];
+
+
+	[self setUserInteractionEnabled:YES];
+
+	UITapGestureRecognizer *doubleTap    = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+	UITapGestureRecognizer *twoFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTwoFingerTap:)];
+
+	[doubleTap setNumberOfTapsRequired:2];
+	[twoFingerTap setNumberOfTouchesRequired:2];
+
+	[self addGestureRecognizer:doubleTap];
+	[self addGestureRecognizer:twoFingerTap];
+
+	[doubleTap release];
+	[twoFingerTap release];
+}
+
+#pragma mark Tap to Zoom
+
+- (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center {
+	CGRect zoomRect;
+
+	zoomRect.size.height = [self frame].size.height / scale;
+	zoomRect.size.width  = [self frame].size.width / scale;
+
+	zoomRect.origin.x = center.x - (zoomRect.size.width / 2.0);
+	zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
+
+	return zoomRect;
+}
+
+- (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
+	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
+	float  newScale = self.zoomScale >= self.maximumZoomScale ? 1.0f : self.zoomScale * ZOOM_STEP;
+	CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
+
+	[self zoomToRect:zoomRect animated:YES];
+}
+
+- (void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
+	// two-finger tap zooms out, but returns to normal zoom level if it reaches min zoom
+	float  newScale = self.zoomScale <= self.minimumZoomScale ? 1.0f : self.zoomScale / ZOOM_STEP;
+	CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
+
+	[self zoomToRect:zoomRect animated:YES];
 }
 
 - (void)displayMap:(UIImage *)map {

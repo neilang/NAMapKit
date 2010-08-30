@@ -10,7 +10,7 @@ h2. Attribution
 
 When using this code please include the following attribution:
 
-*Includes NAMapKit code developed by "Neil Ang":http://neilang.com/ and "Tony Arnold":http://thecocoabots.com/*
+*Includes NAMapKit code developed by "Neil Ang":http://neilang.com/ and "Tony Arnold":http://thecocoabots.com/*.
 
 h2. Copyright
 
