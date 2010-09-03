@@ -25,8 +25,6 @@
 	self.delegate                       = self;
 	self.showsHorizontalScrollIndicator = NO;
 	self.showsVerticalScrollIndicator   = NO;
-	self.pinAnnotations                 = [[NSMutableArray alloc] init];
-
 
 	[self setUserInteractionEnabled:YES];
 
@@ -92,6 +90,10 @@
 - (void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
 	NAPinAnnotationView *pinAnnotation = [[NAPinAnnotationView alloc] initWithAnnotation:annotation onView:self animated:animate];
 
+	if (!_pinAnnotations) {
+		_pinAnnotations = [[NSMutableArray alloc] init]; // Why does this leak?
+	}
+
 	[self.pinAnnotations addObject:pinAnnotation];
 	[self addObserver:pinAnnotation forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 	[pinAnnotation release];
@@ -150,11 +152,14 @@
 		[self removeObserver:self.callout forKeyPath:@"contentSize"];
 	}
 
-	for (NAAnnotation *annotation in self.pinAnnotations) {
-		[self removeObserver:annotation forKeyPath:@"contentSize"];
+	if (_pinAnnotations) {
+		for (NAAnnotation *annotation in _pinAnnotations) {
+			[self removeObserver:annotation forKeyPath:@"contentSize"];
+		}
+
+		[_pinAnnotations release];
 	}
 
-	[_pinAnnotations release];
 	[_customMap release];
 	[_callout release];
 	[super dealloc];
