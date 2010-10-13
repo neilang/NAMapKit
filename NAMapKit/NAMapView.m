@@ -43,32 +43,16 @@
 
 #pragma mark Tap to Zoom
 
-- (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center {
-	CGRect zoomRect;
-
-	zoomRect.size.height = [self frame].size.height / scale;
-	zoomRect.size.width  = [self frame].size.width / scale;
-
-	zoomRect.origin.x = center.x - (zoomRect.size.width / 2.0);
-	zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
-
-	return zoomRect;
-}
-
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
 	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
-	float  newScale = self.zoomScale >= self.maximumZoomScale ? 1.0f : self.zoomScale * ZOOM_STEP;
-	CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
-
-	[self zoomToRect:zoomRect animated:YES];
+	float  newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * ZOOM_STEP;
+	[self setZoomScale:newScale animated:YES];
 }
 
 - (void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
 	// two-finger tap zooms out, but returns to normal zoom level if it reaches min zoom
-	float  newScale = self.zoomScale <= self.minimumZoomScale ? 1.0f : self.zoomScale / ZOOM_STEP;
-	CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
-
-	[self zoomToRect:zoomRect animated:YES];
+	float  newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / ZOOM_STEP;
+	[self setZoomScale:newScale animated:YES];
 }
 
 - (void)displayMap:(UIImage *)map {
