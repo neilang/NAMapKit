@@ -95,7 +95,10 @@
 		if (pin == sender) {
 			if (!self.callout) {
 				// create the callout
-				self.callout = [[NACallOutView alloc] initWithAnnotation:pin.annotation onMap:self];
+        NACallOutView * calloutView = [[NACallOutView alloc] initWithAnnotation:pin.annotation onMap:self];
+				self.callout = calloutView;
+        [calloutView release];
+        
 				[self addObserver:self.callout forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 				[self addSubview:self.callout];
 			}	else {
