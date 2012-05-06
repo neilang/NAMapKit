@@ -8,18 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "NAAnnotation.h"
-#import "NACallOutView.h"
 #import "NAMapView.h"
 
-@interface NAPinAnnotationView : UIButton {
-	@private
-	NAAnnotation *_annotation;
-}
+@interface NAPinAnnotationView : UIButton
 
-- (CGRect)frameForPoint:(CGPoint)point;
-
-- (id)initWithAnnotation:(NAAnnotation *)annotation onView:(NAMapView *)mapView animated:(BOOL)animate;
+- (id)initWithAnnotation:(NAAnnotation *)annotation onMapView:(NAMapView *)mapView;
 
 @property (nonatomic, retain) NAAnnotation *annotation;
+@property (nonatomic, assign) BOOL          animating;
 
 @end

@@ -11,3 +11,4 @@
 Demo/build
 Demo/build/**/*
 .DS_Store
+xcuserdata

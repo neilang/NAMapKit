@@ -8,21 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "NAAnnotation.h"
+#import "NAMapView.h"
 
+@interface NACallOutView : UIView
 
-@class NAMapView;
-
-@interface NACallOutView : UIView {
-	@private
-	NAAnnotation *_annotation;
-	NAMapView    *_mapView;
-}
-
-- (id)initWithAnnotation:(NAAnnotation *)annotation onMap:(NAMapView *)mapView;
-- (void)displayAnnotation:(NAAnnotation *)annotation;
-
-
-@property (nonatomic, retain) NAAnnotation *annotation;
-@property (nonatomic, retain) NAMapView    *mapView;
+- (id)initOnMapView:(NAMapView *)mapView;
+- (void)setAnnotation:(NAAnnotation *)annotation;
 
 @end

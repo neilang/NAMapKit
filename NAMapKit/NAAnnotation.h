@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    NAPinColorRed,
+    NAPinColorGreen,
+    NAPinColorPurple
+} NAPinColor;
 
-@interface NAAnnotation : NSObject {
-	CGPoint   _point;
-	NSString *_title;
-	NSString *_subtitle;
-	UIButton *_rightCalloutAccessoryView;
-}
+@interface NAAnnotation : NSObject
 
-// points as we are not showing coords!
-@property (nonatomic, assign) CGPoint   point;
-@property (nonatomic, copy) NSString   *title;
-@property (nonatomic, copy) NSString   *subtitle;
-@property (nonatomic, retain) UIButton *rightCalloutAccessoryView;
+@property (nonatomic, assign) CGPoint     point;
+@property (nonatomic, assign) NAPinColor  color;
+@property (nonatomic, copy)   NSString   *title;
+@property (nonatomic, copy)   NSString   *subtitle;
+@property (nonatomic, strong) UIButton   *rightCalloutAccessoryView;
 
 + (id)annotationWithPoint:(CGPoint)point;
 - (id)initWithPoint:(CGPoint)point;
