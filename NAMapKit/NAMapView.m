@@ -127,7 +127,6 @@
 	}
 }
 
-// Untested!!
 -(void)removeAnnotation:(NAAnnotation *)annotation{
     for(NAPinAnnotationView *annotationView in self.annotationViews){
         if (annotationView.annotation == annotation) {
