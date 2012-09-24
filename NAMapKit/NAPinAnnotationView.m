@@ -8,10 +8,10 @@
 
 #import "NAPinAnnotationView.h"
 
-#define NA_PIN_WIDTH           32.0f
-#define NA_PIN_HEIGHT          39.0f
-#define NA_PIN_POINT_X         8.0f
-#define NA_PIN_POINT_Y         35.0f
+#define NA_PIN_WIDTH   32.0f
+#define NA_PIN_HEIGHT  39.0f
+#define NA_PIN_POINT_X 8.0f
+#define NA_PIN_POINT_Y 35.0f
 
 @interface NAPinAnnotationView()
 
@@ -50,7 +50,7 @@
         case NAPinColorPurple:
             pinImage = @"pinPurple";
             break;
-        default:
+        case NAPinColorRed:
             pinImage = @"pinRed";
             break;
     }

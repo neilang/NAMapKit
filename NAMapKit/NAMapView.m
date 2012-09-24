@@ -10,16 +10,16 @@
 #import "NAPinAnnotationView.h"
 #import "NACallOutView.h"
 
-#define NA_PIN_ANIMATION_DURATION 0.5f
+#define NA_PIN_ANIMATION_DURATION     0.5f
 #define NA_CALLOUT_ANIMATION_DURATION 0.1f
-#define NA_ZOOM_STEP 1.5
+#define NA_ZOOM_STEP                  1.5f
 
 @interface NAMapView()
 
 @property (nonatomic, strong) UIImageView    *imageView;
 @property (nonatomic, strong) NACallOutView  *calloutView;
 @property (nonatomic, strong) NSMutableArray *annotationViews;
-@property (nonatomic, assign) CGSize orignalSize;
+@property (nonatomic, assign) CGSize          orignalSize;
 
 -(void)addAnimatedAnnontation:(NAAnnotation *)annontation;
 -(IBAction)showCallOut:(id)sender;

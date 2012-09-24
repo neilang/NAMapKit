@@ -8,22 +8,22 @@
 
 #import "NACallOutView.h"
 
-#define NA_TITLE_STANDALONE_LABEL_HEIGHT    22.0f
-#define NA_TITLE_STANDALONE_FONT_SIZE       18.0f
-#define NA_TITLE_STANDALONE_TOP_OFFSET      14.0
-#define NA_TITLE_TOP_OFFSET                 4.0
-#define NA_TITLE_LABEL_HEIGHT               20.0
-#define NA_TITLE_FONT_SIZE                  17.0
-#define NA_SUBTITLE_TOP_OFFSET              0.0 + NA_TITLE_LABEL_HEIGHT
-#define NA_SUBTITLE_FONT_SIZE               11.0
-#define NA_SUBTITLE_LABEL_HEIGHT            25.0
-#define NA_RIGHT_ACCESSORY_LEFT_OFFSET      2.0
-#define NA_RIGHT_ACCESSORY_TOP_OFFSET       9.0
-#define NA_ANCHOR_Y_OFFSET                  26.0
-#define NA_CALLOUT_IMAGE_LEFT               @"callout_left.png"
-#define NA_CALLOUT_IMAGE_RIGHT              @"callout_right.png"
-#define NA_CALLOUT_IMAGE_ANCHOR             @"callout_anchor.png"
-#define NA_CALLOUT_IMAGE_BG                 @"callout_bg.png"
+#define NA_TITLE_STANDALONE_LABEL_HEIGHT 22.0f
+#define NA_TITLE_STANDALONE_FONT_SIZE    18.0f
+#define NA_TITLE_STANDALONE_TOP_OFFSET   14.0f
+#define NA_TITLE_TOP_OFFSET              4.0f
+#define NA_TITLE_LABEL_HEIGHT            20.0f
+#define NA_TITLE_FONT_SIZE               17.0f
+#define NA_SUBTITLE_TOP_OFFSET           0.0f + NA_TITLE_LABEL_HEIGHT
+#define NA_SUBTITLE_FONT_SIZE            11.0f
+#define NA_SUBTITLE_LABEL_HEIGHT         25.0f
+#define NA_RIGHT_ACCESSORY_LEFT_OFFSET   2.0f
+#define NA_RIGHT_ACCESSORY_TOP_OFFSET    9.0f
+#define NA_ANCHOR_Y_OFFSET               26.0f
+#define NA_CALLOUT_IMAGE_LEFT            @"callout_left.png"
+#define NA_CALLOUT_IMAGE_RIGHT           @"callout_right.png"
+#define NA_CALLOUT_IMAGE_ANCHOR          @"callout_anchor.png"
+#define NA_CALLOUT_IMAGE_BG              @"callout_bg.png"
 
 
 @interface NACallOutView()

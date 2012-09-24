@@ -27,16 +27,16 @@
     
     [self.mapView displayMap:[UIImage imageNamed:@"australia"]];
     
-    self.mapView.backgroundColor = [UIColor colorWithRed:0.000 green:0.475 blue:0.761 alpha:1.000];
+    self.mapView.backgroundColor = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
 
-    NAAnnotation *melbourne = [NAAnnotation annotationWithPoint:CGPointMake(543, 489)];
+    NAAnnotation *melbourne = [NAAnnotation annotationWithPoint:CGPointMake(543.0f, 489.0f)];
     melbourne.title         = @"Melbourne";
     melbourne.subtitle      = @"I have a subtitle";
     melbourne.color         = NAPinColorGreen;
     
     [self.mapView addAnnotation:melbourne animated:NO];
     
-    NAAnnotation * perth            = [NAAnnotation annotationWithPoint:CGPointMake(63, 379)];
+    NAAnnotation * perth            = [NAAnnotation annotationWithPoint:CGPointMake(63.0f, 379.0f)];
 	perth.title                     = @"Perth";
     perth.subtitle                  = @"I have a button";
 	perth.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -44,7 +44,7 @@
     
 	[self.mapView addAnnotation:perth animated:NO];
     
-	NAAnnotation * brisbane = [NAAnnotation annotationWithPoint:CGPointMake(679, 302)];
+	NAAnnotation * brisbane = [NAAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
 	brisbane.title          = @"Brisbane";
     brisbane.color          = NAPinColorPurple;
     
