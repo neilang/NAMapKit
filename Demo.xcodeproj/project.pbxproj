@@ -46,6 +46,7 @@
 		283B1B361556557900A9133D /* NAAnimatedDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283B1B351556557800A9133D /* NAAnimatedDemoViewController.m */; };
 		283B1B3A155659FB00A9133D /* NAInteractiveDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283B1B38155659FB00A9133D /* NAInteractiveDemoViewController.m */; };
 		283B1B3B155659FB00A9133D /* NAInteractiveDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283B1B39155659FB00A9133D /* NAInteractiveDemoViewController.xib */; };
+		28C4EAC01765B29500837614 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C4EABF1765B29500837614 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		283B1B37155659FB00A9133D /* NAInteractiveDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAInteractiveDemoViewController.h; sourceTree = "<group>"; };
 		283B1B38155659FB00A9133D /* NAInteractiveDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAInteractiveDemoViewController.m; sourceTree = "<group>"; };
 		283B1B39155659FB00A9133D /* NAInteractiveDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAInteractiveDemoViewController.xib; sourceTree = "<group>"; };
+		28C4EABF1765B29500837614 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		283B1ABE15564BBD00A9133D = {
 			isa = PBXGroup;
 			children = (
+				28C4EABF1765B29500837614 /* Default-568h@2x.png */,
 				283B1AD315564BBD00A9133D /* Demo */,
 				283B1ACC15564BBD00A9133D /* Frameworks */,
 				283B1ACA15564BBD00A9133D /* Products */,
@@ -242,7 +245,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NA;
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = neilang.com;
 			};
 			buildConfigurationList = 283B1AC315564BBD00A9133D /* Build configuration list for PBXProject "Demo" */;
@@ -292,6 +295,7 @@
 				283B1B2E15564EB500A9133D /* australia.png in Resources */,
 				283B1B33155651FD00A9133D /* NALoadViaNIBDemoViewController.xib in Resources */,
 				283B1B3B155659FB00A9133D /* NAInteractiveDemoViewController.xib in Resources */,
+				28C4EAC01765B29500837614 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +348,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -369,6 +377,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

@@ -15,5 +15,6 @@
 
 -(IBAction)addPin:(id)sender;
 -(IBAction)removePin:(id)sender;
+-(IBAction)selectRandom:(id)sender;
 
 @end

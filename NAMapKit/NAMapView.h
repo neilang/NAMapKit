@@ -17,6 +17,7 @@
 - (void)centreOnPoint:(CGPoint)point animated:(BOOL)animate;
 - (void)removeAnnotation:(NAAnnotation *)annotation;
 - (CGPoint)zoomRelativePoint:(CGPoint)point;
+- (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
 
 @end
 
