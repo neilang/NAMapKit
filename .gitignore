@@ -10,5 +10,10 @@
 *~.xib
 Demo/build
 Demo/build/**/*
+Demo/Pods
 .DS_Store
 xcuserdata
+Gemfile.lock
+.bundle
+
+
