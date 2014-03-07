@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		07DDEB3EBEEC4C6FAF715BF1 /* libPods-DemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DB4ADA533041DD9D9E7647 /* libPods-DemoTests.a */; };
 		273E9EE865984F44A8AF2A9D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2957D8BD1FB4630AD6F922F /* libPods.a */; };
+		3C9F354518CA838600EA1F22 /* NAMasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354418CA838600EA1F22 /* NAMasterViewControllerTests.m */; };
+		3C9F354718CA862100EA1F22 /* NABasicDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354618CA862100EA1F22 /* NABasicDemoViewControllerTests.m */; };
+		3C9F354918CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */; };
+		3C9F354B18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */; };
 		3CB0E6D718C8B9E2009CE8DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0E6D618C8B9E2009CE8DB /* Foundation.framework */; };
 		3CB0E6D918C8B9E2009CE8DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0E6D818C8B9E2009CE8DB /* CoreGraphics.framework */; };
 		3CB0E6DB18C8B9E2009CE8DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0E6DA18C8B9E2009CE8DB /* UIKit.framework */; };
@@ -43,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C9F354418CA838600EA1F22 /* NAMasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMasterViewControllerTests.m; sourceTree = "<group>"; };
+		3C9F354618CA862100EA1F22 /* NABasicDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NABasicDemoViewControllerTests.m; sourceTree = "<group>"; };
+		3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAInteractiveDemoViewControllerTests.m; sourceTree = "<group>"; };
+		3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NALoadViaNIBDemoViewControllerTests.m; sourceTree = "<group>"; };
 		3CB0E6D318C8B9E2009CE8DB /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB0E6D618C8B9E2009CE8DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CB0E6D818C8B9E2009CE8DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -181,6 +189,10 @@
 			children = (
 				3CB0E72E18C8C9A4009CE8DB /* NAMapViewTests.m */,
 				3CB0E6FC18C8B9E3009CE8DB /* Supporting Files */,
+				3C9F354418CA838600EA1F22 /* NAMasterViewControllerTests.m */,
+				3C9F354618CA862100EA1F22 /* NABasicDemoViewControllerTests.m */,
+				3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */,
+				3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */,
 			);
 			path = DemoTests;
 			sourceTree = "<group>";
@@ -378,6 +390,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB0E72F18C8C9A4009CE8DB /* NAMapViewTests.m in Sources */,
+				3C9F354918CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m in Sources */,
+				3C9F354718CA862100EA1F22 /* NABasicDemoViewControllerTests.m in Sources */,
+				3C9F354518CA838600EA1F22 /* NAMasterViewControllerTests.m in Sources */,
+				3C9F354B18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +549,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DemoTests/DemoTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FB_REFERENCE_IMAGE_DIR=\"\\\"$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages\\\"\"",
 					"DEBUG=1",
 					"$(inherited)",
 				);
@@ -556,6 +573,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DemoTests/DemoTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "DemoTests/DemoTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

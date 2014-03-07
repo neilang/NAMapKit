@@ -1,19 +1,30 @@
 PODS:
   - Expecta (0.2.4)
+  - EXPMatchers+FBSnapshotTest (1.0):
+    - Expecta
+  - FBSnapshotTestCase (1.1)
   - NAMapKit (2.1)
   - Specta (0.2.1)
 
 DEPENDENCIES:
   - Expecta (~> 0.2.3)
+  - EXPMatchers+FBSnapshotTest (from `https://github.com/dblock/ios-snapshot-test-case-expecta`)
+  - FBSnapshotTestCase (from `https://github.com/facebook/ios-snapshot-test-case`)
   - NAMapKit (from `../namapkit.podspec`)
   - Specta (~> 0.2.1)
 
 EXTERNAL SOURCES:
+  EXPMatchers+FBSnapshotTest:
+    :git: https://github.com/dblock/ios-snapshot-test-case-expecta
+  FBSnapshotTestCase:
+    :git: https://github.com/facebook/ios-snapshot-test-case
   NAMapKit:
     :path: ../namapkit.podspec
 
 SPEC CHECKSUMS:
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
+  EXPMatchers+FBSnapshotTest: bdea3de1a112fda973313b3cdeb856646e9546d6
+  FBSnapshotTestCase: 188c80bfcb72e744eb0b99d45989d12687c40cf8
   NAMapKit: 2cc4a881da004a182f8f296195b94919dbc997f6
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
 
