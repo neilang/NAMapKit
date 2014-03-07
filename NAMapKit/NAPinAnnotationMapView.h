@@ -6,6 +6,7 @@
 //
 
 #import "NAMapView.h"
+#import "NAPinAnnotation.h"
 #import "NAPinAnnotationView.h"
 #import "NAPinAnnotationCallOutView.h"
 

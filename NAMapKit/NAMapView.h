@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "NAAnnotation.h"
-#import "NAPinAnnotation.h"
 
 @interface NAMapView : UIScrollView<UIScrollViewDelegate>
 

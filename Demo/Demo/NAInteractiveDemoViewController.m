@@ -7,6 +7,7 @@
 //
 
 #import "NAInteractiveDemoViewController.h"
+#import "NAPinAnnotation.h"
 
 @interface NAInteractiveDemoViewController (){
     int _count;

@@ -7,6 +7,7 @@
 //
 
 #import "NALoadViaNIBDemoViewController.h"
+#import "NAPinAnnotation.h"
 
 @implementation NALoadViaNIBDemoViewController
 
