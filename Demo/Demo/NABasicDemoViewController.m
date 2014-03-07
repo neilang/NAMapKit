@@ -8,7 +8,8 @@
 
 #import "NABasicDemoViewController.h"
 #import "NAMapView.h"
-#import "NAAnnotation.h"
+#import "NAPinAnnotationMapView.h"
+#import "NAPinAnnotation.h"
 
 @interface NABasicDemoViewController ()
 
@@ -29,7 +30,7 @@
 {
     [super viewDidLoad];
 	
-    NAMapView *mapView = [[NAMapView alloc] initWithFrame:self.view.bounds];
+    NAMapView *mapView = [[NAPinAnnotationMapView alloc] initWithFrame:self.view.bounds];
     
     mapView.backgroundColor  = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -41,14 +42,14 @@
     
     [self.view addSubview:mapView];
     
-    NAAnnotation *melbourne = [NAAnnotation annotationWithPoint:CGPointMake(543.0f, 489.0f)];
+    NAPinAnnotation *melbourne = [NAPinAnnotation annotationWithPoint:CGPointMake(543.0f, 489.0f)];
     melbourne.title         = @"Melbourne";
     melbourne.subtitle      = @"I have a subtitle";
     melbourne.color         = NAPinColorGreen;
     
     [mapView addAnnotation:melbourne animated:NO];
     
-    NAAnnotation * perth            = [NAAnnotation annotationWithPoint:CGPointMake(63.0f, 379.0f)];
+    NAPinAnnotation * perth            = [NAPinAnnotation annotationWithPoint:CGPointMake(63.0f, 379.0f)];
 	perth.title                     = @"Perth";
     perth.subtitle                  = @"I have a button";
 	perth.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -56,7 +57,7 @@
     
 	[mapView addAnnotation:perth animated:YES];
     
-	NAAnnotation * brisbane = [NAAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
+	NAPinAnnotation * brisbane = [NAPinAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
 	brisbane.title          = @"Brisbane";
     brisbane.color          = NAPinColorPurple;
     

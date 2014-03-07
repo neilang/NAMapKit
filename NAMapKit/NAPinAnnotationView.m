@@ -27,21 +27,21 @@
 @synthesize animating  = _animating;
 @synthesize mapView    = _mapView;
 
-- (id)initWithAnnotation:(NAAnnotation *)annotation onMapView:(NAMapView *)mapView {
+- (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.mapView    = mapView;
         self.annotation = annotation;
         self.animating  = NO;
-        
-        [self updatePosition]; 
+
+        [self updatePosition];
     }
     return self;
 }
 
 - (void)setAnimating:(BOOL)animating{
     _animating = animating;
-    
+
     NSString *pinImage;
     switch (self.annotation.color) {
         case NAPinColorGreen:
@@ -54,9 +54,9 @@
             pinImage = @"pinRed";
             break;
     }
-    
+
     NSString * image = _animating ? [NSString stringWithFormat:@"%@Floating", pinImage] : pinImage;
-    
+
     [self setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
 }
 

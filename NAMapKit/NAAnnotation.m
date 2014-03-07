@@ -10,11 +10,7 @@
 
 @implementation NAAnnotation
 
-@synthesize point    = _point;
-@synthesize color    = _color;
-@synthesize title    = _title;
-@synthesize subtitle = _subtitle;
-@synthesize rightCalloutAccessoryView = _rightCalloutAccessoryView;
+@synthesize point = _point;
 
 + (id)annotationWithPoint:(CGPoint)point{
     return [[[self class] alloc] initWithPoint:point];
@@ -23,14 +19,20 @@
 - (id)initWithPoint:(CGPoint)point{
     self = [super init];
     if (self) {
-        self.point    = point;
-        self.color    = NAPinColorRed;
-        self.title    = nil;
-        self.subtitle = nil;
-        self.rightCalloutAccessoryView = nil;
+        self.point = point;
     }
     return self;
 }
 
+-(UIView *)addToMapView:(NAMapView *)mapView animated:(BOOL)animate
+{
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+    return nil;
+}
+
+-(void)removeFromMapView
+{
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+}
 
 @end

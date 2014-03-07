@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NAAnnotation.h"
+#import "NAPinAnnotation.h"
 #import "NAMapView.h"
 
 @interface NAPinAnnotationView : UIButton
 
-- (id)initWithAnnotation:(NAAnnotation *)annotation onMapView:(NAMapView *)mapView;
+- (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView;
 
-@property (nonatomic, retain) NAAnnotation *annotation;
+@property (nonatomic, retain) NAPinAnnotation *annotation;
 @property (nonatomic, assign) BOOL          animating;
 
 @end
