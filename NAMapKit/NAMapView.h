@@ -13,7 +13,7 @@
 @interface NAMapView : UIScrollView<UIScrollViewDelegate>
 
 -(void)displayMap:(UIImage *)map;
--(UIView *)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
+-(void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
 -(void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate;
 -(void)centreOnPoint:(CGPoint)point animated:(BOOL)animate;
 -(void)removeAnnotation:(NAAnnotation *)annotation;

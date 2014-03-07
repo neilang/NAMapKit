@@ -28,16 +28,20 @@
     [self addSubview:self.calloutView];
 }
 
--(UIView *)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
-    UIButton *annontationView = (UIButton *) [super addAnnotation:annotation animated:animate];
-    [annontationView addTarget:self action:@selector(showCallOut:) forControlEvents:UIControlEventTouchDown];
+-(void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
+    [super addAnnotation:annotation animated:animate];
+    if ([annotation.view isKindOfClass:NAPinAnnotationView.class]) {
+        NAPinAnnotationView *annotationView = (NAPinAnnotationView *) annotation.view;
+        [annotationView addTarget:self action:@selector(showCallOut:) forControlEvents:UIControlEventTouchDown];
+    }
     [self bringSubviewToFront:self.calloutView];
-    return annontationView;
 }
 
 - (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
     [self hideCallOut];
-    [self showCalloutForAnnotation:(NAPinAnnotation *)annotation animated:animate];
+    if([annotation isKindOfClass:NAPinAnnotation.class]) {
+        [self showCalloutForAnnotation:(NAPinAnnotation *)annotation animated:animate];
+    }
 }
 
 -(void)removeAnnotation:(NAAnnotation *)annotation{
@@ -46,13 +50,13 @@
 }
 
 -(IBAction)showCallOut:(id)sender {
-    if(![sender isKindOfClass:[NAPinAnnotationView class]]) return;
-    NAPinAnnotationView *annontationView = (NAPinAnnotationView *)sender;
-    [self showCalloutForAnnotation:annontationView.annotation animated:YES];
+    if([sender isKindOfClass:[NAPinAnnotationView class]]) {
+        NAPinAnnotationView *annontationView = (NAPinAnnotationView *)sender;
+        [self showCalloutForAnnotation:annontationView.annotation animated:YES];
+    }
 }
 
 -(void)showCalloutForAnnotation:(NAPinAnnotation *)annotation animated:(BOOL)animated {
-    
     [self hideCallOut];
     
     [self.calloutView setAnnotation:annotation];
@@ -62,7 +66,7 @@
     CGFloat animationDuration = animated ? NA_CALLOUT_ANIMATION_DURATION : 0.0f;
     
     self.calloutView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4f, 0.4f);
-    self.calloutView.hidden    = NO;
+    self.calloutView.hidden = NO;
     
     [UIView animateWithDuration:animationDuration animations:^{
         self.calloutView.transform = CGAffineTransformIdentity;

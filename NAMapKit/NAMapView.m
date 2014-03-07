@@ -61,8 +61,8 @@
     self.contentSize     = self.originalSize;
 }
 
-- (UIView *)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
-    return [annotation addToMapView:self animated:animate];
+- (void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
+    [annotation addToMapView:self animated:animate];
 }
 
 - (void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate {

@@ -13,10 +13,12 @@
 @interface NAAnnotation : NSObject
 
 @property (nonatomic, assign) CGPoint point;
+@property (nonatomic, readonly) UIView *view;
 
-+ (id)annotationWithPoint:(CGPoint)point;
-- (id)initWithPoint:(CGPoint)point;
-- (UIView *)addToMapView:(NAMapView *)mapView animated:(BOOL)animate;
-- (void)removeFromMapView;
++(id)annotationWithPoint:(CGPoint)point;
+-(id)initWithPoint:(CGPoint)point;
+-(void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate;
+-(void)removeFromMapView;
+-(void)updatePosition;
 
 @end

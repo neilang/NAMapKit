@@ -67,12 +67,6 @@
     self.frame    = CGRectMake(point.x, point.y, NA_PIN_WIDTH, NA_PIN_HEIGHT);
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"contentSize"]) {
-        [self updatePosition];
-	}
-}
-
 @end
 
 #undef NA_PIN_WIDTH

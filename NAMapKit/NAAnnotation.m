@@ -7,8 +7,16 @@
 //
 
 #import "NAAnnotation.h"
+#import "NAMapView.h"
+
+@interface NAAnnotation ()
+@property (nonatomic, readonly) NAMapView *mapView;
+@end
 
 @implementation NAAnnotation
+
+@synthesize view = _view;
+@synthesize mapView = _mapView;
 
 @synthesize point = _point;
 
@@ -19,20 +27,32 @@
 - (id)initWithPoint:(CGPoint)point{
     self = [super init];
     if (self) {
-        self.point = point;
+        _point = point;
+        _mapView = nil;
     }
     return self;
 }
 
--(UIView *)addToMapView:(NAMapView *)mapView animated:(BOOL)animate
+-(void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate
 {
-    NSAssert(NO, @"Subclasses need to overwrite this method");
-    return nil;
+    [mapView addSubview:self.view];
+    [mapView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)removeFromMapView
 {
-    NSAssert(NO, @"Subclasses need to overwrite this method");
+    [self.view removeFromSuperview];
+    [self.mapView removeObserver:_view forKeyPath:@"contentSize"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString:@"contentSize"]) {
+        [self updatePosition];
+	}
+}
+
+-(void)updatePosition{
+
 }
 
 @end
