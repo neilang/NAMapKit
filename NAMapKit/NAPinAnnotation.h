@@ -17,9 +17,9 @@ typedef enum {
 @interface NAPinAnnotation : NAAnnotation
 
 @property (nonatomic, assign) NAPinColor color;
-@property (nonatomic, copy) NSString  *title;
-@property (nonatomic, copy) NSString  *subtitle;
-@property (nonatomic, strong) UIButton  *rightCalloutAccessoryView;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, strong) UIButton *rightCalloutAccessoryView;
 
 - (id)initWithPoint:(CGPoint)point;
 

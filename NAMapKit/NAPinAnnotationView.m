@@ -14,11 +14,7 @@
 #define NA_PIN_POINT_Y 35.0f
 
 @interface NAPinAnnotationView()
-
-- (void)updatePosition;
-
 @property (nonatomic, weak) NAMapView *mapView;
-
 @end
 
 @implementation NAPinAnnotationView

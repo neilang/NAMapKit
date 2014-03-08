@@ -42,13 +42,17 @@
     _lastFocused = nil;
 }
 
-
 -(IBAction)addPin:(id)sender{
 
     int x = (arc4random() % (int)self.size.width);
     int y = (arc4random() % (int)self.size.width);
 
     CGPoint point = CGPointMake(x, y);
+    
+    [self addPinAt:point withColor:arc4random() % 3];
+}
+
+-(void)addPinAt:(CGPoint)point withColor:(NAPinColor)color{
 
     [self.mapView centreOnPoint:point animated:YES];
 
@@ -56,7 +60,7 @@
 
     annotation.title = [NSString stringWithFormat:@"Pin %d", ++_count];
 
-    annotation.color = arc4random() % 3;
+    annotation.color = color;
 
     [self.mapView addAnnotation:annotation animated:YES];
 
@@ -83,10 +87,14 @@
     if([self.annotations count] <= 0) return;
 
     int rand = (arc4random() % (int)[self.annotations count]);
-    NAPinAnnotation *annotation = [self.annotations objectAtIndex:rand];
+    [self selectPinAt:rand];
+}
 
+-(void)selectPinAt:(NSInteger)index{
+    NAPinAnnotation *annotation = [self.annotations objectAtIndex:index];
+    
     [self.mapView selectAnnotation:annotation animated:YES];
-
+    
     _lastFocused = annotation;
 }
 

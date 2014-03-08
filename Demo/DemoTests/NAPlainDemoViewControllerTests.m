@@ -15,7 +15,7 @@ setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
 it(@"displays map with a pin", ^{
     NAPlainDemoViewController *vc = [[NAPlainDemoViewController alloc] init];
     expect(vc.view).willNot.beNil();
-    expect(vc.view).to.haveValidSnapshotNamed(@"NAPlainDemoViewController");
+    expect(vc.view).to.haveValidSnapshotNamed(@"default");
 });
 
 SpecEnd

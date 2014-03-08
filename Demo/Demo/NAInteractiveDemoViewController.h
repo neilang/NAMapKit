@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "NAMapView.h"
+#import "NAPinAnnotation.h"
 
 @interface NAInteractiveDemoViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet NAMapView *mapView;
 
 -(IBAction)addPin:(id)sender;
+-(void)addPinAt:(CGPoint)point withColor:(NAPinColor)color;
+
 -(IBAction)removePin:(id)sender;
+
 -(IBAction)selectRandom:(id)sender;
+-(void)selectPinAt:(NSInteger)index;
 
 @end

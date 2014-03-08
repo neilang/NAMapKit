@@ -7,15 +7,21 @@
 //
 
 #import "NABasicDemoViewController.h"
+#import "NAPinAnnotation.h"
 
 SpecBegin(NABasicDemoViewController)
 
 setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
 
-it(@"displays map with a pin", ^{
-    NABasicDemoViewController *vc = [[NABasicDemoViewController alloc] init];
+__block NABasicDemoViewController *vc = nil;
+
+beforeEach(^{
+    vc = [[NABasicDemoViewController alloc] init];
     expect(vc.view).willNot.beNil();
-    expect(vc.view).to.haveValidSnapshotNamed(@"NABasicDemoViewController");
+});
+
+it(@"displays map with a pin", ^{
+    expect(vc.view).to.haveValidSnapshotNamed(@"default");
 });
 
 SpecEnd
