@@ -54,7 +54,7 @@
 -(void)removeFromMapView
 {
     [self.view removeFromSuperview];
-    [self.mapView removeObserver:_view forKeyPath:@"contentSize"];
+    [self.mapView removeObserver:self forKeyPath:@"contentSize"];
     _mapView = nil;
     _view = nil;
 }
