@@ -20,5 +20,6 @@
 -(void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate;
 -(void)removeFromMapView;
 -(void)updatePosition;
+-(UIView *)createViewOnMapView:(NAMapView *)mapView;
 
 @end

@@ -33,8 +33,6 @@
         self.mapView    = mapView;
         self.annotation = annotation;
         self.animating  = NO;
-
-        [self updatePosition];
     }
     return self;
 }

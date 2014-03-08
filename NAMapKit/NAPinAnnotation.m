@@ -12,13 +12,8 @@
 #define NA_PIN_ANIMATION_DURATION     0.5f
 #define NA_CALLOUT_ANIMATION_DURATION 0.1f
 
-@interface NAPinAnnotation ()
-@property(nonatomic) UIView *view;
-@end
-
 @implementation NAPinAnnotation
 
-@synthesize view = _view;
 @synthesize color = _color;
 @synthesize title = _title;
 @synthesize subtitle = _subtitle;
@@ -30,32 +25,34 @@
         self.color = NAPinColorRed;
         self.title = nil;
         self.subtitle = nil;
-        self.view = nil;
         self.rightCalloutAccessoryView = nil;
     }
     return self;
 }
 
+-(UIView *)createViewOnMapView:(NAMapView *)mapView
+{
+    return [[NAPinAnnotationView alloc] initWithAnnotation:self onMapView:mapView];
+}
+
 -(void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate
 {
-    NSAssert(!self.view, @"Annotation already added to view.");
-
-    NAPinAnnotationView *annontationView = [[NAPinAnnotationView alloc] initWithAnnotation:self onMapView:mapView];
-    _view = annontationView;
     [super addToMapView:mapView animated:animate];
     
+    NAPinAnnotationView *annotationView = (NAPinAnnotationView *) self.view;
+
     if(animate){
-        annontationView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0.0f, -annontationView.center.y);
+        annotationView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0.0f, -annotationView.center.y);
     }
     
-    [mapView addSubview:annontationView];
+    [mapView addSubview:annotationView];
     
     if(animate){
-        annontationView.animating = YES;
+        annotationView.animating = YES;
         [UIView animateWithDuration:NA_PIN_ANIMATION_DURATION animations:^{
-            annontationView.transform = CGAffineTransformIdentity;
+            annotationView.transform = CGAffineTransformIdentity;
         } completion:^ (BOOL finished) {
-          annontationView.animating = NO;
+          annotationView.animating = NO;
         }];
     }
 }

@@ -13,6 +13,8 @@
 		3C9F354718CA862100EA1F22 /* NABasicDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354618CA862100EA1F22 /* NABasicDemoViewControllerTests.m */; };
 		3C9F354918CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */; };
 		3C9F354B18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */; };
+		3C9F354E18CA922C00EA1F22 /* NAPlainDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354D18CA922C00EA1F22 /* NAPlainDemoViewController.m */; };
+		3C9F355018CB8B6000EA1F22 /* NAPlainDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354F18CB8B6000EA1F22 /* NAPlainDemoViewControllerTests.m */; };
 		3CB0E6D718C8B9E2009CE8DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0E6D618C8B9E2009CE8DB /* Foundation.framework */; };
 		3CB0E6D918C8B9E2009CE8DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0E6D818C8B9E2009CE8DB /* CoreGraphics.framework */; };
 		3CB0E6DB18C8B9E2009CE8DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0E6DA18C8B9E2009CE8DB /* UIKit.framework */; };
@@ -51,6 +53,9 @@
 		3C9F354618CA862100EA1F22 /* NABasicDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NABasicDemoViewControllerTests.m; sourceTree = "<group>"; };
 		3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAInteractiveDemoViewControllerTests.m; sourceTree = "<group>"; };
 		3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NALoadViaNIBDemoViewControllerTests.m; sourceTree = "<group>"; };
+		3C9F354C18CA922C00EA1F22 /* NAPlainDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPlainDemoViewController.h; sourceTree = "<group>"; };
+		3C9F354D18CA922C00EA1F22 /* NAPlainDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPlainDemoViewController.m; sourceTree = "<group>"; };
+		3C9F354F18CB8B6000EA1F22 /* NAPlainDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPlainDemoViewControllerTests.m; sourceTree = "<group>"; };
 		3CB0E6D318C8B9E2009CE8DB /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB0E6D618C8B9E2009CE8DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CB0E6D818C8B9E2009CE8DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -169,6 +174,8 @@
 				3CB0E71818C8BB08009CE8DB /* NAMasterViewController.m */,
 				3CB0E6EE18C8B9E2009CE8DB /* Images.xcassets */,
 				3CB0E6DD18C8B9E2009CE8DB /* Supporting Files */,
+				3C9F354C18CA922C00EA1F22 /* NAPlainDemoViewController.h */,
+				3C9F354D18CA922C00EA1F22 /* NAPlainDemoViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 				3C9F354618CA862100EA1F22 /* NABasicDemoViewControllerTests.m */,
 				3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */,
 				3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */,
+				3C9F354F18CB8B6000EA1F22 /* NAPlainDemoViewControllerTests.m */,
 			);
 			path = DemoTests;
 			sourceTree = "<group>";
@@ -380,6 +388,7 @@
 				3CB0E71E18C8BB08009CE8DB /* NAInteractiveDemoViewController.m in Sources */,
 				3CB0E71C18C8BB08009CE8DB /* NAAppDelegate.m in Sources */,
 				3CB0E71B18C8BB08009CE8DB /* NAAnimatedDemoViewController.m in Sources */,
+				3C9F354E18CA922C00EA1F22 /* NAPlainDemoViewController.m in Sources */,
 				3CB0E72018C8BB08009CE8DB /* NALoadViaNIBDemoViewController.m in Sources */,
 				3CB0E71D18C8BB08009CE8DB /* NABasicDemoViewController.m in Sources */,
 			);
@@ -389,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C9F355018CB8B6000EA1F22 /* NAPlainDemoViewControllerTests.m in Sources */,
 				3CB0E72F18C8C9A4009CE8DB /* NAMapViewTests.m in Sources */,
 				3C9F354918CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m in Sources */,
 				3C9F354718CA862100EA1F22 /* NABasicDemoViewControllerTests.m in Sources */,
