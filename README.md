@@ -40,7 +40,7 @@ NAAnnotation *dot = [NAAnnotation annotationWithPoint:CGPointMake(543.0f, 489.0f
 
 The default implementation places a red semi-transparent dot on the map. Subclass [NAAnnotation](NAMapKit/NAAnnotation.h) and implement `createViewOnMapView` that returns a custom annotation view. Optionally implement `addToMapView` when the annotation is added, and `updatePosition` to change the location of the view every time the map is zoomed in or zoomed out.
 
-You can find a complete example in (NAPinAnnotation)[NAMapKit/NAPinAnnotation.h].
+You can find a complete example in [NAPinAnnotation.h](NAMapKit/NAPinAnnotation.h)/[.m](NAMapKit/NAPinAnnotation.m).
 
 Notes
 -----
