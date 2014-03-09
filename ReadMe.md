@@ -1,7 +1,7 @@
 NAMapKit
 ========
 
-[![Build Status](https://travis-ci.org/neilang/neilang.png)](https://travis-ci.org/neilang/neilang)
+[![Build Status](https://travis-ci.org/neilang/NAMapKit.png)](https://travis-ci.org/neilang/NAMapKit)
 
 Lets you drop MapKit style pins onto a standard UIImage - _also includes callouts, multi-colored pins, animation, zoom and gestures_.
 
