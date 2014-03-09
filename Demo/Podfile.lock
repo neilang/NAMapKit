@@ -1,0 +1,20 @@
+PODS:
+  - Expecta (0.2.4)
+  - NAMapKit (2.1)
+  - Specta (0.2.1)
+
+DEPENDENCIES:
+  - Expecta (~> 0.2.3)
+  - NAMapKit (from `../namapkit.podspec`)
+  - Specta (~> 0.2.1)
+
+EXTERNAL SOURCES:
+  NAMapKit:
+    :path: ../namapkit.podspec
+
+SPEC CHECKSUMS:
+  Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
+  NAMapKit: 2cc4a881da004a182f8f296195b94919dbc997f6
+  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+
+COCOAPODS: 0.29.0
