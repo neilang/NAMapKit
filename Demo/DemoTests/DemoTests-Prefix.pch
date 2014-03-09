@@ -18,5 +18,6 @@
     #include <Specta/Specta.h>
     #include <Expecta/Expecta.h>
     #include <NAMapKit/NAMapView.h>
+    #include <EXPMatchers+FBSnapshotTest/EXPMatchers+FBSnapshotTest.h>
 
 #endif

@@ -8,21 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-    NAPinColorRed,
-    NAPinColorGreen,
-    NAPinColorPurple
-} NAPinColor;
+@class NAMapView;
 
 @interface NAAnnotation : NSObject
 
-@property (nonatomic, assign) CGPoint     point;
-@property (nonatomic, assign) NAPinColor  color;
-@property (nonatomic, copy)   NSString   *title;
-@property (nonatomic, copy)   NSString   *subtitle;
-@property (nonatomic, strong) UIButton   *rightCalloutAccessoryView;
+@property (nonatomic, assign) CGPoint point;
+@property (nonatomic, readonly) UIView *view;
 
-+ (id)annotationWithPoint:(CGPoint)point;
-- (id)initWithPoint:(CGPoint)point;
++(id)annotationWithPoint:(CGPoint)point;
+-(id)initWithPoint:(CGPoint)point;
+-(void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate;
+-(void)removeFromMapView;
+-(void)updatePosition;
+-(UIView *)createViewOnMapView:(NAMapView *)mapView;
 
 @end

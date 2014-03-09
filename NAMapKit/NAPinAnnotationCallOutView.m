@@ -6,7 +6,7 @@
 // Copyright 2010 neilang.com. All rights reserved.
 //
 
-#import "NACallOutView.h"
+#import "NAPinAnnotationCallOutView.h"
 
 #define NA_TITLE_STANDALONE_LABEL_HEIGHT 22.0f
 #define NA_TITLE_STANDALONE_FONT_SIZE    18.0f
@@ -26,7 +26,7 @@
 #define NA_CALLOUT_IMAGE_BG              @"callout_bg.png"
 
 
-@interface NACallOutView()
+@interface NAPinAnnotationCallOutView()
 
 @property (nonatomic, strong) UIImageView *calloutLeftCapView;
 @property (nonatomic, strong) UIImageView *calloutRightCapView;
@@ -45,7 +45,7 @@
 
 @end
 
-@implementation NACallOutView
+@implementation NAPinAnnotationCallOutView
 
 @synthesize calloutLeftCapView     = _calloutLeftCapView;
 @synthesize calloutRightCapView    = _calloutRightCapView;
@@ -80,7 +80,7 @@
     return self;
 }
 
-- (void)setAnnotation:(NAAnnotation *)annotation{
+- (void)setAnnotation:(NAPinAnnotation *)annotation{
         
     // --- RESET ---
     
@@ -105,16 +105,17 @@
     float middleWidth = anchorWidth;
     
     if (annotation.subtitle) {
-        CGSize subtitleSize = [annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:NA_SUBTITLE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_SUBTITLE_LABEL_HEIGHT) lineBreakMode:UILineBreakModeTailTruncation];
+        
+        CGSize subtitleSize = [self text:annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:NA_SUBTITLE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_SUBTITLE_LABEL_HEIGHT)];
         
         middleWidth = MAX(subtitleSize.width, middleWidth);
         
-        CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NA_TITLE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_TITLE_LABEL_HEIGHT) lineBreakMode:UILineBreakModeTailTruncation];
+        CGSize titleSize  = [self text:annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NA_TITLE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_TITLE_LABEL_HEIGHT)];
         
         middleWidth = MAX(titleSize.width, middleWidth);
     }
     else{
-        CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NA_TITLE_STANDALONE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_TITLE_STANDALONE_LABEL_HEIGHT) lineBreakMode:UILineBreakModeTailTruncation];
+        CGSize titleSize  = [self text:annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NA_TITLE_STANDALONE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_TITLE_STANDALONE_LABEL_HEIGHT)];
         
         middleWidth = MAX(titleSize.width, middleWidth);
     }
@@ -222,6 +223,21 @@
 
 -(void)positionView:(UIView *)view posX:(float)x{
     [self positionView:view posX:x width:view.frame.size.width];
+}
+
+-(CGSize)text:(NSString*)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size{
+    // TODO: this used to include lineBreakMode:NSLineBreakByTruncatingTail, do we need to do something about it?
+    
+    NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          font, NSFontAttributeName,
+                                          nil];
+    
+    CGRect frame = [text boundingRectWithSize:size
+                                      options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                                   attributes:attributesDictionary
+                                      context:nil];
+    
+    return frame.size;
 }
 
 @end

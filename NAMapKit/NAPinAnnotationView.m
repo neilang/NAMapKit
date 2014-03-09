@@ -14,11 +14,7 @@
 #define NA_PIN_POINT_Y 35.0f
 
 @interface NAPinAnnotationView()
-
-- (void)updatePosition;
-
 @property (nonatomic, weak) NAMapView *mapView;
-
 @end
 
 @implementation NAPinAnnotationView
@@ -27,21 +23,19 @@
 @synthesize animating  = _animating;
 @synthesize mapView    = _mapView;
 
-- (id)initWithAnnotation:(NAAnnotation *)annotation onMapView:(NAMapView *)mapView {
+- (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.mapView    = mapView;
         self.annotation = annotation;
         self.animating  = NO;
-        
-        [self updatePosition]; 
     }
     return self;
 }
 
 - (void)setAnimating:(BOOL)animating{
     _animating = animating;
-    
+
     NSString *pinImage;
     switch (self.annotation.color) {
         case NAPinColorGreen:
@@ -54,9 +48,9 @@
             pinImage = @"pinRed";
             break;
     }
-    
+
     NSString * image = _animating ? [NSString stringWithFormat:@"%@Floating", pinImage] : pinImage;
-    
+
     [self setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
 }
 
@@ -65,12 +59,6 @@
     point.x       = point.x - NA_PIN_POINT_X;
     point.y       = point.y - NA_PIN_POINT_Y;
     self.frame    = CGRectMake(point.x, point.y, NA_PIN_WIDTH, NA_PIN_HEIGHT);
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"contentSize"]) {
-        [self updatePosition];
-	}
 }
 
 @end

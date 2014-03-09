@@ -7,6 +7,7 @@
 //
 
 #import "NAMasterViewController.h"
+#import "NAPlainDemoViewController.h"
 #import "NABasicDemoViewController.h"
 #import "NALoadViaNIBDemoViewController.h"
 #import "NAAnimatedDemoViewController.h"
@@ -23,17 +24,6 @@
     return self;
 }
 							
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
@@ -47,7 +37,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,15 +52,18 @@
     
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"Basic demo";
+            cell.textLabel.text = @"Plain demo";
             break;
         case 1:
-            cell.textLabel.text = @"Load via NIB demo";
+            cell.textLabel.text = @"Basic demo";
             break;
         case 2:
-            cell.textLabel.text = @"Animated pins demo";
+            cell.textLabel.text = @"Load via NIB demo";
             break;
         case 3:
+            cell.textLabel.text = @"Animated pins demo";
+            break;
+        case 4:
             cell.textLabel.text = @"Interactive demo";
             break;
         default:
@@ -82,31 +75,37 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if(indexPath.row == 0){
-        NABasicDemoViewController *vc = [[NABasicDemoViewController alloc] initWithNibName:nil bundle:nil];
+        NAPlainDemoViewController *vc = [[NAPlainDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     
     if(indexPath.row == 1){
-        NALoadViaNIBDemoViewController *vc = [[NALoadViaNIBDemoViewController alloc] initWithNibName:@"NALoadViaNIBDemoViewController" bundle:nil];
+        NABasicDemoViewController *vc = [[NABasicDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     
     if(indexPath.row == 2){
-        NAAnimatedDemoViewController *vc = [[NAAnimatedDemoViewController alloc] initWithNibName:nil bundle:nil];
+        NALoadViaNIBDemoViewController *vc = [[NALoadViaNIBDemoViewController alloc] initWithNibName:@"NALoadViaNIBDemoViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     
     if(indexPath.row == 3){
-        NAInteractiveDemoViewController *vc = [[NAInteractiveDemoViewController alloc] initWithNibName:@"NAInteractiveDemoViewController" bundle:nil];
+        NAAnimatedDemoViewController *vc = [[NAAnimatedDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     
+    if(indexPath.row == 4){
+        NAInteractiveDemoViewController *vc = [[NAInteractiveDemoViewController alloc] initWithNibName:@"NAInteractiveDemoViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+
 }
 
 @end

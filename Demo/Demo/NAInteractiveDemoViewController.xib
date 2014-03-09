@@ -258,7 +258,7 @@
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="4.CustomClassName">NAMapView</string>
+				<string key="4.CustomClassName">NAPinAnnotationMapView</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -295,13 +295,13 @@
 					</dictionary>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">mapView</string>
-						<string key="NS.object.0">NAMapView</string>
+						<string key="NS.object.0">NAPinAnnotationMapView</string>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<string key="NS.key.0">mapView</string>
 						<object class="IBToOneOutletInfo" key="NS.object.0">
 							<string key="name">mapView</string>
-							<string key="candidateClassName">NAMapView</string>
+							<string key="candidateClassName">NAPinAnnotationMapView</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -310,7 +310,7 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">NAMapView</string>
+					<string key="className">NAPinAnnotationMapView</string>
 					<string key="superclassName">UIScrollView</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">showCallOut:</string>
@@ -325,7 +325,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NAMapView.h</string>
+						<string key="minorKey">./Classes/NAPinAnnotationMapView.h</string>
 					</object>
 				</object>
 			</array>

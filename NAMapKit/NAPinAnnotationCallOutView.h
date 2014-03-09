@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NAAnnotation.h"
+#import "NAPinAnnotation.h"
 #import "NAMapView.h"
 
-@interface NACallOutView : UIView
+@interface NAPinAnnotationCallOutView : UIView
 
 - (id)initOnMapView:(NAMapView *)mapView;
-- (void)setAnnotation:(NAAnnotation *)annotation;
+- (void)setAnnotation:(NAPinAnnotation *)annotation;
 
 @end

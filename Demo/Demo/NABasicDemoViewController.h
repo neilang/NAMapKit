@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NABasicDemoViewController : UIViewController
-
+@property(nonatomic, readonly) NSArray *pins;
 @end
