@@ -19,10 +19,6 @@ const CGFloat pinPointY = 35.0f;
 
 @implementation NAPinAnnotationView
 
-@synthesize annotation = _annotation;
-@synthesize animating  = _animating;
-@synthesize mapView    = _mapView;
-
 - (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView {
     self = [super initWithFrame:CGRectZero];
     if (self) {

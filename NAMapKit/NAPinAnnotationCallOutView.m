@@ -46,17 +46,6 @@ static NSString *calloutImageBG = @"callout_bg.png";
 
 @implementation NAPinAnnotationCallOutView
 
-@synthesize calloutLeftCapView     = _calloutLeftCapView;
-@synthesize calloutRightCapView    = _calloutRightCapView;
-@synthesize calloutAnchorView      = _calloutAnchorView;
-@synthesize calloutLeftCenterView  = _calloutLeftCenterView;
-@synthesize calloutRightCenterView = _calloutRightCenterView;
-@synthesize subtitleLabel          = _subtitleLabel;
-@synthesize titleLabel             = _titleLabel;
-@synthesize point                  = _point;
-@synthesize mapView                = _mapView;
-@synthesize position               = _position;
-
 - (id)initOnMapView:(NAMapView *)mapView {
     self = [super init];
     if (self) {        

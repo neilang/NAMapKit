@@ -18,10 +18,6 @@ const CGFloat dotOpacity = 0.5f;
 
 @implementation NAAnnotation
 
-@synthesize view = _view;
-@synthesize mapView = _mapView;
-@synthesize point = _point;
-
 + (id)annotationWithPoint:(CGPoint)point{
     return [[[self class] alloc] initWithPoint:point];
 }
@@ -30,8 +26,6 @@ const CGFloat dotOpacity = 0.5f;
     self = [super init];
     if (self) {
         _point = point;
-        _mapView = nil;
-        _view = nil;
     }
     return self;
 }

@@ -13,11 +13,6 @@ const CGFloat pinAnimationDuration = 0.5f;
 
 @implementation NAPinAnnotation
 
-@synthesize color = _color;
-@synthesize title = _title;
-@synthesize subtitle = _subtitle;
-@synthesize rightCalloutAccessoryView = _rightCalloutAccessoryView;
-
 -(id)initWithPoint:(CGPoint)point{
     self = [super initWithPoint:point];
     if (self) {

@@ -22,9 +22,6 @@ const CGFloat zoomStep = 1.5f;
 
 @implementation NAMapView
 
-@synthesize imageView       = _imageView;
-@synthesize originalSize     = _originalSize;
-
 -(void)setupMap {
     self.delegate = self;
 
