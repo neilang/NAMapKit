@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NAMapViewDelegate.h"
 
 @class NAMapView;
 
@@ -21,5 +22,7 @@
 -(void)removeFromMapView;
 -(void)updatePosition;
 -(UIView *)createViewOnMapView:(NAMapView *)mapView;
+
+@property (nonatomic, weak) NSObject<NAMapViewDelegate> *mapViewDelegate;
 
 @end

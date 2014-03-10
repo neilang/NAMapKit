@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NAMapViewDelegate.h"
 
-@interface NAAnnotationDemoViewController : UIViewController
+@interface NAAnnotationDemoViewController : UIViewController<NAMapViewDelegate>
 
 @end

@@ -30,7 +30,6 @@
 {
     [super viewDidLoad];
 
-	NSMutableArray *pins = [NSMutableArray array];
     NAMapView *mapView = [[NAPinAnnotationMapView alloc] initWithFrame:self.view.bounds];
 
     mapView.backgroundColor  = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
@@ -49,7 +48,6 @@
     melbourne.color = NAPinColorGreen;
 
     [mapView addAnnotation:melbourne animated:NO];
-    [pins addObject:melbourne];
 
     NAPinAnnotation * perth = [NAPinAnnotation annotationWithPoint:CGPointMake(63.0f, 379.0f)];
 	perth.title = @"Perth";
@@ -58,16 +56,12 @@
     perth.color = NAPinColorRed;
 
 	[mapView addAnnotation:perth animated:YES];
-    [pins addObject:perth];
-
+    
 	NAPinAnnotation * brisbane = [NAPinAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
 	brisbane.title = @"Brisbane";
     brisbane.color = NAPinColorPurple;
 
 	[mapView addAnnotation:brisbane animated:NO];
-    [pins addObject:brisbane];
-
-    _pins = pins;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

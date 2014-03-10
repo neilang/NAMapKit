@@ -16,7 +16,8 @@
     [super viewDidLoad];
 
     NAMapView *mapView = [[NAMapView alloc] initWithFrame:self.view.bounds];
-
+    
+    mapView.mapViewDelegate = self;
     mapView.backgroundColor  = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
@@ -40,6 +41,16 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)mapView:(NAMapView *)mapView tappedOnAnnotation:(NAAnnotation *)annotation
+{
+    NSLog(@"tapped: %@", annotation);
+}
+
+- (void)mapView:(NAMapView *)mapView hasChangedZoomLevel:(CGFloat)level
+{
+    NSLog(@"zoom: %@", @(level));
 }
 
 @end

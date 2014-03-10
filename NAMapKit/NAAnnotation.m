@@ -42,6 +42,8 @@ const CGFloat dotOpacity = 0.5f;
     [mapView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     _mapView = mapView;
 
+    _mapViewDelegate = mapView.mapViewDelegate;
+    
     [self updatePosition];
 }
 
@@ -69,12 +71,18 @@ const CGFloat dotOpacity = 0.5f;
 
 -(UIView *)createViewOnMapView:(NAMapView *)mapView
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,dotRadius*2,dotRadius*2)];
+    UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0,0,dotRadius*2,dotRadius*2)];
     view.alpha = dotOpacity;
     view.layer.cornerRadius = dotRadius;
     view.backgroundColor = [UIColor redColor];
+    [view addTarget:self action:@selector(tappedOnAnnotation:) forControlEvents:UIControlEventTouchDown];
     [self updatePosition];
     return view;
+}
+
+-(IBAction)tappedOnAnnotation:(id)sender
+{
+    [self.mapViewDelegate mapView:self.mapView tappedOnAnnotation:self];
 }
 
 @end

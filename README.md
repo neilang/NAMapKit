@@ -42,6 +42,32 @@ The default implementation places a red semi-transparent dot on the map. Subclas
 
 You can find a complete example in [NAPinAnnotation.h](NAMapKit/NAPinAnnotation.h)/[.m](NAMapKit/NAPinAnnotation.m).
 
+#### Delegates
+
+You can capture taps and zoom via [NAMapViewDelegate](NAMapKit/NAMapViewDelegate.h).
+
+```objc
+@implementation DemoViewController
+
+-(void)viewDidLoad
+{
+    // ...
+    self.mapView.mapViewDelegate = self;
+}
+
+- (void)mapView:(NAMapView *)mapView tappedOnAnnotation:(NAPinAnnotation *)annotation
+{
+
+}
+
+- (void)mapView:(NAMapView *)mapView hasChangedZoomLevel:(CGFloat)level
+{
+
+}
+
+@end
+```
+
 Notes
 -----
 
