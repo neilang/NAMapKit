@@ -9,8 +9,7 @@
 #import "NAPinAnnotation.h"
 #import "NAPinAnnotationView.h"
 
-#define NA_PIN_ANIMATION_DURATION     0.5f
-#define NA_CALLOUT_ANIMATION_DURATION 0.1f
+const CGFloat pinAnimationDuration = 0.5f;
 
 @implementation NAPinAnnotation
 
@@ -49,7 +48,7 @@
     
     if(animate){
         annotationView.animating = YES;
-        [UIView animateWithDuration:NA_PIN_ANIMATION_DURATION animations:^{
+        [UIView animateWithDuration:pinAnimationDuration animations:^{
             annotationView.transform = CGAffineTransformIdentity;
         } completion:^ (BOOL finished) {
           annotationView.animating = NO;
@@ -64,5 +63,3 @@
 }
 
 @end
-
-#undef NA_PIN_ANIMATION_DURATION

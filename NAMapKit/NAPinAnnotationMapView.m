@@ -6,7 +6,7 @@
 
 #import "NAPinAnnotationMapView.h"
 
-#define NA_CALLOUT_ANIMATION_DURATION 0.1f
+const CGFloat calloutAnimationDuration = 0.1f;
 
 @interface NAPinAnnotationMapView()
 
@@ -63,7 +63,7 @@
     
     [self centreOnPoint:annotation.point animated:animated];
     
-    CGFloat animationDuration = animated ? NA_CALLOUT_ANIMATION_DURATION : 0.0f;
+    CGFloat animationDuration = animated ? calloutAnimationDuration : 0.0f;
     
     self.calloutView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4f, 0.4f);
     self.calloutView.hidden = NO;

@@ -8,23 +8,22 @@
 
 #import "NAPinAnnotationCallOutView.h"
 
-#define NA_TITLE_STANDALONE_LABEL_HEIGHT 22.0f
-#define NA_TITLE_STANDALONE_FONT_SIZE    18.0f
-#define NA_TITLE_STANDALONE_TOP_OFFSET   14.0f
-#define NA_TITLE_TOP_OFFSET              4.0f
-#define NA_TITLE_LABEL_HEIGHT            20.0f
-#define NA_TITLE_FONT_SIZE               17.0f
-#define NA_SUBTITLE_TOP_OFFSET           0.0f + NA_TITLE_LABEL_HEIGHT
-#define NA_SUBTITLE_FONT_SIZE            11.0f
-#define NA_SUBTITLE_LABEL_HEIGHT         25.0f
-#define NA_RIGHT_ACCESSORY_LEFT_OFFSET   2.0f
-#define NA_RIGHT_ACCESSORY_TOP_OFFSET    9.0f
-#define NA_ANCHOR_Y_OFFSET               26.0f
-#define NA_CALLOUT_IMAGE_LEFT            @"callout_left.png"
-#define NA_CALLOUT_IMAGE_RIGHT           @"callout_right.png"
-#define NA_CALLOUT_IMAGE_ANCHOR          @"callout_anchor.png"
-#define NA_CALLOUT_IMAGE_BG              @"callout_bg.png"
-
+const CGFloat titleStandaloneLabelHeight = 22.0f;
+const CGFloat titleStandaloneFontSize = 18.0f;
+const CGFloat titleStandaloneTopOffset = 14.0f;
+const CGFloat titleTopOffset = 4.0f;
+const CGFloat titleLabelHeight = 20.0f;
+const CGFloat titleFontSize = 17.0f;
+const CGFloat subtitleTopOffset = 0.0f + titleLabelHeight;
+const CGFloat subtitleFontSize = 11.0f;
+const CGFloat subtitleLabelHeight = 25.0f;
+const CGFloat rightAccessoryLeftOffset = 2.0f;
+const CGFloat rightAccessoryTopOffset = 9.0f;
+const CGFloat anchorYOffset = 26.0f;
+static NSString *calloutImageLeft = @"callout_left.png";
+static NSString *calloutImageRight = @"callout_right.png";
+static NSString *calloutImageAnchor = @"callout_anchor.png";
+static NSString *calloutImageBG = @"callout_bg.png";
 
 @interface NAPinAnnotationCallOutView()
 
@@ -61,16 +60,16 @@
 - (id)initOnMapView:(NAMapView *)mapView {
     self = [super init];
     if (self) {        
-        UIImage *calloutBG                 = [[UIImage imageNamed:NA_CALLOUT_IMAGE_BG] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
-        self.calloutLeftCapView            = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NA_CALLOUT_IMAGE_LEFT]];
-        self.calloutRightCapView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NA_CALLOUT_IMAGE_RIGHT]];
-        self.calloutAnchorView             = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NA_CALLOUT_IMAGE_ANCHOR]];
+        UIImage *calloutBG                 = [[UIImage imageNamed:calloutImageBG] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+        self.calloutLeftCapView            = [[UIImageView alloc] initWithImage:[UIImage imageNamed:calloutImageLeft]];
+        self.calloutRightCapView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:calloutImageRight]];
+        self.calloutAnchorView             = [[UIImageView alloc] initWithImage:[UIImage imageNamed:calloutImageAnchor]];
         self.calloutLeftCenterView         = [[UIImageView alloc] initWithImage:calloutBG];
         self.calloutRightCenterView        = [[UIImageView alloc] initWithImage:calloutBG];
         self.subtitleLabel                 = [[UILabel alloc] initWithFrame:CGRectZero];
         self.subtitleLabel.textColor       = [UIColor whiteColor];
         self.subtitleLabel.backgroundColor = [UIColor clearColor];
-        self.subtitleLabel.font            = [UIFont systemFontOfSize:NA_SUBTITLE_FONT_SIZE];
+        self.subtitleLabel.font            = [UIFont systemFontOfSize:subtitleFontSize];
         self.titleLabel                    = [[UILabel alloc] initWithFrame:CGRectZero];
         self.titleLabel.backgroundColor    = [UIColor clearColor];
         self.titleLabel.textColor          = [UIColor whiteColor];
@@ -106,22 +105,22 @@
     
     if (annotation.subtitle) {
         
-        CGSize subtitleSize = [self text:annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:NA_SUBTITLE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_SUBTITLE_LABEL_HEIGHT)];
+        CGSize subtitleSize = [self text:annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:subtitleFontSize] constrainedToSize:CGSizeMake(maxWidth, subtitleLabelHeight)];
         
         middleWidth = MAX(subtitleSize.width, middleWidth);
         
-        CGSize titleSize  = [self text:annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NA_TITLE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_TITLE_LABEL_HEIGHT)];
+        CGSize titleSize  = [self text:annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:titleFontSize] constrainedToSize:CGSizeMake(maxWidth, titleLabelHeight)];
         
         middleWidth = MAX(titleSize.width, middleWidth);
     }
     else{
-        CGSize titleSize  = [self text:annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NA_TITLE_STANDALONE_FONT_SIZE] constrainedToSize:CGSizeMake(maxWidth, NA_TITLE_STANDALONE_LABEL_HEIGHT)];
+        CGSize titleSize  = [self text:annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:titleStandaloneFontSize] constrainedToSize:CGSizeMake(maxWidth, titleStandaloneLabelHeight)];
         
         middleWidth = MAX(titleSize.width, middleWidth);
     }
     
     if (annotation.rightCalloutAccessoryView) {
-		middleWidth += annotation.rightCalloutAccessoryView.frame.size.width + NA_RIGHT_ACCESSORY_LEFT_OFFSET;
+		middleWidth += annotation.rightCalloutAccessoryView.frame.size.width + rightAccessoryLeftOffset;
 	}
     
     middleWidth = MIN(maxWidth, middleWidth);
@@ -159,11 +158,11 @@
     
     if (annotation.rightCalloutAccessoryView) {
         float accesoryWidth = annotation.rightCalloutAccessoryView.frame.size.width;
-        float x = middleWidth - accesoryWidth + leftCapWidth + NA_RIGHT_ACCESSORY_LEFT_OFFSET;
+        float x = middleWidth - accesoryWidth + leftCapWidth + rightAccessoryLeftOffset;
         
         CGRect frame = annotation.rightCalloutAccessoryView.frame;
         frame.origin.x = x;
-        frame.origin.y = NA_RIGHT_ACCESSORY_TOP_OFFSET;
+        frame.origin.y = rightAccessoryTopOffset;
         annotation.rightCalloutAccessoryView.frame = frame;
         
         [self addSubview:annotation.rightCalloutAccessoryView];
@@ -173,27 +172,27 @@
     
     // --- LABELS ---
     
-    float titleTopOffset   = NA_TITLE_STANDALONE_TOP_OFFSET;
-	float titleLabelHeight = NA_TITLE_STANDALONE_LABEL_HEIGHT;
-	float titleFontSize    = NA_TITLE_STANDALONE_FONT_SIZE;
+    float currentTitleTopOffset   = titleStandaloneTopOffset;
+	float currentTitleLabelHeight = titleStandaloneLabelHeight;
+	float currentTitleFontSize    = titleStandaloneFontSize;
     
     
     // --- SUBTITLE ---
     
     if (annotation.subtitle) {
-		titleTopOffset       = NA_TITLE_TOP_OFFSET;
-		titleLabelHeight     = NA_TITLE_LABEL_HEIGHT;
-		titleFontSize        = NA_TITLE_FONT_SIZE;        
+		currentTitleTopOffset       = titleTopOffset;
+		currentTitleLabelHeight     = titleLabelHeight;
+		currentTitleFontSize        = titleFontSize;
         self.subtitleLabel.text  = annotation.subtitle;
-        self.subtitleLabel.frame = CGRectMake(leftCapWidth, NA_SUBTITLE_TOP_OFFSET, labelWidth, NA_SUBTITLE_LABEL_HEIGHT);
+        self.subtitleLabel.frame = CGRectMake(leftCapWidth, subtitleTopOffset, labelWidth, subtitleLabelHeight);
         [self addSubview:self.subtitleLabel];
 	}
     
     // --- TITLE ---
     
     self.titleLabel.text  = annotation.title;
-    self.titleLabel.font  = [UIFont boldSystemFontOfSize:titleFontSize];
-    self.titleLabel.frame = CGRectMake(leftCapWidth, titleTopOffset, labelWidth, titleLabelHeight);
+    self.titleLabel.font  = [UIFont boldSystemFontOfSize:currentTitleFontSize];
+    self.titleLabel.frame = CGRectMake(leftCapWidth, currentTitleTopOffset, labelWidth, currentTitleLabelHeight);
     
     [self addSubview:self.titleLabel];
         
@@ -210,7 +209,7 @@
 -(void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.position];
     float xPos = point.x - (self.frame.size.width / 2.0f);
-    float yPos = point.y - (self.frame.size.height) - NA_ANCHOR_Y_OFFSET;
+    float yPos = point.y - (self.frame.size.height) - anchorYOffset;
     self.frame = CGRectMake(floor(xPos), yPos, self.frame.size.width, self.frame.size.height);
 }
 
@@ -241,20 +240,3 @@
 }
 
 @end
-
-#undef NA_TITLE_STANDALONE_LABEL_HEIGHT
-#undef NA_TITLE_STANDALONE_FONT_SIZE
-#undef NA_TITLE_STANDALONE_TOP_OFFSET
-#undef NA_SUBTITLE_TOP_OFFSET
-#undef NA_TITLE_TOP_OFFSET
-#undef NA_TITLE_LABEL_HEIGHT
-#undef NA_TITLE_FONT_SIZE
-#undef NA_SUBTITLE_FONT_SIZE
-#undef NA_SUBTITLE_LABEL_HEIGHT
-#undef NA_RIGHT_ACCESSORY_LEFT_OFFSET
-#undef NA_CALLOUT_IMAGE_LEFT
-#undef NA_CALLOUT_IMAGE_RIGHT
-#undef NA_CALLOUT_IMAGE_ANCHOR
-#undef NA_CALLOUT_IMAGE_BG
-#undef NA_RIGHT_ACCESSORY_TOP_OFFSET
-#undef NA_ANCHOR_Y_OFFSET

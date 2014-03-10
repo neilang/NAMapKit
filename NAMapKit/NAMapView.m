@@ -7,7 +7,8 @@
 //
 
 #import "NAMapView.h"
-#define NA_ZOOM_STEP 1.5f
+
+const CGFloat zoomStep = 1.5f;
 
 @interface NAMapView()
 
@@ -101,13 +102,13 @@
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
 	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
-	float newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * NA_ZOOM_STEP;
+	float newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 
 - (void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
 	// two-finger tap zooms out, but returns to normal zoom level if it reaches min zoom
-	float newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / NA_ZOOM_STEP;
+	float newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 
