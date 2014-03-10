@@ -8,20 +8,16 @@
 
 #import "NAPinAnnotationView.h"
 
-#define NA_PIN_WIDTH   32.0f
-#define NA_PIN_HEIGHT  39.0f
-#define NA_PIN_POINT_X 8.0f
-#define NA_PIN_POINT_Y 35.0f
+const CGFloat pinWidth = 32.0f;
+const CGFloat pinHeight = 39.0f;
+const CGFloat pinPointX = 8.0f;
+const CGFloat pinPointY = 35.0f;
 
 @interface NAPinAnnotationView()
 @property (nonatomic, weak) NAMapView *mapView;
 @end
 
 @implementation NAPinAnnotationView
-
-@synthesize annotation = _annotation;
-@synthesize animating  = _animating;
-@synthesize mapView    = _mapView;
 
 - (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView {
     self = [super initWithFrame:CGRectZero];
@@ -56,14 +52,9 @@
 
 -(void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.annotation.point];
-    point.x       = point.x - NA_PIN_POINT_X;
-    point.y       = point.y - NA_PIN_POINT_Y;
-    self.frame    = CGRectMake(point.x, point.y, NA_PIN_WIDTH, NA_PIN_HEIGHT);
+    point.x       = point.x - pinPointX;
+    point.y       = point.y - pinPointY;
+    self.frame    = CGRectMake(point.x, point.y, pinWidth, pinHeight);
 }
 
 @end
-
-#undef NA_PIN_WIDTH
-#undef NA_PIN_HEIGHT
-#undef NA_PIN_POINT_X
-#undef NA_PIN_POINT_Y

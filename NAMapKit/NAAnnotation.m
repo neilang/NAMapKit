@@ -9,18 +9,14 @@
 #import "NAAnnotation.h"
 #import "NAMapView.h"
 
-#define NA_DOT_WIDTH   10.0f
-#define NA_DOT_HEIGHT  10.0f
+const CGFloat dotRadius = 10.0f;
+const CGFloat dotOpacity = 0.5f;
 
 @interface NAAnnotation ()
 @property (nonatomic, readonly) NAMapView *mapView;
 @end
 
 @implementation NAAnnotation
-
-@synthesize view = _view;
-@synthesize mapView = _mapView;
-@synthesize point = _point;
 
 + (id)annotationWithPoint:(CGPoint)point{
     return [[[self class] alloc] initWithPoint:point];
@@ -30,8 +26,6 @@
     self = [super init];
     if (self) {
         _point = point;
-        _mapView = nil;
-        _view = nil;
     }
     return self;
 }
@@ -75,9 +69,9 @@
 
 -(UIView *)createViewOnMapView:(NAMapView *)mapView
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,20,20)];
-    view.alpha = 0.5;
-    view.layer.cornerRadius = 10;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,dotRadius*2,dotRadius*2)];
+    view.alpha = dotOpacity;
+    view.layer.cornerRadius = dotRadius;
     view.backgroundColor = [UIColor redColor];
     [self updatePosition];
     return view;

@@ -1,5 +1,5 @@
 //
-//  NABasicDemoViewController.h
+//  NAPinAnnotationsDemoViewController.h
 //  Demo
 //
 //  Created by Neil Ang on 6/05/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NABasicDemoViewController : UIViewController
+@interface NAPinAnnotationsDemoViewController : UIViewController
 @property(nonatomic, readonly) NSArray *pins;
 @end

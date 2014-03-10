@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = 'MIT'
   s.authors      = { "Neil Ang" => "neil@neilang.com", "Tony Arnold" => "tony@thecocoabots.com" }
   s.source       = { :git => "https://github.com/neilang/NAMapKit.git", :tag => "v2.1" }
-  s.platform     = :ios, '5.0'
+  s.platform     = :ios, '6.0'
 
   s.source_files = "NaMapKit/*.{h,m}"
   s.resources = "NAMapKit/*.png"

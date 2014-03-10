@@ -20,10 +20,6 @@
 
 @implementation NAInteractiveDemoViewController
 
-@synthesize mapView     = _mapView;
-@synthesize annotations = _annotations;
-@synthesize size        = _size;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

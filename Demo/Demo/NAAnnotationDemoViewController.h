@@ -1,5 +1,5 @@
 //
-//  NAPlainDemoViewController.h
+//  NAAnnotationDemoViewController.h
 //  Demo
 //
 //  Created by Daniel Doubrovkine on 3/7/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NAPlainDemoViewController : UIViewController
+@interface NAAnnotationDemoViewController : UIViewController
 
 @end

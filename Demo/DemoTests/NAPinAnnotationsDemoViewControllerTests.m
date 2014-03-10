@@ -1,22 +1,22 @@
 //
-//  NABasicDemoViewControllerTests.m
+//  NAPinAnnotationsDemoViewController.m
 //  Demo
 //
 //  Created by Daniel Doubrovkine on 3/7/14.
 //  Copyright (c) 2014 neilang.com. All rights reserved.
 //
 
-#import "NABasicDemoViewController.h"
+#import "NAPinAnnotationsDemoViewController.h"
 #import "NAPinAnnotation.h"
 
-SpecBegin(NABasicDemoViewController)
+SpecBegin(NAPinAnnotationsDemoViewController)
 
 setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
 
-__block NABasicDemoViewController *vc = nil;
+__block NAPinAnnotationsDemoViewController *vc = nil;
 
 beforeEach(^{
-    vc = [[NABasicDemoViewController alloc] init];
+    vc = [[NAPinAnnotationsDemoViewController alloc] init];
     expect(vc.view).willNot.beNil();
 });
 

@@ -11,8 +11,6 @@
 
 @implementation NALoadViaNIBDemoViewController
 
-@synthesize mapView = _mapView;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

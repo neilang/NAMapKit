@@ -7,8 +7,8 @@
 //
 
 #import "NAMasterViewController.h"
-#import "NAPlainDemoViewController.h"
-#import "NABasicDemoViewController.h"
+#import "NAAnnotationDemoViewController.h"
+#import "NAPinAnnotationsDemoViewController.h"
 #import "NALoadViaNIBDemoViewController.h"
 #import "NAAnimatedDemoViewController.h"
 #import "NAInteractiveDemoViewController.h"
@@ -52,19 +52,19 @@
     
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"Plain demo";
+            cell.textLabel.text = @"Simple Annotations Demo";
             break;
         case 1:
-            cell.textLabel.text = @"Basic demo";
+            cell.textLabel.text = @"Pin Annotations Demo";
             break;
         case 2:
-            cell.textLabel.text = @"Load via NIB demo";
+            cell.textLabel.text = @"Load Via NIB Demo";
             break;
         case 3:
-            cell.textLabel.text = @"Animated pins demo";
+            cell.textLabel.text = @"Animated Pins Demo";
             break;
         case 4:
-            cell.textLabel.text = @"Interactive demo";
+            cell.textLabel.text = @"Interactive Demo";
             break;
         default:
             cell.textLabel.text = @"???";
@@ -77,13 +77,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if(indexPath.row == 0){
-        NAPlainDemoViewController *vc = [[NAPlainDemoViewController alloc] initWithNibName:nil bundle:nil];
+        NAAnnotationDemoViewController *vc = [[NAAnnotationDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     
     if(indexPath.row == 1){
-        NABasicDemoViewController *vc = [[NABasicDemoViewController alloc] initWithNibName:nil bundle:nil];
+        NAPinAnnotationsDemoViewController *vc = [[NAPinAnnotationsDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
