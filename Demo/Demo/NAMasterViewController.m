@@ -12,6 +12,7 @@
 #import "NALoadViaNIBDemoViewController.h"
 #import "NAAnimatedDemoViewController.h"
 #import "NAInteractiveDemoViewController.h"
+#import "NATiledImageDemoViewController.h"
 
 @implementation NAMasterViewController
 
@@ -37,7 +38,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,6 +67,9 @@
         case 4:
             cell.textLabel.text = @"Interactive Demo";
             break;
+        case 5:
+            cell.textLabel.text = @"Tiled Map Demo";
+            break;
         default:
             cell.textLabel.text = @"???";
             break;
@@ -79,33 +83,22 @@
     if(indexPath.row == 0){
         NAAnnotationDemoViewController *vc = [[NAAnnotationDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    
-    if(indexPath.row == 1){
+    } else if(indexPath.row == 1){
         NAPinAnnotationsDemoViewController *vc = [[NAPinAnnotationsDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    
-    if(indexPath.row == 2){
+    } else if (indexPath.row == 2){
         NALoadViaNIBDemoViewController *vc = [[NALoadViaNIBDemoViewController alloc] initWithNibName:@"NALoadViaNIBDemoViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    
-    if(indexPath.row == 3){
+    } else if (indexPath.row == 3){
         NAAnimatedDemoViewController *vc = [[NAAnimatedDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    
-    if(indexPath.row == 4){
+    } else if (indexPath.row == 4){
         NAInteractiveDemoViewController *vc = [[NAInteractiveDemoViewController alloc] initWithNibName:@"NAInteractiveDemoViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
-        return;
+    } else if (indexPath.row == 5){
+        NATiledImageDemoViewController *vc = [[NATiledImageDemoViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
     }
-
 }
 
 @end
