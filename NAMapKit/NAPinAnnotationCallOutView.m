@@ -92,21 +92,23 @@ static NSString *calloutImageBG = @"callout_bg.png";
     
     float middleWidth = anchorWidth;
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     if (annotation.subtitle) {
-        
-        CGSize subtitleSize = [self text:annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:subtitleFontSize] constrainedToSize:CGSizeMake(maxWidth, subtitleLabelHeight)];
+        CGSize subtitleSize = [annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:subtitleFontSize] constrainedToSize:CGSizeMake(maxWidth, subtitleLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
         
         middleWidth = MAX(subtitleSize.width, middleWidth);
         
-        CGSize titleSize  = [self text:annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:titleFontSize] constrainedToSize:CGSizeMake(maxWidth, titleLabelHeight)];
+        CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:titleFontSize] constrainedToSize:CGSizeMake(maxWidth, titleLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
         
         middleWidth = MAX(titleSize.width, middleWidth);
     }
     else{
-        CGSize titleSize  = [self text:annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:titleStandaloneFontSize] constrainedToSize:CGSizeMake(maxWidth, titleStandaloneLabelHeight)];
+        CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:titleStandaloneFontSize] constrainedToSize:CGSizeMake(maxWidth, titleStandaloneLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
         
         middleWidth = MAX(titleSize.width, middleWidth);
     }
+#pragma clang diagnostic pop
     
     if (annotation.rightCalloutAccessoryView) {
 		middleWidth += annotation.rightCalloutAccessoryView.frame.size.width + rightAccessoryLeftOffset;
@@ -211,21 +213,6 @@ static NSString *calloutImageBG = @"callout_bg.png";
 
 -(void)positionView:(UIView *)view posX:(float)x{
     [self positionView:view posX:x width:view.frame.size.width];
-}
-
--(CGSize)text:(NSString*)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size{
-    // TODO: this used to include lineBreakMode:NSLineBreakByTruncatingTail, do we need to do something about it?
-    
-    NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                          font, NSFontAttributeName,
-                                          nil];
-    
-    CGRect frame = [text boundingRectWithSize:size
-                                      options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
-                                   attributes:attributesDictionary
-                                      context:nil];
-    
-    return frame.size;
 }
 
 @end
