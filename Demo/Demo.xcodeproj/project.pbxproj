@@ -10,7 +10,8 @@
 		07DDEB3EBEEC4C6FAF715BF1 /* libPods-DemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DB4ADA533041DD9D9E7647 /* libPods-DemoTests.a */; };
 		273E9EE865984F44A8AF2A9D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2957D8BD1FB4630AD6F922F /* libPods.a */; };
 		3C7F86CD18CE609200F7091A /* NATiledImageDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F86CC18CE609200F7091A /* NATiledImageDemoViewController.m */; };
-		3C990C8318CF38BF00BF4C44 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C990C8218CF38BF00BF4C44 /* Reveal.framework */; };
+		3C990C8318CF38BF00BF4C44 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C990C8218CF38BF00BF4C44 /* Reveal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3C990C8518CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C990C8418CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m */; };
 		3C9F354518CA838600EA1F22 /* NAMasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354418CA838600EA1F22 /* NAMasterViewControllerTests.m */; };
 		3C9F354718CA862100EA1F22 /* NAPinAnnotationsDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354618CA862100EA1F22 /* NAPinAnnotationsDemoViewControllerTests.m */; };
 		3C9F354918CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */; };
@@ -54,6 +55,7 @@
 		3C7F86CB18CE609200F7091A /* NATiledImageDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATiledImageDemoViewController.h; sourceTree = "<group>"; };
 		3C7F86CC18CE609200F7091A /* NATiledImageDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATiledImageDemoViewController.m; sourceTree = "<group>"; };
 		3C990C8218CF38BF00BF4C44 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
+		3C990C8418CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATiledImageMapViewControllerTests.m; sourceTree = "<group>"; };
 		3C9F354418CA838600EA1F22 /* NAMasterViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMasterViewControllerTests.m; sourceTree = "<group>"; };
 		3C9F354618CA862100EA1F22 /* NAPinAnnotationsDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPinAnnotationsDemoViewControllerTests.m; sourceTree = "<group>"; };
 		3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAInteractiveDemoViewControllerTests.m; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */,
 				3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */,
 				3C9F354F18CB8B6000EA1F22 /* NAAnnotationDemoViewControllerTests.m */,
+				3C990C8418CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m */,
 			);
 			path = DemoTests;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				3CB0E72F18C8C9A4009CE8DB /* NAMapViewTests.m in Sources */,
 				3C9F354918CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m in Sources */,
 				3C9F354718CA862100EA1F22 /* NAPinAnnotationsDemoViewControllerTests.m in Sources */,
+				3C990C8518CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m in Sources */,
 				3C9F354518CA838600EA1F22 /* NAMasterViewControllerTests.m in Sources */,
 				3C9F354B18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m in Sources */,
 			);
