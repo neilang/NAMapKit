@@ -9,7 +9,9 @@
 
 SpecBegin(NATiledImageDemoViewController)
 
-setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+beforeAll(^{
+    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+});
 
 __block NATiledImageDemoViewController *vc = nil;
 

@@ -10,7 +10,9 @@
 
 SpecBegin(NALoadViaNIBDemoViewController)
 
-setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+beforeAll(^{
+    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+});
 
 it(@"displays a menu", ^{
     NALoadViaNIBDemoViewController *vc = [[NALoadViaNIBDemoViewController alloc] init];

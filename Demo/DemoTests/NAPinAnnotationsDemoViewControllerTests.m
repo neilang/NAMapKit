@@ -11,7 +11,9 @@
 
 SpecBegin(NAPinAnnotationsDemoViewController)
 
-setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+beforeAll(^{
+    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+});
 
 __block NAPinAnnotationsDemoViewController *vc = nil;
 
@@ -21,7 +23,7 @@ beforeEach(^{
 });
 
 it(@"displays map with a pin", ^{
-    expect(vc.view).to.haveValidSnapshotNamed(@"default");
+    expect(vc.view).will.haveValidSnapshotNamed(@"default");
 });
 
 SpecEnd
