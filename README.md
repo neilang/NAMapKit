@@ -68,6 +68,12 @@ You can capture taps and zoom via [NAMapViewDelegate](NAMapKit/NAMapViewDelegate
 @end
 ```
 
+#### Tiled Maps
+
+NAMapKit comes with [NATiledImageMapView](NAMapKit/NATiledImageMapView.h), which supports tiled maps. A [NADZTileImageDataSource](NAMapKit/NADZTileImageDataSource.h) is provided that retrieves tiles from a remote URL, organized in [subfolders by tile level](Demo/Maps/Armory2014/tiles).
+
+For a complete example see [NATiledImageDemoViewController.m](Demo/Demo/NATiledImageDemoViewController.m).
+
 Notes
 -----
 
