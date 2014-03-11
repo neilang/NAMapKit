@@ -13,7 +13,6 @@ const CGFloat zoomStep = 1.5f;
 @interface NAMapView()
 
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, assign) CGSize originalSize;
 @property (nonatomic, readonly) NSMutableArray *annotations;
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer;

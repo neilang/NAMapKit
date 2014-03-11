@@ -70,6 +70,9 @@
     
     self.maximumZoomScale = maxScale * 0.6;
     self.minimumZoomScale = minScale;
+    
+    self.originalSize = imageSize;
+    self.contentSize = boundsSize;
 }
 
 - (void)zoomToFit:(BOOL)animate
@@ -81,7 +84,7 @@
 {
     [super scrollViewDidZoom:scrollView];
     NSInteger newZoomLevel = self.tiledImageView.currentZoomLevel;
-    if (newZoomLevel != self.currentZoomLevel) {
+    if (newZoomLevel != self.tileZoomLevel) {
         // TODO: delegate that zoom level has changed
 
         //
@@ -94,7 +97,7 @@
         // at the wrong zoom level).
         //
         [self.tiledImageView setNeedsDisplay];
-        _currentZoomLevel = self.tiledImageView.currentZoomLevel;
+        _tileZoomLevel = self.tiledImageView.currentZoomLevel;
     }
 }
 
@@ -110,6 +113,12 @@
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
 	return self.tiledImageView;
+}
+
+-(CGPoint)coordinateFor:(CGPoint)point
+{
+    CGSize tiledSize = [self.dataSource imageSizeForImageView:self.tiledImageView];
+    return CGPointMake(tiledSize.width * point.x, tiledSize.height - (tiledSize.height * point.y));
 }
 
 @end

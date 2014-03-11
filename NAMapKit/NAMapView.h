@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) CGFloat zoomLevel;
 @property (nonatomic, assign) CGPoint centerPoint;
 @property (nonatomic, weak) NSObject<NAMapViewDelegate> *mapViewDelegate;
+@property (nonatomic, assign) CGSize originalSize;
 
 @end
 

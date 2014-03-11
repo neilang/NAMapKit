@@ -36,7 +36,13 @@
     mapView.backgroundImageURL = [NSURL URLWithString:@"https://raw.github.com/dblock/NAMapKit/tiled-map-view/Demo/Maps/Armory2014/large.jpg"];
     _mapView = mapView;
     
-    [self.view addSubview:mapView];    
+    [self.view addSubview:mapView];
+    
+    NAAnnotation *champagneBar = [NAAnnotation annotationWithPoint:[mapView coordinateFor:CGPointMake(0.30f, 0.10f)]];
+    [mapView addAnnotation:champagneBar animated:NO];
+
+    NAAnnotation *artsyBooth = [NAAnnotation annotationWithPoint:[mapView coordinateFor:CGPointMake(0.53f, 0.83f)]];
+    [mapView addAnnotation:artsyBooth animated:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated
