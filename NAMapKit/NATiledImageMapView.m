@@ -80,7 +80,7 @@
 -(void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
     [super scrollViewDidZoom:scrollView];
-    NSInteger newZoomLevel = self.tiledImageView.zoomLevel;
+    NSInteger newZoomLevel = self.tiledImageView.currentZoomLevel;
     if (newZoomLevel != self.currentZoomLevel) {
         // TODO: delegate that zoom level has changed
 
@@ -94,7 +94,7 @@
         // at the wrong zoom level).
         //
         [self.tiledImageView setNeedsDisplay];
-        _currentZoomLevel = self.tiledImageView.zoomLevel;
+        _currentZoomLevel = self.tiledImageView.currentZoomLevel;
     }
 }
 
@@ -107,7 +107,8 @@
     _backgroundImageURL = backgroundImageURL;
 }
 
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
 	return self.tiledImageView;
 }
 

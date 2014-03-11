@@ -31,7 +31,6 @@
 // It will cache images in SDWebCache and store images in local storage.
 @interface NATiledImageView ()
 @property (nonatomic, assign) NSInteger maxLevelOfDetail;
-@property (nonatomic, assign) NSInteger currentZoomLevel;
 @property (atomic, strong, readonly) NSCache *tileCache;
 @property (atomic, strong, readonly) NSMutableArray *operationsArray;
 @end
@@ -97,6 +96,7 @@
     NSInteger lastRow = floorf((CGRectGetMaxY(rect)-1) / tileSize.height);
 
     NSInteger level = self.maxLevelOfDetail + roundf(log2f(_scaleX));
+    _currentZoomLevel = level;
     
     NSMutableArray *requestURLs = [NSMutableArray array];
     for (NSInteger row = firstRow; row <= lastRow; row++) {
@@ -144,13 +144,6 @@
 -(void)setContentScaleFactor:(CGFloat)contentScaleFactor
 {
     [super setContentScaleFactor:1.f];
-}
-
--(NSInteger)zoomLevel
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGFloat _scaleX = CGContextGetCTM(context).a;
-    return self.maxLevelOfDetail + roundf(log2f(_scaleX));
 }
 
 -(void)setTileImagesWithURLs:(NSArray *)arrayOfURLs

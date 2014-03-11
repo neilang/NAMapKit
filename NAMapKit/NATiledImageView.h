@@ -11,7 +11,7 @@
 
 @property (readonly, nonatomic) NSObject <NATiledImageViewDataSource> *dataSource;
 @property (readwrite, nonatomic, assign) BOOL displayTileBorders;
-@property (readonly, nonatomic) NSInteger zoomLevel;
+@property (readonly, nonatomic) NSInteger currentZoomLevel;
 
 - (void)cancelConcurrentDownloads;
 @end
