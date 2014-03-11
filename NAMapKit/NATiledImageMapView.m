@@ -96,7 +96,9 @@
         // that have been painted already from the very first rectangle repaint, but the tile never told it to repaint itself again (it did, but
         // at the wrong zoom level).
         //
+        
         [self.tiledImageView setNeedsDisplay];
+        
         _tileZoomLevel = self.tiledImageView.currentZoomLevel;
     }
 }

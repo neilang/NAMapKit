@@ -62,30 +62,34 @@
     return self;
 }
 
-// http://openradar.appspot.com/8503490
-
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
+
+    //
+    // See http://openradar.appspot.com/8503490
+    //
     // Get the scale from the context by getting the current transform matrix, then asking for its "a" component, which is one of the two scale components.
     // We need to also ask for the "d" component as it might not be precisely the same as the "a" component, even at the "same" scale.
+    //
     
     CGFloat _scaleX = CGContextGetCTM(context).a;
     CGFloat _scaleY = CGContextGetCTM(context).d;
     
     CATiledLayer *tiledLayer = (CATiledLayer *)[self layer];
     CGSize tileSize = tiledLayer.tileSize;
-    
+
+    //
     // Even at scales lower than 100%, we are drawing into a rect in the coordinate system of the full
     // image. One tile at 50% covers the width (in original image coordinates) of two tiles at 100%.
     // So at 50% we need to stretch our tiles to double the width and height; at 25% we need to stretch
     // them to quadruple the width and height; and so on.
-    
+    //
     // (Note that this means that we are drawing very blurry images as the scale gets low. At 12.5%,
     // our lowest scale, we are stretching about 6 small tiles to fill the entire original image area.
     // But this is okay, because the big blurry image we're drawing here will be scaled way down before
     // it is displayed.)
+    //
     
     tileSize.width /= _scaleX;
     tileSize.height /= -_scaleY;
@@ -103,24 +107,23 @@
         for (NSInteger col = firstCol; col <= lastCol; col++) {
             
             CGRect tileRect = CGRectMake(tileSize.width * col, tileSize.height * row, tileSize.width, tileSize.height);
-            BOOL canUseTiledURLs = [self.dataSource respondsToSelector:@selector(tiledImageView:urlForImageTileAtLevel:x:y:)];
-            
             UIImage *tileImage = [self.dataSource tiledImageView:self imageTileForLevel:level x:col y:row];
-            NSURL *tileURL = canUseTiledURLs ? [self.dataSource tiledImageView:self urlForImageTileAtLevel:level x:col y:row] : nil;
-            
+            NSURL *tileURL = [self.dataSource tiledImageView:self urlForImageTileAtLevel:level x:col y:row];
+
             NATile *tile = [self.tileCache objectForKey:[tileURL absoluteString]];
-            if (tile && !tile.tileImage) {
+            if (! tile) {
+                tileRect = CGRectIntersection(self.bounds, tileRect);
+                tile = [[NATile alloc] initWithImage:tileImage rect:tileRect];
+                [self.tileCache setObject:tile forKey:[tileURL absoluteString] cost:level];
+            }
+            
+            if (! tile.tileImage && tileImage) {
                 tile.tileImage = tileImage;
             }
-            
-            if (canUseTiledURLs && !tile) {
-                tileRect = CGRectIntersection(self.bounds, tileRect);
-                tile = [[NATile alloc] initWithImage:nil rect:tileRect];
-                [self.tileCache setObject:tile forKey:[tileURL absoluteString] cost:level];
+
+            if (! tile.tileImage) {
                 [requestURLs addObject:tileURL];
-            }
-            
-            if (tile.tileImage) {
+            } else {
                 [tile.tileImage drawInRect:tile.tileRect blendMode:kCGBlendModeNormal alpha:1];
                 if (self.displayTileBorders) {
                     [[UIColor greenColor] set];
