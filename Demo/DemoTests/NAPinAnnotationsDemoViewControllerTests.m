@@ -23,7 +23,7 @@ beforeEach(^{
 });
 
 it(@"displays map with a pin", ^{
-    expect(vc.view).will.haveValidSnapshotNamed(@"default");
+    expect(vc.view).to.haveValidSnapshotNamed(@"default");
 });
 
 SpecEnd

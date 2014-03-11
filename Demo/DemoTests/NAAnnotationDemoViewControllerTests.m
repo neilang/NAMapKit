@@ -17,7 +17,7 @@ beforeAll(^{
 it(@"displays map with a pin", ^{
     NAAnnotationDemoViewController *vc = [[NAAnnotationDemoViewController alloc] init];
     expect(vc.view).willNot.beNil();
-    expect(vc.view).will.haveValidSnapshotNamed(@"default");
+    expect(vc.view).to.haveValidSnapshotNamed(@"default");
 });
 
 SpecEnd

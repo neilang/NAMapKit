@@ -28,7 +28,7 @@ it(@"doesn't display any pins", ^{
 it(@"adds a pin", ^{
     [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed];
     expect(vc.view).to.haveValidSnapshotNamed(@"add");
-    
+
 });
 
 it(@"removes a pin", ^{
