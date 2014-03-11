@@ -20,19 +20,22 @@
     NSString *cachesDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].lastObject relativePath];
     NSCharacterSet *charactersToRemove =[[NSCharacterSet alphanumericCharacterSet] invertedSet];
     NSString *url = [[self.tileBaseURL.absoluteString componentsSeparatedByCharactersInSet:charactersToRemove] componentsJoinedByString:@"_"];
-    NSString *filename = [NSString stringWithFormat:@"%@_%@_%@_%@.%@", url, @(level), @(x), @(y), self.tileFormat];
+    NSString *filename = [NSString stringWithFormat:@"%@/%@/%@_%@.%@", url, @(level), @(x), @(y), self.tileFormat];
     NSString *path = [NSString stringWithFormat:@"%@/%@", cachesDirectory, filename];
     return [UIImage imageWithContentsOfFile:path];
 }
 
 - (void)tiledImageView:(NATiledImageView *)imageView didDownloadTiledImage:(UIImage *)image atURL:(NSURL *)url
 {
-    // TODO: we probably want a folder structure here
     NSString *cachesDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].lastObject relativePath];
     NSCharacterSet *charactersToRemove =[[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    NSString *filename = [[url.absoluteString componentsSeparatedByCharactersInSet:charactersToRemove] componentsJoinedByString:@"_"];
-    NSString *path = [NSString stringWithFormat:@"%@/%@", cachesDirectory, filename];
-    [UIImageJPEGRepresentation(image, 1.0) writeToFile:path atomically:YES];
+    NSArray *urlParts = [url.absoluteString componentsSeparatedByCharactersInSet:charactersToRemove];
+    NSString *filename = [NSString stringWithFormat:@"%@_%@.%@", urlParts[urlParts.count - 3], urlParts[urlParts.count - 2], urlParts[urlParts.count - 1]];
+    NSString *directory = [[urlParts subarrayWithRange:NSMakeRange(0, urlParts.count - 4)] componentsJoinedByString:@"_"];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", cachesDirectory, directory, urlParts[urlParts.count - 4]];
+    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    NSString *pathWithFilename = [NSString stringWithFormat:@"%@/%@", path, filename];
+    [UIImageJPEGRepresentation(image, 1.0) writeToFile:pathWithFilename atomically:YES];
 }
 
 - (CGSize)imageSizeForImageView:(NATiledImageView *)imageView
