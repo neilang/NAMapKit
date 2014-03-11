@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NAAnnotation.h"
+#import "NAMapViewDelegate.h"
 
 @interface NAMapView : UIScrollView<UIScrollViewDelegate>
 
@@ -19,6 +20,9 @@
 -(CGPoint)zoomRelativePoint:(CGPoint)point;
 -(void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
 -(void)setupMap;
+
+@property (nonatomic, readonly) CGFloat zoomLevel;
+@property (nonatomic, weak) NSObject<NAMapViewDelegate> *mapViewDelegate;
 
 @end
 

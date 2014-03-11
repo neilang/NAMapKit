@@ -10,7 +10,7 @@
 #import "NAMapView.h"
 #import "NAPinAnnotation.h"
 
-@interface NAInteractiveDemoViewController : UIViewController
+@interface NAInteractiveDemoViewController : UIViewController<NAMapViewDelegate>
 
 @property (nonatomic, weak) IBOutlet NAMapView *mapView;
 

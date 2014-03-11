@@ -1,6 +1,7 @@
 #### [3.0](https://github.com/neilang/NAMapKit/tree/version-3.0) (Next)
 
 * [#16](https://github.com/neilang/NAMapKit/pull/16) - Extracted `NAPinAnnotationMapView` out of a, now mimimal, `NAMapView` - [@dblock](github.com/dblock).
+* [#18](https://github.com/neilang/NAMapKit/pull/18) - Added `NAMapViewDelegate` for easier handling of taps and zoom events - [@dblock](github.com/dblock).
 
 #### [HEAD](https://github.com/neilang/NAMapKit) (Stable)
 

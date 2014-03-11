@@ -36,7 +36,7 @@ it(@"removes a pin", ^{
     expect(vc.view).to.haveValidSnapshotNamed(@"remove");
 });
 
-pending(@"selects a pin", ^{
+it(@"selects a pin", ^{
     [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed];
     [vc addPinAt:CGPointMake(200, 300) withColor:NAPinColorGreen];
     [vc selectPinAt:1];

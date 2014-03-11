@@ -22,9 +22,9 @@ const CGFloat pinPointY = 35.0f;
 - (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        self.mapView    = mapView;
+        self.mapView = mapView;
         self.annotation = annotation;
-        self.animating  = NO;
+        self.animating = NO;
     }
     return self;
 }

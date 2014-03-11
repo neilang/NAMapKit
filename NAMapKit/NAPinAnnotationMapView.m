@@ -52,6 +52,7 @@ const CGFloat calloutAnimationDuration = 0.1f;
 -(IBAction)showCallOut:(id)sender {
     if([sender isKindOfClass:[NAPinAnnotationView class]]) {
         NAPinAnnotationView *annontationView = (NAPinAnnotationView *)sender;
+        [self.mapViewDelegate mapView:self tappedOnAnnotation:annontationView.annotation];
         [self showCalloutForAnnotation:annontationView.annotation animated:YES];
     }
 }
@@ -92,5 +93,3 @@ const CGFloat calloutAnimationDuration = 0.1f;
 }
 
 @end
-
-#undef NA_CALLOUT_ANIMATION_DURATION

@@ -3,7 +3,7 @@ pod "NAMapKit", :path => "../namapkit.podspec"
 target "DemoTests" do
   pod 'Specta', '~> 0.2.1'
   pod 'Expecta', '~> 0.2.3'
-  pod 'FBSnapshotTestCase', :git => 'https://github.com/facebook/ios-snapshot-test-case'
-  pod 'EXPMatchers+FBSnapshotTest', :git => 'https://github.com/dblock/ios-snapshot-test-case-expecta'
+  pod 'FBSnapshotTestCase', '~> 1.1'
+  pod 'EXPMatchers+FBSnapshotTest', '~> 1.0'
 end
 

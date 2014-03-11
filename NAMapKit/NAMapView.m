@@ -14,6 +14,7 @@ const CGFloat zoomStep = 1.5f;
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) CGSize originalSize;
+@property (nonatomic, readonly) NSMutableArray *annotations;
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer;
 -(void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer;
@@ -36,6 +37,8 @@ const CGFloat zoomStep = 1.5f;
 
     _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.imageView];
+    
+    _annotations = [NSMutableArray array];
 }
 
 - (void)awakeFromNib {
@@ -54,13 +57,14 @@ const CGFloat zoomStep = 1.5f;
 - (void)displayMap:(UIImage *)map{
     self.imageView.frame = CGRectMake(0.0f, 0.0f, map.size.width, map.size.height);
     self.imageView.image = map;
-    CGRect imageFrame    = self.imageView.frame;
-    self.originalSize     = CGSizeMake(CGRectGetWidth(imageFrame), CGRectGetHeight(imageFrame));
-    self.contentSize     = self.originalSize;
+    CGRect imageFrame = self.imageView.frame;
+    self.originalSize = CGSizeMake(CGRectGetWidth(imageFrame), CGRectGetHeight(imageFrame));
+    self.contentSize = self.originalSize;
 }
 
 - (void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
     [annotation addToMapView:self animated:animate];
+    [self.annotations addObject:annotation];
 }
 
 - (void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate {
@@ -71,6 +75,7 @@ const CGFloat zoomStep = 1.5f;
 
 -(void)removeAnnotation:(NAAnnotation *)annotation {
     [annotation removeFromMapView];
+    [self.annotations removeObject:annotation];
 }
 
 - (void)centreOnPoint:(CGPoint)point animated:(BOOL)animate {
@@ -91,24 +96,32 @@ const CGFloat zoomStep = 1.5f;
 
 #pragma mark - UIScrollViewDelegate
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
 	return self.imageView;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    [self.mapViewDelegate mapView:self hasChangedZoomLevel:self.zoomLevel];
+}
+
+-(CGFloat)zoomLevel
+{
+    return self.zoomScale / self.maximumZoomScale;
 }
 
 #pragma mark - Tap to Zoom
 
-- (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
+-(void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
 	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
 	float newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 
-- (void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
+-(void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
 	// two-finger tap zooms out, but returns to normal zoom level if it reaches min zoom
 	float newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 
 @end
-
-#undef NA_ZOOM_STEP
