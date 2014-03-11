@@ -15,5 +15,6 @@
 
 @property (readwrite, nonatomic, assign) BOOL displayTileBorders;
 @property (readwrite, nonatomic) NSURL *backgroundImageURL;
+@property (readonly, nonatomic, assign) NSInteger currentZoomLevel;
 
 @end

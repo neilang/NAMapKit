@@ -121,12 +121,13 @@ const CGFloat zoomStep = 1.5f;
 
 #pragma mark - UIScrollViewDelegate
 
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
 	return self.imageView;
 }
 
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView
-{
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView
+{    
     [self.mapViewDelegate mapView:self hasChangedZoomLevel:self.zoomLevel];
 }
 

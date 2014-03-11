@@ -1,4 +1,4 @@
-        //
+//
 //  NATiledImageView.m
 //  Created by Orta Therox on 2014/01/29.
 //
@@ -8,15 +8,6 @@
 #import <QuartzCore/CATiledLayer.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
-/// Network & local image zooming view
-///
-/// If using NSURL based images, drawrect will trigger a draw in a
-/// tiled area, it will make a NATile and put it in the cache and use
-/// SDWebImage to download the image, then trigger a re-draw in that area.
-
-/// You can optionally use the imageTileForLevel to use local images backing
-/// a async tiled map.
-
 @interface NATile : NSObject
 @property (nonatomic, assign) CGRect tileRect;
 @property (nonatomic, strong) UIImage *tileImage;
@@ -24,7 +15,7 @@
 
 @implementation NATile : NSObject
 
-- (instancetype)initWithImage:(UIImage *)anImage rect:(CGRect)rect
+-(instancetype)initWithImage:(UIImage *)anImage rect:(CGRect)rect
 {
     self = [super init];
     if (self == nil) return nil;
@@ -36,7 +27,9 @@
 }
 @end
 
-@interface NATiledImageView()
+// NATiledImageView responds to rectangle repaint, figures out which tile to download from that rectangle and downloads tiles asynchronously.
+// It will cache images in SDWebCache and store images in local storage.
+@interface NATiledImageView ()
 @property (nonatomic, assign) NSInteger maxLevelOfDetail;
 @property (nonatomic, assign) NSInteger currentZoomLevel;
 @property (atomic, strong, readonly) NSCache *tileCache;
@@ -45,7 +38,7 @@
 
 @implementation NATiledImageView
 
-- (id)initWithDataSource:(NSObject <NATiledImageViewDataSource> *)dataSource;
+-(id)initWithDataSource:(NSObject <NATiledImageViewDataSource> *)dataSource;
 {
     self = [super init];
     if (self) {
@@ -76,8 +69,9 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    // get the scale from the context by getting the current transform matrix, then asking for
-    // its "a" component, which is one of the two scale components. We need to also ask for the "d" component as it might not be precisely the same as the "a" component, even at the "same" scale.
+    // Get the scale from the context by getting the current transform matrix, then asking for its "a" component, which is one of the two scale components.
+    // We need to also ask for the "d" component as it might not be precisely the same as the "a" component, even at the "same" scale.
+    
     CGFloat _scaleX = CGContextGetCTM(context).a;
     CGFloat _scaleY = CGContextGetCTM(context).d;
     
@@ -142,17 +136,24 @@
     }
 }
 
-+ (Class) layerClass
++(Class)layerClass
 {
     return [CATiledLayer class];
 }
 
-- (void)setContentScaleFactor:(CGFloat)contentScaleFactor
+-(void)setContentScaleFactor:(CGFloat)contentScaleFactor
 {
     [super setContentScaleFactor:1.f];
 }
 
-- (void)setTileImagesWithURLs:(NSArray *)arrayOfURLs
+-(NSInteger)zoomLevel
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGFloat _scaleX = CGContextGetCTM(context).a;
+    return self.maxLevelOfDetail + roundf(log2f(_scaleX));
+}
+
+-(void)setTileImagesWithURLs:(NSArray *)arrayOfURLs
 {
     __weak typeof(self) wself = self;
     
@@ -201,13 +202,13 @@
     
 }
 
-- (void)dealloc
+-(void)dealloc
 {
     [self cancelConcurrentDownloads];
     [_tileCache removeAllObjects];
 }
 
-- (void)cancelConcurrentDownloads
+-(void)cancelConcurrentDownloads
 {
     for(id<SDWebImageOperation> operation in _operationsArray) {
         if (operation) {

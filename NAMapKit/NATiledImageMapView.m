@@ -77,6 +77,27 @@
     [self setZoomScale:self.minimumZoomScale animated:animate];
 }
 
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    [super scrollViewDidZoom:scrollView];
+    NSInteger newZoomLevel = self.tiledImageView.zoomLevel;
+    if (newZoomLevel != self.currentZoomLevel) {
+        // TODO: delegate that zoom level has changed
+
+        //
+        // Repaint the map when the zoom level changes.
+        //
+        // NATiledImageView responds to rectangle repaint, figures out which tile to download from that rectangle and downloads tiles asynchronously.
+        // Whenever it gets a tile invalidates the rectangle in which it think it is. However, if the tile level has changed, it's invalidating a
+        // rectangle that is no longer relevant at the new tile level. This essentially does nothing. When you zoom in or out there're rectangles
+        // that have been painted already from the very first rectangle repaint, but the tile never told it to repaint itself again (it did, but
+        // at the wrong zoom level).
+        //
+        [self.tiledImageView setNeedsDisplay];
+        _currentZoomLevel = self.tiledImageView.zoomLevel;
+    }
+}
+
 - (void)setBackgroundImageURL:(NSURL *)backgroundImageURL
 {
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.tiledImageView.frame];

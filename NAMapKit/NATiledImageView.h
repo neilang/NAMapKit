@@ -10,8 +10,8 @@
 - (id)initWithDataSource:(NSObject <NATiledImageViewDataSource> *)dataSource;
 
 @property (readonly, nonatomic) NSObject <NATiledImageViewDataSource> *dataSource;
-@property (readonly, nonatomic, assign) NSInteger currentZoomLevel;
 @property (readwrite, nonatomic, assign) BOOL displayTileBorders;
+@property (readonly, nonatomic) NSInteger zoomLevel;
 
 - (void)cancelConcurrentDownloads;
 @end
