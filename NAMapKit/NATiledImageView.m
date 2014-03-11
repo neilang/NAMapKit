@@ -115,6 +115,9 @@
             NSURL *tileURL = canUseTiledURLs ? [self.dataSource tiledImageView:self urlForImageTileAtLevel:level x:col y:row] : nil;
             
             NATile *tile = [self.tileCache objectForKey:[tileURL absoluteString]];
+            if (tile && !tile.tileImage) {
+                tile.tileImage = tileImage;
+            }
             
             if (canUseTiledURLs && !tile) {
                 tileRect = CGRectIntersection(self.bounds, tileRect);
@@ -124,12 +127,7 @@
             }
             
             if (tile.tileImage) {
-                tileImage = tile.tileImage;
-                tileRect = (CGRect){
-                    .origin = tile.tileRect.origin,
-                    .size = tile.tileImage.size
-                };
-                [tileImage drawInRect:tileRect blendMode:kCGBlendModeNormal alpha:1];
+                [tile.tileImage drawInRect:tile.tileRect blendMode:kCGBlendModeNormal alpha:1];
                 if (self.displayTileBorders) {
                     [[UIColor greenColor] set];
                     CGContextSetLineWidth(context, 6.0);
@@ -140,7 +138,6 @@
     }
     
     if (requestURLs.count && self && [self isKindOfClass:[NATiledImageView class]]) {
-        // Download all image tiles
         [self setTileImagesWithURLs:[NSArray arrayWithArray:requestURLs]];
     }
 }

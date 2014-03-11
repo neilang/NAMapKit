@@ -23,22 +23,20 @@
     NADZTileImageDataSource *dzTileImageDataSource = [[NADZTileImageDataSource alloc] init];
     dzTileImageDataSource.maxTiledHeight = 5389;
     dzTileImageDataSource.maxTiledWidth = 5000;
-    dzTileImageDataSource.maxTileLevel = 11;
-    dzTileImageDataSource.minTileLevel = ceil(log(MAX(dzTileImageDataSource.maxTiledWidth, dzTileImageDataSource.maxTiledHeight))/log(2));
+    dzTileImageDataSource.minTileLevel = 11;
+    dzTileImageDataSource.maxTileLevel = ceil(log(MAX(dzTileImageDataSource.maxTiledWidth, dzTileImageDataSource.maxTiledHeight))/log(2));
     dzTileImageDataSource.tileSize = 512;
     dzTileImageDataSource.tileFormat = @"jpg";
-    dzTileImageDataSource.tileBaseURL = [NSURL URLWithString:@"http://static1.artsy.net/maps/52fa629db504f55202000001/5/dztiles-512-0"];
+    dzTileImageDataSource.tileBaseURL = [NSURL URLWithString:@"https://raw.github.com/dblock/NAMapKit/tiled-map-view/Demo/Maps/Armory2014/tiles"];
     
     NATiledImageMapView *mapView = [[NATiledImageMapView alloc] initWithFrame:self.view.bounds tiledImageDataSource:dzTileImageDataSource];
     mapView.backgroundColor  = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    mapView.minimumZoomScale = 0.5f;
-    mapView.maximumZoomScale = 1.5f;
     // mapView.displayTileBorders = YES;
-    mapView.backgroundImageURL = [NSURL URLWithString:@"http://static1.artsy.net/maps/52fa629db504f55202000001/5/large.jpg"];
+    mapView.backgroundImageURL = [NSURL URLWithString:@"https://raw.github.com/dblock/NAMapKit/tiled-map-view/Demo/Maps/Armory2014/large.jpg"];
     _mapView = mapView;
-
-    [self.view addSubview:mapView];
+    
+    [self.view addSubview:mapView];    
 }
 
 -(void)viewDidAppear:(BOOL)animated
