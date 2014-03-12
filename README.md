@@ -5,8 +5,8 @@ NAMapKit
 
 Lets you drop MapKit style pins onto a standard UIImage. Also includes callouts, multi-colored pins, animation, zoom and gestures.
 
-![Screenshot 1](screenshot1.png)
-![Screenshot 2](screenshot2.png)
+![Melbourne, Australia](Demo/Screenshots/melbourne.png)
+![Brisbane, Australia](Demo/Screenshots/brisbane.png)
 
 Usage
 -----
