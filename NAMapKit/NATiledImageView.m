@@ -135,7 +135,7 @@
     }
     
     if (requestURLs.count && self && [self isKindOfClass:[NATiledImageView class]]) {
-        [self setTileImagesWithURLs:[NSArray arrayWithArray:requestURLs]];
+        [self downloadAndRedrawTilesWithURLs:[NSArray arrayWithArray:requestURLs]];
     }
 }
 
@@ -149,7 +149,7 @@
     [super setContentScaleFactor:1.f];
 }
 
--(void)setTileImagesWithURLs:(NSArray *)arrayOfURLs
+-(void)downloadAndRedrawTilesWithURLs:(NSArray *)arrayOfURLs
 {
     __weak typeof(self) wself = self;
     
