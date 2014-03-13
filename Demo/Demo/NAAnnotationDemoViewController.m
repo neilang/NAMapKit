@@ -32,10 +32,10 @@
     [mapView addAnnotation:melbourne animated:NO];
 
     NAAnnotation *perth = [NAAnnotation annotationWithPoint:CGPointMake(63.0f, 379.0f)];
-	[mapView addAnnotation:perth animated:YES];
+    [mapView addAnnotation:perth animated:YES];
 
 	NAAnnotation *brisbane = [NAAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
-	[mapView addAnnotation:brisbane animated:NO];
+    [mapView addAnnotation:brisbane animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

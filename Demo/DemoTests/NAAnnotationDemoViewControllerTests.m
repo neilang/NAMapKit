@@ -10,7 +10,9 @@
 
 SpecBegin(NAAnnotationDemoViewController)
 
-setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+beforeAll(^{
+    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+});
 
 it(@"displays map with a pin", ^{
     NAAnnotationDemoViewController *vc = [[NAAnnotationDemoViewController alloc] init];

@@ -13,7 +13,6 @@ const CGFloat zoomStep = 1.5f;
 @interface NAMapView()
 
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, assign) CGSize originalSize;
 @property (nonatomic, readonly) NSMutableArray *annotations;
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer;
@@ -22,6 +21,12 @@ const CGFloat zoomStep = 1.5f;
 @end
 
 @implementation NAMapView
+
+-(void)createImageView
+{
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self addSubview:self.imageView];
+}
 
 -(void)setupMap {
     self.delegate = self;
@@ -35,10 +40,11 @@ const CGFloat zoomStep = 1.5f;
 	[self addGestureRecognizer:doubleTap];
 	[self addGestureRecognizer:twoFingerTap];
 
-    _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    [self addSubview:self.imageView];
+    [self createImageView];
     
     _annotations = [NSMutableArray array];
+    
+    [self.panGestureRecognizer addTarget:self action:@selector(mapPanGestureHandler:)];
 }
 
 - (void)awakeFromNib {
@@ -52,6 +58,13 @@ const CGFloat zoomStep = 1.5f;
         [self setupMap];
     }
     return self;
+}
+
+- (void)mapPanGestureHandler:(UIPanGestureRecognizer *)panGesture
+{
+    if (panGesture.state == UIGestureRecognizerStateBegan){
+        _centerPoint = CGPointZero;
+    }
 }
 
 - (void)displayMap:(UIImage *)map{
@@ -82,6 +95,7 @@ const CGFloat zoomStep = 1.5f;
 	float x = (point.x * self.zoomScale) - (self.frame.size.width / 2.0f);
 	float y = (point.y * self.zoomScale) - (self.frame.size.height / 2.0f);
 	[self setContentOffset:CGPointMake(round(x), round(y)) animated:animate];
+    _centerPoint = point;
 }
 
 -(CGPoint)zoomRelativePoint:(CGPoint)point{
@@ -90,18 +104,29 @@ const CGFloat zoomStep = 1.5f;
     return CGPointMake(round(x), round(y));
 }
 
-- (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate
+-(void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate
 {
+}
+
+-(void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    BOOL zoomedOut = self.zoomScale == self.minimumZoomScale;
+    if (!CGPointEqualToPoint(self.centerPoint, CGPointZero) && !zoomedOut) {
+        [self centreOnPoint:self.centerPoint animated:NO];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
 
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
 	return self.imageView;
 }
 
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView
-{
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView
+{    
     [self.mapViewDelegate mapView:self hasChangedZoomLevel:self.zoomLevel];
 }
 

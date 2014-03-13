@@ -10,7 +10,9 @@
 
 SpecBegin(NAMasterViewController)
 
-setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+beforeAll(^{
+    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+});
 
 it(@"displays the master menu", ^{
     NAMasterViewController *vc = [[NAMasterViewController alloc] initWithNibName:@"NAMasterViewController" bundle:nil];

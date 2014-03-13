@@ -10,7 +10,9 @@
 
 SpecBegin(NAInteractiveDemoViewController)
 
-setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+beforeAll(^{
+    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
+});
 
 __block NAInteractiveDemoViewController *vc = nil;
 
@@ -26,7 +28,7 @@ it(@"doesn't display any pins", ^{
 it(@"adds a pin", ^{
     [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed];
     expect(vc.view).to.haveValidSnapshotNamed(@"add");
-    
+
 });
 
 it(@"removes a pin", ^{
