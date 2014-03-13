@@ -12,10 +12,6 @@
 const CGFloat dotRadius = 10.0f;
 const CGFloat dotOpacity = 0.5f;
 
-@interface NAAnnotation ()
-@property (nonatomic, readonly) NAMapView *mapView;
-@end
-
 @implementation NAAnnotation
 
 + (id)annotationWithPoint:(CGPoint)point{

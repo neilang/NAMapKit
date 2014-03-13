@@ -24,5 +24,6 @@
 -(UIView *)createViewOnMapView:(NAMapView *)mapView;
 
 @property (nonatomic, weak) NSObject<NAMapViewDelegate> *mapViewDelegate;
+@property (nonatomic, readonly) NAMapView *mapView;
 
 @end
