@@ -3,7 +3,7 @@
 //  Demo
 //
 //  Created by Neil Ang on 6/05/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAMasterViewController.h"
@@ -24,7 +24,7 @@
     }
     return self;
 }
-							
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
@@ -44,13 +44,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    
+
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"Simple Annotations Demo";
@@ -74,7 +74,7 @@
             cell.textLabel.text = @"???";
             break;
     }
-    
+
     return cell;
 }
 

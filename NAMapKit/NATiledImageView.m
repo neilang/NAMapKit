@@ -1,6 +1,9 @@
 //
 //  NATiledImageView.m
+//  NAMapKit
+//
 //  Created by Orta Therox on 2014/01/29.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NATiledImageView.h"

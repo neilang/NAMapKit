@@ -1,18 +1,24 @@
 //
-// NACallOutView.h
-// NAMapKit
+//  NAPinAnnotationCallOutView.h
+//  NAMapKit
 //
-// Created by Neil Ang on 23/07/10.
-// Copyright 2010 neilang.com. All rights reserved.
+//  Created by Neil Ang on 23/07/10.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "NAPinAnnotation.h"
 #import "NAMapView.h"
 
+/**
+ *  A callout view displayed wiht NAPinAnnotation.
+ */
 @interface NAPinAnnotationCallOutView : UIView
 
+// Create a new callout view on a map.
 - (id)initOnMapView:(NAMapView *)mapView;
-- (void)setAnnotation:(NAPinAnnotation *)annotation;
+
+// Pin annotation.
+@property(nonatomic, readwrite) NAPinAnnotation *annotation;
 
 @end

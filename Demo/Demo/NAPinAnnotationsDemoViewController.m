@@ -3,7 +3,7 @@
 //  Demo
 //
 //  Created by Neil Ang on 6/05/12.
-//  Copyright (c) 2012 neilang.com. All rights reserved.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAPinAnnotationsDemoViewController.h"
@@ -43,7 +43,7 @@
     perth.color = NAPinColorRed;
 
 	[mapView addAnnotation:perth animated:YES];
-    
+
 	NAPinAnnotation * brisbane = [NAPinAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
 	brisbane.title = @"Brisbane";
     brisbane.color = NAPinColorPurple;

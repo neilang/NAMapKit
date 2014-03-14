@@ -1,7 +1,9 @@
 //
-// NAPinAnnotationMapView.m
+//  NAPinAnnotationMapView.m
+//  NAMapKit
 //
 //  Created by Daniel Doubrovkine on 3/7/14.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAPinAnnotationMapView.h"
@@ -60,9 +62,9 @@ const CGFloat calloutAnimationDuration = 0.1f;
 -(void)showCalloutForAnnotation:(NAPinAnnotation *)annotation animated:(BOOL)animated {
     [self hideCallOut];
     
-    [self.calloutView setAnnotation:annotation];
+    self.calloutView.annotation = annotation;
     
-    [self centreOnPoint:annotation.point animated:animated];
+    [self centerOnPoint:annotation.point animated:animated];
     
     CGFloat animationDuration = animated ? calloutAnimationDuration : 0.0f;
     

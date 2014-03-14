@@ -1,9 +1,9 @@
 //
-// NACallOutView.h
-// NAMapKit
+//  NAPinAnnotationCallOutView.m
+//  NAMapKit
 //
-// Created by Neil Ang on 23/07/10.
-// Copyright 2010 neilang.com. All rights reserved.
+//  Created by Neil Ang on 23/07/10.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAPinAnnotationCallOutView.h"
@@ -46,7 +46,7 @@ static NSString *calloutImageBG = @"callout_bg.png";
 
 @implementation NAPinAnnotationCallOutView
 
-- (id)initOnMapView:(NAMapView *)mapView {
+-(id)initOnMapView:(NAMapView *)mapView {
     self = [super init];
     if (self) {        
         UIImage *calloutBG                 = [[UIImage imageNamed:calloutImageBG] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
@@ -68,7 +68,7 @@ static NSString *calloutImageBG = @"callout_bg.png";
     return self;
 }
 
-- (void)setAnnotation:(NAPinAnnotation *)annotation{
+-(void)setAnnotation:(NAPinAnnotation *)annotation{
         
     // --- RESET ---
     

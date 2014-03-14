@@ -3,7 +3,7 @@
 //  Demo
 //
 //  Created by Daniel Doubrovkine on 3/7/14.
-//  Copyright (c) 2014 neilang.com. All rights reserved.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAPinAnnotationsDemoViewController.h"

@@ -1,13 +1,17 @@
 //
 //  NATiledImageMapView.h
+//  NAMapKit
 //
 //  Created by Daniel Doubrovkine on 3/10/14.
-//
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAMapView.h"
 #import "NATiledImageView.h"
 
+/**
+ *  A tiled image map.
+ */
 @interface NATiledImageMapView : NAMapView
 
 - (id)initWithFrame:(CGRect)frame tiledImageDataSource:(NSObject <NATiledImageViewDataSource> *)dataSource;
