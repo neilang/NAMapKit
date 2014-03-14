@@ -93,15 +93,15 @@ const CGFloat defaultZoomStep = 1.5f;
 }
 
 - (void)centerOnPoint:(CGPoint)point animated:(BOOL)animate {
-	float x = (point.x * self.zoomScale) - (self.frame.size.width / 2.0f);
-	float y = (point.y * self.zoomScale) - (self.frame.size.height / 2.0f);
+	CGFloat x = (point.x * self.zoomScale) - (self.frame.size.width / 2.0f);
+	CGFloat y = (point.y * self.zoomScale) - (self.frame.size.height / 2.0f);
 	[self setContentOffset:CGPointMake(round(x), round(y)) animated:animate];
     _centerPoint = point;
 }
 
 -(CGPoint)zoomRelativePoint:(CGPoint)point{
-    float x = (self.contentSize.width / self.originalSize.width) * point.x;
-    float y = (self.contentSize.height / self.originalSize.height) * point.y;
+    CGFloat x = (self.contentSize.width / self.originalSize.width) * point.x;
+    CGFloat y = (self.contentSize.height / self.originalSize.height) * point.y;
     return CGPointMake(round(x), round(y));
 }
 
@@ -140,13 +140,13 @@ const CGFloat defaultZoomStep = 1.5f;
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
 	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
-	float newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * self.zoomStep;
+	CGFloat newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * self.zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 
 -(void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
 	// two-finger tap zooms out, but returns to normal zoom level if it reaches min zoom
-	float newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / self.zoomStep;
+	CGFloat newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / self.zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 

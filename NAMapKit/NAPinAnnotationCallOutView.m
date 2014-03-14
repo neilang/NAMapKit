@@ -82,15 +82,15 @@ static NSString *calloutImageBG = @"callout_bg.png";
     
     self.position = annotation.point;
     
-    float leftCapWidth  = self.calloutLeftCapView.image.size.width;
-    float rightCapWidth = self.calloutRightCapView.image.size.width;
-    float anchorWidth   = self.calloutAnchorView.image.size.width;
-    float anchorHeight  = self.calloutAnchorView.image.size.height;
-    float maxWidth      = self.mapView.frame.size.width;
+    CGFloat leftCapWidth  = self.calloutLeftCapView.image.size.width;
+    CGFloat rightCapWidth = self.calloutRightCapView.image.size.width;
+    CGFloat anchorWidth   = self.calloutAnchorView.image.size.width;
+    CGFloat anchorHeight  = self.calloutAnchorView.image.size.height;
+    CGFloat maxWidth      = self.mapView.frame.size.width;
     
     // --- FRAME --- 
     
-    float middleWidth = anchorWidth;
+    CGFloat middleWidth = anchorWidth;
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -116,7 +116,7 @@ static NSString *calloutImageBG = @"callout_bg.png";
     
     middleWidth = MIN(maxWidth, middleWidth);
     
-    float totalWidth  = middleWidth + leftCapWidth + rightCapWidth;
+    CGFloat totalWidth  = middleWidth + leftCapWidth + rightCapWidth;
     
     self.point = annotation.point;
         
@@ -125,7 +125,7 @@ static NSString *calloutImageBG = @"callout_bg.png";
 
     // --- IMAGEVIEWS ---
     
-    float centreOffsetWidth = (middleWidth - anchorWidth) / 2.0f;
+    CGFloat centreOffsetWidth = (middleWidth - anchorWidth) / 2.0f;
     
     [self positionView:self.calloutLeftCapView posX:0.0f];
     [self positionView:self.calloutRightCapView posX:(totalWidth - rightCapWidth)];
@@ -143,13 +143,13 @@ static NSString *calloutImageBG = @"callout_bg.png";
         [self addSubview:self.calloutRightCenterView];
 	}
     
-    float labelWidth = middleWidth;
+    CGFloat labelWidth = middleWidth;
     
     // --- RIGHT ACCESSORY VIEW ---
     
     if (annotation.rightCalloutAccessoryView) {
-        float accesoryWidth = annotation.rightCalloutAccessoryView.frame.size.width;
-        float x = middleWidth - accesoryWidth + leftCapWidth + rightAccessoryLeftOffset;
+        CGFloat accesoryWidth = annotation.rightCalloutAccessoryView.frame.size.width;
+        CGFloat x = middleWidth - accesoryWidth + leftCapWidth + rightAccessoryLeftOffset;
         
         CGRect frame = annotation.rightCalloutAccessoryView.frame;
         frame.origin.x = x;
@@ -163,9 +163,9 @@ static NSString *calloutImageBG = @"callout_bg.png";
     
     // --- LABELS ---
     
-    float currentTitleTopOffset   = titleStandaloneTopOffset;
-	float currentTitleLabelHeight = titleStandaloneLabelHeight;
-	float currentTitleFontSize    = titleStandaloneFontSize;
+    CGFloat currentTitleTopOffset   = titleStandaloneTopOffset;
+	CGFloat currentTitleLabelHeight = titleStandaloneLabelHeight;
+	CGFloat currentTitleFontSize    = titleStandaloneFontSize;
     
     
     // --- SUBTITLE ---
@@ -199,8 +199,8 @@ static NSString *calloutImageBG = @"callout_bg.png";
 
 -(void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.position];
-    float xPos = point.x - (self.frame.size.width / 2.0f);
-    float yPos = point.y - (self.frame.size.height) - anchorYOffset;
+    CGFloat xPos = point.x - (self.frame.size.width / 2.0f);
+    CGFloat yPos = point.y - (self.frame.size.height) - anchorYOffset;
     self.frame = CGRectMake(floor(xPos), yPos, self.frame.size.width, self.frame.size.height);
 }
 
