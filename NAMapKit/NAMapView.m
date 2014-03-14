@@ -1,14 +1,14 @@
 //
-// NAMapView.h
-// NAMapKit
+//  NAMapView.m
+//  NAMapKit
 //
-// Created by Neil Ang on 21/07/10.
-// Copyright 2010 neilang.com. All rights reserved.
+//  Created by Neil Ang on 21/07/10.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAMapView.h"
 
-const CGFloat zoomStep = 1.5f;
+const CGFloat defaultZoomStep = 1.5f;
 
 @interface NAMapView()
 
@@ -43,6 +43,7 @@ const CGFloat zoomStep = 1.5f;
     [self createImageView];
     
     _annotations = [NSMutableArray array];
+    _zoomStep = defaultZoomStep;
     
     [self.panGestureRecognizer addTarget:self action:@selector(mapPanGestureHandler:)];
 }
@@ -91,7 +92,7 @@ const CGFloat zoomStep = 1.5f;
     [self.annotations removeObject:annotation];
 }
 
-- (void)centreOnPoint:(CGPoint)point animated:(BOOL)animate {
+- (void)centerOnPoint:(CGPoint)point animated:(BOOL)animate {
 	float x = (point.x * self.zoomScale) - (self.frame.size.width / 2.0f);
 	float y = (point.y * self.zoomScale) - (self.frame.size.height / 2.0f);
 	[self setContentOffset:CGPointMake(round(x), round(y)) animated:animate];
@@ -114,7 +115,7 @@ const CGFloat zoomStep = 1.5f;
     
     BOOL zoomedOut = self.zoomScale == self.minimumZoomScale;
     if (!CGPointEqualToPoint(self.centerPoint, CGPointZero) && !zoomedOut) {
-        [self centreOnPoint:self.centerPoint animated:NO];
+        [self centerOnPoint:self.centerPoint animated:NO];
     }
 }
 
@@ -139,13 +140,13 @@ const CGFloat zoomStep = 1.5f;
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
 	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
-	float newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * zoomStep;
+	float newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * self.zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 
 -(void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
 	// two-finger tap zooms out, but returns to normal zoom level if it reaches min zoom
-	float newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / zoomStep;
+	float newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / self.zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 
