@@ -32,7 +32,7 @@
 @interface NATiledImageView ()
 @property (nonatomic, assign) NSInteger maxLevelOfDetail;
 @property (atomic, strong, readonly) NSCache *tileCache;
-@property (atomic, strong, readonly) NSMutableArray *operationsArray;
+@property (atomic, readonly) NSMutableDictionary *downloadOperations;
 @end
 
 @implementation NATiledImageView
@@ -58,6 +58,7 @@
         
         _tileCache = [[NSCache alloc] init];
         _displayTileBorders = NO;
+        _downloadOperations = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -154,24 +155,33 @@
     __weak typeof(self) wself = self;
     
     for(NSURL *tileURL in arrayOfURLs) {
-        
+        if ([self.downloadOperations objectForKey:tileURL]) {
+            continue;
+        }
+
         id<SDWebImageOperation> operation = nil;
         operation = [SDWebImageManager.sharedManager downloadWithURL:tileURL options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-            if (!wself || !finished ) return;
+            if (!wself || !finished ) {
+                return;
+            }
             
             if (error){
-                // Ideally we want to mke sure this doesn't happen multiple times
+                // TODO: we want to mke sure this doesn't happen multiple times
                 [wself performSelector:_cmd withObject:arrayOfURLs afterDelay:1];
                 return;
             }
             
             void (^block)(void) = ^{
                 __strong typeof(wself) sself = wself;
-                if (!sself) return;
+                if (! sself) {
+                    return;
+                }
                 
                 if (image) {
                     NATile *tile = [sself.tileCache objectForKey:[tileURL absoluteString]];
-                    if (!tile) return;
+                    if (!tile) {
+                        return;
+                    }
                     
                     tile.tileImage = image;
                     [sself setNeedsDisplayInRect:tile.tileRect];
@@ -180,10 +190,12 @@
                     NSInteger cost = image.size.height * image.size.width * image.scale;
                     [sself.tileCache setObject:tile forKey:[tileURL absoluteString] cost:cost];
                     
-                    if([sself.dataSource respondsToSelector:@selector(tiledImageView:didDownloadTiledImage:atURL:)]){
+                    if([sself.dataSource respondsToSelector:@selector(tiledImageView:didDownloadTiledImage:atURL:)]) {
                         [sself.dataSource tiledImageView:self didDownloadTiledImage:image atURL:tileURL];
                     }
                 }
+                
+                [sself.downloadOperations removeObjectForKey:tileURL];
             };
             
             if ([NSThread isMainThread]) {
@@ -193,9 +205,8 @@
             }
         }];
         
-        [_operationsArray addObject:operation];
+        [self.downloadOperations setObject:operation forKey:tileURL];
     }
-    
 }
 
 -(void)dealloc
@@ -206,12 +217,13 @@
 
 -(void)cancelConcurrentDownloads
 {
-    for(id<SDWebImageOperation> operation in _operationsArray) {
+    for(id<SDWebImageOperation> operation in self.downloadOperations.objectEnumerator) {
         if (operation) {
             [operation cancel];
         }
     }
-    _operationsArray = nil;
+    
+    _downloadOperations = nil;
 }
 
 @end
