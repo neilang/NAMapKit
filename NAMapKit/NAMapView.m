@@ -140,8 +140,28 @@ const CGFloat defaultZoomStep = 1.5f;
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
 	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
-	CGFloat newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * self.zoomStep;
-	[self setZoomScale:newScale animated:YES];
+    if (self.zoomScale >= self.maximumZoomScale) {
+        [self setZoomScale:self.minimumZoomScale animated:YES];
+    } else {
+        // the location tapped becomes the new center
+        CGPoint tapCenter = [gestureRecognizer locationInView:self.imageView];
+        CGFloat newScale = MIN(self.zoomScale * self.zoomStep, self.maximumZoomScale);
+        CGRect maxZoomRect = [self rectAroundPoint:tapCenter atZoomScale:newScale];
+        [self zoomToRect:maxZoomRect animated:YES];
+    }
+}
+
+- (CGRect)rectAroundPoint:(CGPoint)point atZoomScale:(CGFloat)zoomScale {
+    // define the shape of the zoom rect
+    CGSize boundsSize = self.bounds.size;
+    // modify the size according to the requested zoom level
+    // for example, if we're zooming in to 0.5 zoom, then this will increase the bounds size by a factor of two
+    CGSize scaledBoundsSize = CGSizeMake(boundsSize.width / zoomScale, boundsSize.height / zoomScale);
+   
+    return CGRectMake(point.x - scaledBoundsSize.width / 2,
+                      point.y - scaledBoundsSize.height / 2,
+                      scaledBoundsSize.width,
+                      scaledBoundsSize.height);
 }
 
 -(void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {

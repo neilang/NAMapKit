@@ -11,7 +11,7 @@
 
 @interface NATiledImageMapView ()
 @property (nonatomic, weak, readonly) NSObject <NATiledImageViewDataSource> *dataSource;
-@property (nonatomic, readonly) NATiledImageView *tiledImageView;
+@property (nonatomic, readonly) NATiledImageView *imageView;
 @property (nonatomic, readonly) UIImageView *backgroundImageView;
 @end
 
@@ -30,9 +30,9 @@
 -(void)createImageView
 {
     if (self.dataSource) {
-        _tiledImageView = [[NATiledImageView alloc] initWithDataSource:self.dataSource];
-        self.tiledImageView.displayTileBorders = self.displayTileBorders;
-        [self addSubview:self.tiledImageView];
+        _imageView = [[NATiledImageView alloc] initWithDataSource:self.dataSource];
+        self.imageView.displayTileBorders = self.displayTileBorders;
+        [self addSubview:self.imageView];
     }
 }
 
@@ -46,9 +46,7 @@
 
 -(void)setDisplayTileBorders:(BOOL)displayTileBorders
 {
-    if (self.tiledImageView) {
-        self.tiledImageView.displayTileBorders = displayTileBorders;
-    }
+    self.imageView.displayTileBorders = displayTileBorders;
     _displayTileBorders = displayTileBorders;
 }
 
@@ -84,17 +82,17 @@
 -(void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
     [super scrollViewDidZoom:scrollView];
-    NSInteger newZoomLevel = self.tiledImageView.currentZoomLevel;
+    NSInteger newZoomLevel = self.imageView.currentZoomLevel;
     if (newZoomLevel != self.tileZoomLevel) {
         // TODO: delegate that zoom level has changed
-        _tileZoomLevel = self.tiledImageView.currentZoomLevel;
+        _tileZoomLevel = self.imageView.currentZoomLevel;
     }
 }
 
 - (void)setBackgroundImageURL:(NSURL *)backgroundImageURL
 {
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.tiledImageView.frame];
-    [self insertSubview:backgroundImageView belowSubview:self.tiledImageView];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.imageView.frame];
+    [self insertSubview:backgroundImageView belowSubview:self.imageView];
     [backgroundImageView setImageWithURL:backgroundImageURL];
     _backgroundImageView = backgroundImageView;
     _backgroundImageURL = backgroundImageURL;
@@ -102,12 +100,12 @@
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-	return self.tiledImageView;
+	return self.imageView;
 }
 
 -(CGPoint)coordinateFor:(CGPoint)point
 {
-    CGSize tiledSize = [self.dataSource imageSizeForImageView:self.tiledImageView];
+    CGSize tiledSize = [self.dataSource imageSizeForImageView:self.imageView];
     return CGPointMake(tiledSize.width * point.x, tiledSize.height - (tiledSize.height * point.y));
 }
 
