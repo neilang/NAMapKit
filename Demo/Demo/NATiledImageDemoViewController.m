@@ -39,10 +39,10 @@
 
     [self.view addSubview:mapView];
 
-    NAAnnotation *champagneBar = [NAAnnotation annotationWithPoint:[mapView coordinateFor:CGPointMake(0.30f, 0.10f)]];
+    NAAnnotation *champagneBar = [NAAnnotation annotationWithPoint:CGPointMake(1500.0f, 4850.1f)];
     [mapView addAnnotation:champagneBar animated:NO];
 
-    NAAnnotation *artsyBooth = [NAAnnotation annotationWithPoint:[mapView coordinateFor:CGPointMake(0.53f, 0.83f)]];
+    NAAnnotation *artsyBooth = [NAAnnotation annotationWithPoint:CGPointMake(2650.0f, 916.12f)];
     [mapView addAnnotation:artsyBooth animated:NO];
 }
 

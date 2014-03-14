@@ -103,10 +103,4 @@
 	return self.imageView;
 }
 
--(CGPoint)coordinateFor:(CGPoint)point
-{
-    CGSize tiledSize = [self.dataSource imageSizeForImageView:self.imageView];
-    return CGPointMake(tiledSize.width * point.x, tiledSize.height - (tiledSize.height * point.y));
-}
-
 @end
