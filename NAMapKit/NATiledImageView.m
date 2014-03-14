@@ -198,7 +198,9 @@
                     }
                 }
                 
-                [sself.downloadOperations removeObjectForKey:tileURL];
+                @synchronized(sself.downloadOperations) {
+                    [sself.downloadOperations removeObjectForKey:tileURL];
+                }
             };
             
             if ([NSThread isMainThread]) {
@@ -208,7 +210,9 @@
             }
         }];
         
-        [self.downloadOperations setObject:operation forKey:tileURL];
+        @synchronized(self.downloadOperations) {
+            [self.downloadOperations setObject:operation forKey:tileURL];
+        }
     }
 }
 
@@ -220,13 +224,15 @@
 
 -(void)cancelConcurrentDownloads
 {
-    for(id<SDWebImageOperation> operation in self.downloadOperations.objectEnumerator) {
-        if (operation) {
-            [operation cancel];
+    @synchronized(self.downloadOperations) {
+        for(id<SDWebImageOperation> operation in self.downloadOperations.objectEnumerator) {
+            if (operation) {
+                [operation cancel];
+            }
         }
+        
+        [self.downloadOperations removeAllObjects];
     }
-    
-    _downloadOperations = nil;
 }
 
 @end
