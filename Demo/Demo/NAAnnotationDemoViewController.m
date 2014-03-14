@@ -3,7 +3,7 @@
 //  Demo
 //
 //  Created by Daniel Doubrovkine on 3/7/14.
-//  Copyright (c) 2014 neilang.com. All rights reserved.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAAnnotationDemoViewController.h"
@@ -16,7 +16,7 @@
     [super viewDidLoad];
 
     NAMapView *mapView = [[NAMapView alloc] initWithFrame:self.view.bounds];
-    
+
     mapView.mapViewDelegate = self;
     mapView.backgroundColor  = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

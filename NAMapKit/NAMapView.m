@@ -1,14 +1,14 @@
 //
-// NAMapView.h
-// NAMapKit
+//  NAMapView.m
+//  NAMapKit
 //
-// Created by Neil Ang on 21/07/10.
-// Copyright 2010 neilang.com. All rights reserved.
+//  Created by Neil Ang on 21/07/10.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAMapView.h"
 
-const CGFloat zoomStep = 1.5f;
+const CGFloat defaultZoomStep = 1.5f;
 
 @interface NAMapView()
 
@@ -43,6 +43,7 @@ const CGFloat zoomStep = 1.5f;
     [self createImageView];
     
     _annotations = [NSMutableArray array];
+    _zoomStep = defaultZoomStep;
     
     [self.panGestureRecognizer addTarget:self action:@selector(mapPanGestureHandler:)];
 }
@@ -91,16 +92,16 @@ const CGFloat zoomStep = 1.5f;
     [self.annotations removeObject:annotation];
 }
 
-- (void)centreOnPoint:(CGPoint)point animated:(BOOL)animate {
-	float x = (point.x * self.zoomScale) - (self.frame.size.width / 2.0f);
-	float y = (point.y * self.zoomScale) - (self.frame.size.height / 2.0f);
+- (void)centerOnPoint:(CGPoint)point animated:(BOOL)animate {
+	CGFloat x = (point.x * self.zoomScale) - (self.frame.size.width / 2.0f);
+	CGFloat y = (point.y * self.zoomScale) - (self.frame.size.height / 2.0f);
 	[self setContentOffset:CGPointMake(round(x), round(y)) animated:animate];
     _centerPoint = point;
 }
 
 -(CGPoint)zoomRelativePoint:(CGPoint)point{
-    float x = (self.contentSize.width / self.originalSize.width) * point.x;
-    float y = (self.contentSize.height / self.originalSize.height) * point.y;
+    CGFloat x = (self.contentSize.width / self.originalSize.width) * point.x;
+    CGFloat y = (self.contentSize.height / self.originalSize.height) * point.y;
     return CGPointMake(round(x), round(y));
 }
 
@@ -114,7 +115,7 @@ const CGFloat zoomStep = 1.5f;
     
     BOOL zoomedOut = self.zoomScale == self.minimumZoomScale;
     if (!CGPointEqualToPoint(self.centerPoint, CGPointZero) && !zoomedOut) {
-        [self centreOnPoint:self.centerPoint animated:NO];
+        [self centerOnPoint:self.centerPoint animated:NO];
     }
 }
 
@@ -139,13 +140,33 @@ const CGFloat zoomStep = 1.5f;
 
 -(void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
 	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
-	float newScale = self.zoomScale >= self.maximumZoomScale ? self.minimumZoomScale : self.zoomScale * zoomStep;
-	[self setZoomScale:newScale animated:YES];
+    if (self.zoomScale >= self.maximumZoomScale) {
+        [self setZoomScale:self.minimumZoomScale animated:YES];
+    } else {
+        // the location tapped becomes the new center
+        CGPoint tapCenter = [gestureRecognizer locationInView:self.imageView];
+        CGFloat newScale = MIN(self.zoomScale * self.zoomStep, self.maximumZoomScale);
+        CGRect maxZoomRect = [self rectAroundPoint:tapCenter atZoomScale:newScale];
+        [self zoomToRect:maxZoomRect animated:YES];
+    }
+}
+
+- (CGRect)rectAroundPoint:(CGPoint)point atZoomScale:(CGFloat)zoomScale {
+    // define the shape of the zoom rect
+    CGSize boundsSize = self.bounds.size;
+    // modify the size according to the requested zoom level
+    // for example, if we're zooming in to 0.5 zoom, then this will increase the bounds size by a factor of two
+    CGSize scaledBoundsSize = CGSizeMake(boundsSize.width / zoomScale, boundsSize.height / zoomScale);
+   
+    return CGRectMake(point.x - scaledBoundsSize.width / 2,
+                      point.y - scaledBoundsSize.height / 2,
+                      scaledBoundsSize.width,
+                      scaledBoundsSize.height);
 }
 
 -(void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
 	// two-finger tap zooms out, but returns to normal zoom level if it reaches min zoom
-	float newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / zoomStep;
+	CGFloat newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / self.zoomStep;
 	[self setZoomScale:newScale animated:YES];
 }
 

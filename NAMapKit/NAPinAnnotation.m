@@ -1,9 +1,9 @@
 //
-// NAAnnotation.h
-// NAMapKit
+//  NAPinAnnotation.m
+//  NAMapKit
 //
-// Created by Neil Ang on 21/07/10.
-// Copyright 2010 neilang.com. All rights reserved.
+//  Created by Neil Ang on 21/07/10.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAPinAnnotation.h"

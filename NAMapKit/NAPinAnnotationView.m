@@ -1,9 +1,9 @@
 //
-// NAPinAnnotationView.h
-// NAMapKit
+//  NAPinAnnotationView.h
+//  NAMapKit
 //
-// Created by Neil Ang on 21/07/10.
-// Copyright 2010 neilang.com. All rights reserved.
+//  Created by Neil Ang on 21/07/10.
+//  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
 #import "NAPinAnnotationView.h"
@@ -52,9 +52,9 @@ const CGFloat pinPointY = 35.0f;
 
 -(void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.annotation.point];
-    point.x       = point.x - pinPointX;
-    point.y       = point.y - pinPointY;
-    self.frame    = CGRectMake(point.x, point.y, pinWidth, pinHeight);
+    point.x = point.x - pinPointX;
+    point.y = point.y - pinPointY;
+    self.frame = CGRectMake(point.x, point.y, pinWidth, pinHeight);
 }
 
 @end
