@@ -16,14 +16,20 @@ beforeAll(^{
 __block NATiledImageDemoViewController *vc = nil;
 
 beforeEach(^{
+    UIWindow *window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     vc = [[NATiledImageDemoViewController alloc] init];
+    window.rootViewController = vc;
     expect(vc.view).willNot.beNil();
+    [window makeKeyAndVisible];
 });
 
 // TODO: drawRect isn't called when running in a test until the test has finished
-pending(@"displays map with a pin", ^{
-    [vc viewDidAppear:NO];
-    expect(vc.view).to.haveValidSnapshotNamed(@"default");
+it(@"displays map with a pin", ^AsyncBlock {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long) NULL), ^(void) {
+        [NSThread sleepForTimeInterval:3.0];
+        expect(vc.view).to.haveValidSnapshotNamed(@"default");
+        done();
+    });
 });
 
 SpecEnd
