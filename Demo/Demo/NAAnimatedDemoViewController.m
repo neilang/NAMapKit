@@ -40,6 +40,10 @@
 
     NSArray *annotations = [NSArray arrayWithObjects:a0, a1, a2, a3, a4, a5, a6, a7, nil];
 
+    for (NAPinAnnotation *annotation in annotations) {
+        annotation.title = @"Hello World";
+    }
+    
     [mapView addAnnotations:annotations animated:YES];
 }
 
