@@ -81,6 +81,7 @@
 
 -(void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
+    self.backgroundImageView.frame = self.imageView.frame;
     [super scrollViewDidZoom:scrollView];
     NSInteger newZoomLevel = self.imageView.currentZoomLevel;
     if (newZoomLevel != self.tileZoomLevel) {
