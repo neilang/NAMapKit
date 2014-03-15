@@ -95,6 +95,6 @@ Attribution
 
 When using this code please include the following attribution:
 
-**Includes NAMapKit code developed by [Neil Ang](http://neilang.com/) and [Tony Arnold](http://thecocoabots.com/).**
+**Includes NAMapKit code developed by [Neil Ang](http://neilang.com/), [Tony Arnold](http://thecocoabots.com/), [Daniel Doubrovkine](http://code.dblock.org/) and [Orta Therox](http://orta.github.io/).**
 
 Have an app on the AppStore that's using NAMapKit? [Add it to the wiki](https://github.com/neilang/NAMapKit/wiki).
