@@ -1,13 +1,10 @@
-#### [3.0](https://github.com/neilang/NAMapKit/tree/version-3.0) (Next)
+#### [3.0](https://github.com/neilang/NAMapKit/tree/v3.0) (3/15/2014)
 
 * [#16](https://github.com/neilang/NAMapKit/pull/16) - Extracted [NAPinAnnotationMapView](NAMapKit/NAPinAnnotationMapView.h) out of a, now mimimal, `NAMapView` - [@dblock](github.com/dblock).
 * [#18](https://github.com/neilang/NAMapKit/pull/18) - Added [NAMapViewDelegate](NAMapKit/NAMapViewDelegate.h) for easier handling of taps and zoom events - [@dblock](github.com/dblock).
 * [#19](https://github.com/neilang/NAMapKit/pull/19) - Added [NATiledImageMapView](NAMapKit/NATiledImageMapView.h) with support for deep-zoom tiled maps - [@dblock](github.com/dblock), [@orta](github.com/orta).
 * [#20](https://github.com/neilang/NAMapKit/pull/20) - Zoom now pans and rests at the point being tapped - [@orta](github.com/orta).
-
-#### [HEAD](https://github.com/neilang/NAMapKit) (Stable)
-
-* [#14](https://github.com/neilang/NAMapKit/pull/14) - Added tests and [Travis-CI]() - [@dblock](github.com/dblock).
+* [#14](https://github.com/neilang/NAMapKit/pull/14) - Added tests and [Travis-CI](https://travis-ci.org/neilang/NAMapKit) - [@dblock](github.com/dblock).
 
 #### [2.1](https://github.com/neilang/NAMapKit/tree/v2.1)
 
