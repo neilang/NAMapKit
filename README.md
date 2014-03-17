@@ -83,7 +83,7 @@ For a complete example of a tiled map, see [NATiledImageDemoViewController.m](De
 Notes
 -----
 
-Current version _requires ARC and iOS6_. If you are developing for iOS5 and below, checkout the version `2.0` tag of the repository.
+Current version _requires ARC and iOS6_. If you are developing for iOS5 and below, checkout the version `2.0` tag of the repository, for iOS3 and below use `1.0`.
 
 If you are using Interface Builder, you can add a UIScrollView to your XIB and change the class to `NAMapView` to use the framework.
 
