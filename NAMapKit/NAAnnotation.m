@@ -9,8 +9,8 @@
 #import "NAAnnotation.h"
 #import "NAMapView.h"
 
-const CGFloat dotRadius = 10.0f;
-const CGFloat dotOpacity = 0.5f;
+const CGFloat NAMapViewAnnotationDotRadius = 20.0f;
+const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
 
 @implementation NAAnnotation
 
@@ -26,24 +26,24 @@ const CGFloat dotOpacity = 0.5f;
     return self;
 }
 
--(void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate
+- (void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate
 {
     NSAssert(!self.mapView, @"Annotation already added to map.");
 
     if (!self.view) {
         _view = [self createViewOnMapView:mapView];
     }
-    
+
     [mapView addSubview:self.view];
     [mapView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     _mapView = mapView;
 
     _mapViewDelegate = mapView.mapViewDelegate;
-    
+
     [self updatePosition];
 }
 
--(void)removeFromMapView
+- (void)removeFromMapView
 {
     [self.view removeFromSuperview];
     [self.mapView removeObserver:self forKeyPath:@"contentSize"];
@@ -57,26 +57,22 @@ const CGFloat dotOpacity = 0.5f;
 	}
 }
 
--(void)updatePosition{
+- (void)updatePosition {
+    if (! self.mapView) return;
     CGPoint point = [self.mapView zoomRelativePoint:self.point];
-    self.view.frame = (CGRect){
+    self.view.frame = (CGRect) {
         .origin = point,
-        .size = self.view.frame.size
+        .size = self.view.bounds.size
     };
 }
 
--(UIView *)createViewOnMapView:(NAMapView *)mapView
+- (UIView *)createViewOnMapView:(NAMapView *)mapView
 {
-    UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0,0,dotRadius*2,dotRadius*2)];
-    view.alpha = dotOpacity;
-    view.layer.cornerRadius = dotRadius;
-    view.backgroundColor = [UIColor redColor];
-    [view addTarget:self action:@selector(tappedOnAnnotation:) forControlEvents:UIControlEventTouchDown];
-    [self updatePosition];
-    return view;
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    return nil;
 }
 
--(IBAction)tappedOnAnnotation:(id)sender
+- (IBAction)tappedOnAnnotation:(id)sender
 {
     [self.mapViewDelegate mapView:self.mapView tappedOnAnnotation:self];
 }

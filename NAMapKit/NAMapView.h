@@ -14,21 +14,21 @@
 @interface NAMapView : UIScrollView<UIScrollViewDelegate>
 
 // Display a map with a background image.
--(void)displayMap:(UIImage *)map;
+- (void)displayMap:(UIImage *)map;
 // Add an annotation.
--(void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
+- (void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
 // Add a set of annotations.
--(void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate;
+- (void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate;
 // Remove an annotation.
--(void)removeAnnotation:(NAAnnotation *)annotation;
+- (void)removeAnnotation:(NAAnnotation *)annotation;
 // Calculate the point on the screen from a point on the original image at the current zoom level.
--(CGPoint)zoomRelativePoint:(CGPoint)point;
+- (CGPoint)zoomRelativePoint:(CGPoint)point;
 // Select a particular annotation, notably centers the map on the annotation point.
--(void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
+- (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
 // Center map on a given point.
--(void)centerOnPoint:(CGPoint)point animated:(BOOL)animate;
+- (void)centerOnPoint:(CGPoint)point animated:(BOOL)animate;
 // Callback invoked to setup the map.
--(void)setupMap;
+- (void)setupMap;
 
 // Current map zoom level.
 @property (nonatomic, readonly) CGFloat zoomLevel;

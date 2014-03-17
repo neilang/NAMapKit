@@ -7,7 +7,7 @@
 //
 
 #import "NAMasterViewController.h"
-#import "NAAnnotationDemoViewController.h"
+#import "NADotAnnotationDemoViewController.h"
 #import "NAPinAnnotationsDemoViewController.h"
 #import "NALoadViaNIBDemoViewController.h"
 #import "NAAnimatedDemoViewController.h"
@@ -81,7 +81,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if(indexPath.row == 0){
-        NAAnnotationDemoViewController *vc = [[NAAnnotationDemoViewController alloc] initWithNibName:nil bundle:nil];
+        NADotAnnotationDemoViewController *vc = [[NADotAnnotationDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     } else if(indexPath.row == 1){
         NAPinAnnotationsDemoViewController *vc = [[NAPinAnnotationsDemoViewController alloc] initWithNibName:nil bundle:nil];

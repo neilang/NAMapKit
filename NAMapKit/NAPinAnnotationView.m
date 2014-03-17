@@ -8,10 +8,10 @@
 
 #import "NAPinAnnotationView.h"
 
-const CGFloat pinWidth = 32.0f;
-const CGFloat pinHeight = 39.0f;
-const CGFloat pinPointX = 8.0f;
-const CGFloat pinPointY = 35.0f;
+const CGFloat NAMapViewAnnotationPinWidth = 32.0f;
+const CGFloat NAMapViewAnnotationPinHeight = 39.0f;
+const CGFloat NAMapViewAnnotationPinPointX = 8.0f;
+const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
 
 @interface NAPinAnnotationView()
 @property (nonatomic, weak) NAMapView *mapView;
@@ -50,11 +50,11 @@ const CGFloat pinPointY = 35.0f;
     [self setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
 }
 
--(void)updatePosition{
+- (void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.annotation.point];
-    point.x = point.x - pinPointX;
-    point.y = point.y - pinPointY;
-    self.frame = CGRectMake(point.x, point.y, pinWidth, pinHeight);
+    point.x = point.x - NAMapViewAnnotationPinPointX;
+    point.y = point.y - NAMapViewAnnotationPinPointY;
+    self.frame = CGRectMake(point.x, point.y, NAMapViewAnnotationPinWidth, NAMapViewAnnotationPinHeight);
 }
 
 @end

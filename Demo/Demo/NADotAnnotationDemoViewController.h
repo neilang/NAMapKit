@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "NAMapViewDelegate.h"
 
-@interface NAAnnotationDemoViewController : UIViewController<NAMapViewDelegate>
+@interface NADotAnnotationDemoViewController : UIViewController<NAMapViewDelegate>
 
 @end

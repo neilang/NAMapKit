@@ -6,7 +6,7 @@
 //  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
-#import "NAAnnotationDemoViewController.h"
+#import "NADotAnnotationDemoViewController.h"
 
 SpecBegin(NAAnnotationDemoViewController)
 
@@ -15,7 +15,7 @@ beforeAll(^{
 });
 
 it(@"displays map with a pin", ^{
-    NAAnnotationDemoViewController *vc = [[NAAnnotationDemoViewController alloc] init];
+    NADotAnnotationDemoViewController *vc = [[NADotAnnotationDemoViewController alloc] init];
     expect(vc.view).willNot.beNil();
     expect(vc.view).to.haveValidSnapshotNamed(@"default");
 });

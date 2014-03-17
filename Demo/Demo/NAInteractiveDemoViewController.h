@@ -14,12 +14,12 @@
 
 @property (nonatomic, weak) IBOutlet NAMapView *mapView;
 
--(IBAction)addPin:(id)sender;
--(void)addPinAt:(CGPoint)point withColor:(NAPinColor)color;
+- (IBAction)addPin:(id)sender;
+- (void)addPinAt:(CGPoint)point withColor:(NAPinColor)color;
 
--(IBAction)removePin:(id)sender;
+- (IBAction)removePin:(id)sender;
 
--(IBAction)selectRandom:(id)sender;
--(void)selectPinAt:(NSInteger)index;
+- (IBAction)selectRandom:(id)sender;
+- (void)selectPinAt:(NSInteger)index;
 
 @end

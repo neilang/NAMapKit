@@ -21,8 +21,8 @@
 @property (nonatomic, assign) BOOL animating;
 
 // Create a view for a pin annotation on a map.
--(id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView;
+- (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView;
 // Update the pin position when the map is zoomed in or zoomed out.
--(void)updatePosition;
+- (void)updatePosition;
 
 @end

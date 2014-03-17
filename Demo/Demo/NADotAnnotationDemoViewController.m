@@ -1,15 +1,16 @@
 //
-//  NAAnnotationDemoViewController.m
+//  NADotAnnotationDemoViewController.m
 //  Demo
 //
 //  Created by Daniel Doubrovkine on 3/7/14.
 //  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
-#import "NAAnnotationDemoViewController.h"
+#import "NADotAnnotationDemoViewController.h"
 #import "NAMapView.h"
+#import "NADotAnnotation.h"
 
-@implementation NAAnnotationDemoViewController
+@implementation NADotAnnotationDemoViewController
 
 - (void)viewDidLoad
 {
@@ -24,17 +25,22 @@
     mapView.minimumZoomScale = 0.5f;
     mapView.maximumZoomScale = 1.5f;
 
-    [mapView displayMap:[UIImage imageNamed:@"australia"]];
+    [mapView displayMap:[UIImage imageNamed:@"Maps/australia"]];
 
     [self.view addSubview:mapView];
 
-    NAAnnotation *melbourne = [NAAnnotation annotationWithPoint:CGPointMake(543.0f, 489.0f)];
+    NADotAnnotation *melbourne = [NADotAnnotation annotationWithPoint:CGPointMake(543.0f, 489.0f)];
+    melbourne.radius = 10.0f;
     [mapView addAnnotation:melbourne animated:NO];
 
-    NAAnnotation *perth = [NAAnnotation annotationWithPoint:CGPointMake(63.0f, 379.0f)];
+    NADotAnnotation *perth = [NADotAnnotation annotationWithPoint:CGPointMake(63.0f, 379.0f)];
+    perth.radius = 10.0f;
+    perth.color = [UIColor blackColor];
     [mapView addAnnotation:perth animated:YES];
 
-	NAAnnotation *brisbane = [NAAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
+	NADotAnnotation *brisbane = [NADotAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
+    brisbane.radius = 10.0f;
+    brisbane.color = [UIColor orangeColor];
     [mapView addAnnotation:brisbane animated:NO];
 }
 
@@ -43,7 +49,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)mapView:(NAMapView *)mapView tappedOnAnnotation:(NAAnnotation *)annotation
+- (void)mapView:(NAMapView *)mapView tappedOnAnnotation:(NADotAnnotation *)annotation
 {
     NSLog(@"tapped: %@", annotation);
 }

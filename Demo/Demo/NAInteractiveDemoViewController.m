@@ -19,13 +19,13 @@
 
 @implementation NAInteractiveDemoViewController
 
--(void)viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
 
     self.annotations = [[NSMutableArray alloc] init];
 
-    UIImage *image = [UIImage imageNamed:@"australia"];
+    UIImage *image = [UIImage imageNamed:@"Maps/australia"];
 
     self.mapView.backgroundColor = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     self.mapView.mapViewDelegate = self;
@@ -38,7 +38,7 @@
     self.size = image.size;
 }
 
--(IBAction)addPin:(id)sender{
+- (IBAction)addPin:(id)sender{
 
     NSInteger x = (arc4random() % (int)self.size.width);
     NSInteger y = (arc4random() % (int)self.size.width);
@@ -48,12 +48,12 @@
     [self addPinAt:point withColor:arc4random() % 3];
 }
 
--(void)addPinAt:(CGPoint)point withColor:(NAPinColor)color{
+- (void)addPinAt:(CGPoint)point withColor:(NAPinColor)color{
 
     [self.mapView centerOnPoint:point animated:YES];
 
     NAPinAnnotation *annotation = [NAPinAnnotation annotationWithPoint:point];
-    annotation.title = [NSString stringWithFormat:@"Pin %d", self.annotations.count + 1];
+    annotation.title = [NSString stringWithFormat:@"Pin %@", @(self.annotations.count + 1)];
     annotation.color = color;
 
     [self.mapView addAnnotation:annotation animated:YES];
@@ -62,7 +62,7 @@
     _lastFocused = annotation;
 }
 
--(IBAction)removePin:(id)sender{
+- (IBAction)removePin:(id)sender{
     if(self.annotations.count <= 0 || self.lastFocused == nil) return;
     [self.mapView centerOnPoint:self.lastFocused.point animated:YES];
     [self.mapView removeAnnotation:self.lastFocused];
@@ -70,7 +70,7 @@
     self.lastFocused = self.annotations.lastObject;
 }
 
--(IBAction)selectRandom:(id)sender{
+- (IBAction)selectRandom:(id)sender{
     if(self.annotations.count <= 0) return;
 
     NSInteger rand = (arc4random() % (int)self.annotations.count);
@@ -84,12 +84,12 @@
     [self selectPin:annotation];
 }
 
--(void)selectPinAt:(NSInteger)index
+- (void)selectPinAt:(NSInteger)index
 {
     [self selectPin:[self.annotations objectAtIndex:index]];
 }
 
--(void)selectPin:(NAPinAnnotation *)annotation
+- (void)selectPin:(NAPinAnnotation *)annotation
 {
     self.selectedPinLabel.text = [NSString stringWithFormat:@"%@", annotation.title];
     [self.mapView selectAnnotation:annotation animated:YES];

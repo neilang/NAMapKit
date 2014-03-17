@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		07DDEB3EBEEC4C6FAF715BF1 /* libPods-DemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DB4ADA533041DD9D9E7647 /* libPods-DemoTests.a */; };
 		273E9EE865984F44A8AF2A9D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2957D8BD1FB4630AD6F922F /* libPods.a */; };
+		3C79CCB618D71AF500F6DF9F /* Maps in Resources */ = {isa = PBXBuildFile; fileRef = 3C79CCB518D71AF500F6DF9F /* Maps */; };
 		3C7F86CD18CE609200F7091A /* NATiledImageDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F86CC18CE609200F7091A /* NATiledImageDemoViewController.m */; };
 		3C990C8518CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C990C8418CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m */; };
 		3C9F354518CA838600EA1F22 /* NAMasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354418CA838600EA1F22 /* NAMasterViewControllerTests.m */; };
 		3C9F354718CA862100EA1F22 /* NAPinAnnotationsDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354618CA862100EA1F22 /* NAPinAnnotationsDemoViewControllerTests.m */; };
 		3C9F354918CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */; };
 		3C9F354B18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */; };
-		3C9F354E18CA922C00EA1F22 /* NAAnnotationDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354D18CA922C00EA1F22 /* NAAnnotationDemoViewController.m */; };
+		3C9F354E18CA922C00EA1F22 /* NADotAnnotationDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354D18CA922C00EA1F22 /* NADotAnnotationDemoViewController.m */; };
 		3C9F355018CB8B6000EA1F22 /* NAAnnotationDemoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354F18CB8B6000EA1F22 /* NAAnnotationDemoViewControllerTests.m */; };
 		3CB0E6D718C8B9E2009CE8DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0E6D618C8B9E2009CE8DB /* Foundation.framework */; };
 		3CB0E6D918C8B9E2009CE8DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB0E6D818C8B9E2009CE8DB /* CoreGraphics.framework */; };
@@ -35,7 +36,6 @@
 		3CB0E72018C8BB08009CE8DB /* NALoadViaNIBDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0E71518C8BB08009CE8DB /* NALoadViaNIBDemoViewController.m */; };
 		3CB0E72118C8BB08009CE8DB /* NALoadViaNIBDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0E71618C8BB08009CE8DB /* NALoadViaNIBDemoViewController.xib */; };
 		3CB0E72218C8BB08009CE8DB /* NAMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0E71818C8BB08009CE8DB /* NAMasterViewController.m */; };
-		3CB0E72718C8BC0C009CE8DB /* australia.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0E72618C8BC0C009CE8DB /* australia.png */; };
 		3CB0E72A18C8BC62009CE8DB /* NAMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0E72818C8BC62009CE8DB /* NAMasterViewController.xib */; };
 		3CB0E72F18C8C9A4009CE8DB /* NAMapViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0E72E18C8C9A4009CE8DB /* NAMapViewTests.m */; };
 /* End PBXBuildFile section */
@@ -51,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C79CCB518D71AF500F6DF9F /* Maps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Maps; sourceTree = SOURCE_ROOT; };
 		3C7F86CB18CE609200F7091A /* NATiledImageDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATiledImageDemoViewController.h; sourceTree = "<group>"; };
 		3C7F86CC18CE609200F7091A /* NATiledImageDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATiledImageDemoViewController.m; sourceTree = "<group>"; };
 		3C990C8418CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATiledImageMapViewControllerTests.m; sourceTree = "<group>"; };
@@ -58,8 +59,8 @@
 		3C9F354618CA862100EA1F22 /* NAPinAnnotationsDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPinAnnotationsDemoViewControllerTests.m; sourceTree = "<group>"; };
 		3C9F354818CA86D600EA1F22 /* NAInteractiveDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAInteractiveDemoViewControllerTests.m; sourceTree = "<group>"; };
 		3C9F354A18CA876700EA1F22 /* NALoadViaNIBDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NALoadViaNIBDemoViewControllerTests.m; sourceTree = "<group>"; };
-		3C9F354C18CA922C00EA1F22 /* NAAnnotationDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAnnotationDemoViewController.h; sourceTree = "<group>"; };
-		3C9F354D18CA922C00EA1F22 /* NAAnnotationDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAnnotationDemoViewController.m; sourceTree = "<group>"; };
+		3C9F354C18CA922C00EA1F22 /* NADotAnnotationDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NADotAnnotationDemoViewController.h; sourceTree = "<group>"; };
+		3C9F354D18CA922C00EA1F22 /* NADotAnnotationDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NADotAnnotationDemoViewController.m; sourceTree = "<group>"; };
 		3C9F354F18CB8B6000EA1F22 /* NAAnnotationDemoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAnnotationDemoViewControllerTests.m; sourceTree = "<group>"; };
 		3CB0E6D318C8B9E2009CE8DB /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB0E6D618C8B9E2009CE8DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,7 +89,6 @@
 		3CB0E71618C8BB08009CE8DB /* NALoadViaNIBDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NALoadViaNIBDemoViewController.xib; sourceTree = "<group>"; };
 		3CB0E71718C8BB08009CE8DB /* NAMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMasterViewController.h; sourceTree = "<group>"; };
 		3CB0E71818C8BB08009CE8DB /* NAMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMasterViewController.m; sourceTree = "<group>"; };
-		3CB0E72618C8BC0C009CE8DB /* australia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = australia.png; sourceTree = "<group>"; };
 		3CB0E72918C8BC62009CE8DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NAMasterViewController.xib; sourceTree = "<group>"; };
 		3CB0E72B18C8BD61009CE8DB /* DemoTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DemoTests-Prefix.pch"; sourceTree = "<group>"; };
 		3CB0E72E18C8C9A4009CE8DB /* NAMapViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMapViewTests.m; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 		3CB0E6DC18C8B9E2009CE8DB /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				3C79CCB518D71AF500F6DF9F /* Maps */,
 				3CB0E72818C8BC62009CE8DB /* NAMasterViewController.xib */,
-				3CB0E72618C8BC0C009CE8DB /* australia.png */,
 				3CB0E70B18C8BB08009CE8DB /* NAAnimatedDemoViewController.h */,
 				3CB0E70C18C8BB08009CE8DB /* NAAnimatedDemoViewController.m */,
 				3CB0E70D18C8BB08009CE8DB /* NAAppDelegate.h */,
@@ -179,8 +179,8 @@
 				3CB0E71818C8BB08009CE8DB /* NAMasterViewController.m */,
 				3CB0E6EE18C8B9E2009CE8DB /* Images.xcassets */,
 				3CB0E6DD18C8B9E2009CE8DB /* Supporting Files */,
-				3C9F354C18CA922C00EA1F22 /* NAAnnotationDemoViewController.h */,
-				3C9F354D18CA922C00EA1F22 /* NAAnnotationDemoViewController.m */,
+				3C9F354C18CA922C00EA1F22 /* NADotAnnotationDemoViewController.h */,
+				3C9F354D18CA922C00EA1F22 /* NADotAnnotationDemoViewController.m */,
 				3C7F86CB18CE609200F7091A /* NATiledImageDemoViewController.h */,
 				3C7F86CC18CE609200F7091A /* NATiledImageDemoViewController.m */,
 			);
@@ -272,7 +272,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NA;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = neilang.com;
 				TargetAttributes = {
 					3CB0E6F318C8B9E2009CE8DB = {
@@ -305,10 +305,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB0E6EF18C8B9E2009CE8DB /* Images.xcassets in Resources */,
+				3C79CCB618D71AF500F6DF9F /* Maps in Resources */,
 				3CB0E6E118C8B9E2009CE8DB /* InfoPlist.strings in Resources */,
 				3CB0E71F18C8BB08009CE8DB /* NAInteractiveDemoViewController.xib in Resources */,
 				3CB0E72A18C8BC62009CE8DB /* NAMasterViewController.xib in Resources */,
-				3CB0E72718C8BC0C009CE8DB /* australia.png in Resources */,
 				3CB0E72118C8BB08009CE8DB /* NALoadViaNIBDemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +396,7 @@
 				3CB0E71E18C8BB08009CE8DB /* NAInteractiveDemoViewController.m in Sources */,
 				3CB0E71C18C8BB08009CE8DB /* NAAppDelegate.m in Sources */,
 				3CB0E71B18C8BB08009CE8DB /* NAAnimatedDemoViewController.m in Sources */,
-				3C9F354E18CA922C00EA1F22 /* NAAnnotationDemoViewController.m in Sources */,
+				3C9F354E18CA922C00EA1F22 /* NADotAnnotationDemoViewController.m in Sources */,
 				3C7F86CD18CE609200F7091A /* NATiledImageDemoViewController.m in Sources */,
 				3CB0E72018C8BB08009CE8DB /* NALoadViaNIBDemoViewController.m in Sources */,
 				3CB0E71D18C8BB08009CE8DB /* NAPinAnnotationsDemoViewController.m in Sources */,
@@ -459,7 +459,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -498,7 +497,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -567,7 +565,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93B37F17EB6B492D83AB25A2 /* Pods-DemoTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -592,7 +589,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93B37F17EB6B492D83AB25A2 /* Pods-DemoTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
