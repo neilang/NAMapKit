@@ -19,16 +19,16 @@ typedef enum {
  */
 @interface NAPinAnnotation : NAAnnotation
 
-// Pin color.
+/// Pin color.
 @property (nonatomic, assign) NAPinColor color;
-// Pin title.
+/// Pin title.
 @property (nonatomic, copy) NSString *title;
-// Pin subtitle.
+/// Pin subtitle.
 @property (nonatomic, copy) NSString *subtitle;
-// Callout view that appears when the pin is tapped.
+/// Callout view that appears when the pin is tapped.
 @property (nonatomic, strong) UIButton *rightCalloutAccessoryView;
 
-// Create a new pin at a point on a map.
+/// Create a new pin at a point on a map.
 - (id)initWithPoint:(CGPoint)point;
 
 @end

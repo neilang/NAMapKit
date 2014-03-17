@@ -15,10 +15,10 @@
  */
 @interface NAPinAnnotationCallOutView : UIView
 
-// Create a new callout view on a map.
+/// Create a new callout view on a map.
 - (id)initOnMapView:(NAMapView *)mapView;
 
-// Pin annotation.
-@property(nonatomic, readwrite) NAPinAnnotation *annotation;
+/// Pin annotation.
+@property(readwrite, nonatomic, strong) NAPinAnnotation *annotation;
 
 @end
