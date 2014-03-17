@@ -49,7 +49,7 @@ You can capture finger taps and zoom changes by registering a `mapViewDelegate` 
 ```objc
 @implementation DemoViewController
 
--(void)viewDidLoad
+- (void)viewDidLoad
 {
     // register the view controller as the map's delegate
     self.mapView.mapViewDelegate = self;

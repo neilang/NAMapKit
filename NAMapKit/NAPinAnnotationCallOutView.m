@@ -38,17 +38,17 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 @property (nonatomic, assign) CGPoint      position;
 @property (nonatomic, weak)   NAMapView   *mapView;
 
--(void)updatePosition;
--(void)positionView:(UIView *)view posX:(float)x;
--(void)positionView:(UIView *)view posX:(float)x width:(float)width;
+- (void)updatePosition;
+- (void)positionView:(UIView *)view posX:(float)x;
+- (void)positionView:(UIView *)view posX:(float)x width:(float)width;
 
 @end
 
 @implementation NAPinAnnotationCallOutView
 
--(id)initOnMapView:(NAMapView *)mapView {
+- (id)initOnMapView:(NAMapView *)mapView {
     self = [super init];
-    if (self) {        
+    if (self) {
         UIImage *calloutBG                 = [[UIImage imageNamed:NAMapViewAnnotationCalloutImageBG] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
         self.calloutLeftCapView            = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NAMapViewAnnotationCalloutImageLeft]];
         self.calloutRightCapView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NAMapViewAnnotationCalloutImageRight]];
@@ -68,108 +68,108 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
     return self;
 }
 
--(void)setAnnotation:(NAPinAnnotation *)annotation{
-        
+- (void)setAnnotation:(NAPinAnnotation *)annotation{
+
     // --- RESET ---
-    
+
     self.titleLabel.text    = @"";
     self.subtitleLabel.text = @"";
     self.point              = CGPointZero;
-    
+
     for (UIView *view in self.subviews) {
 		[view removeFromSuperview];
 	}
-    
+
     self.position = annotation.point;
-    
+
     CGFloat leftCapWidth  = self.calloutLeftCapView.image.size.width;
     CGFloat rightCapWidth = self.calloutRightCapView.image.size.width;
     CGFloat anchorWidth   = self.calloutAnchorView.image.size.width;
     CGFloat anchorHeight  = self.calloutAnchorView.image.size.height;
     CGFloat maxWidth      = self.mapView.frame.size.width;
-    
-    // --- FRAME --- 
-    
+
+    // --- FRAME ---
+
     CGFloat middleWidth = anchorWidth;
-    
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     if (annotation.subtitle) {
         CGSize subtitleSize = [annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:NAMapViewAnnotationCalloutSubtitleFontSize] constrainedToSize:CGSizeMake(maxWidth, NAMapViewAnnotationCalloutSubtitleLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
-        
+
         middleWidth = MAX(subtitleSize.width, middleWidth);
-        
+
         CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NAMapViewAnnotationCalloutTitleFontSize] constrainedToSize:CGSizeMake(maxWidth, NAMapViewAnnotationCalloutTitleLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
-        
+
         middleWidth = MAX(titleSize.width, middleWidth);
     }
     else{
         CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NAMapViewAnnotationCalloutTitleStandaloneFontSize] constrainedToSize:CGSizeMake(maxWidth, NAMapViewAnnotationCalloutTitleStandaloneLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
-        
+
         middleWidth = MAX(titleSize.width, middleWidth);
     }
 #pragma clang diagnostic pop
-    
+
     if (annotation.rightCalloutAccessoryView) {
 		middleWidth += annotation.rightCalloutAccessoryView.frame.size.width + NAMapViewAnnotationCalloutRightAccessoryLeftOffset;
 	}
-    
+
     middleWidth = MIN(maxWidth, middleWidth);
-    
+
     CGFloat totalWidth  = middleWidth + leftCapWidth + rightCapWidth;
-    
+
     self.point = annotation.point;
-        
+
     self.frame = CGRectMake(0.0f, 0.0f, totalWidth, anchorHeight);
     [self updatePosition];
 
     // --- IMAGEVIEWS ---
-    
+
     CGFloat centreOffsetWidth = (middleWidth - anchorWidth) / 2.0f;
-    
+
     [self positionView:self.calloutLeftCapView posX:0.0f];
     [self positionView:self.calloutRightCapView posX:(totalWidth - rightCapWidth)];
     [self positionView:self.calloutAnchorView posX:(leftCapWidth + centreOffsetWidth)];
-    
+
     [self addSubview:self.calloutLeftCapView];
     [self addSubview:self.calloutRightCapView];
     [self addSubview:self.calloutAnchorView];
-    
+
     if (middleWidth > anchorWidth) {
         [self positionView:self.calloutLeftCenterView posX:leftCapWidth width:centreOffsetWidth];
         [self positionView:self.calloutRightCenterView posX:(leftCapWidth + middleWidth - centreOffsetWidth) width:centreOffsetWidth];
-        
+
         [self addSubview:self.calloutLeftCenterView];
         [self addSubview:self.calloutRightCenterView];
 	}
-    
+
     CGFloat labelWidth = middleWidth;
-    
+
     // --- RIGHT ACCESSORY VIEW ---
-    
+
     if (annotation.rightCalloutAccessoryView) {
         CGFloat accesoryWidth = annotation.rightCalloutAccessoryView.frame.size.width;
         CGFloat x = middleWidth - accesoryWidth + leftCapWidth + NAMapViewAnnotationCalloutRightAccessoryLeftOffset;
-        
+
         CGRect frame = annotation.rightCalloutAccessoryView.frame;
         frame.origin.x = x;
         frame.origin.y = NAMapViewAnnotationCalloutRightAccessoryTopOffset;
         annotation.rightCalloutAccessoryView.frame = frame;
-        
+
         [self addSubview:annotation.rightCalloutAccessoryView];
         labelWidth -= accesoryWidth;
 	}
-    
-    
+
+
     // --- LABELS ---
-    
+
     CGFloat currentTitleTopOffset   = NAMapViewAnnotationCalloutTitleStandaloneTopOffset;
 	CGFloat currentTitleLabelHeight = NAMapViewAnnotationCalloutTitleStandaloneLabelHeight;
 	CGFloat currentTitleFontSize    = NAMapViewAnnotationCalloutTitleStandaloneFontSize;
-    
-    
+
+
     // --- SUBTITLE ---
-    
+
     if (annotation.subtitle) {
 		currentTitleTopOffset       = NAMapViewAnnotationCalloutTitleTopOffset;
 		currentTitleLabelHeight     = NAMapViewAnnotationCalloutTitleLabelHeight;
@@ -178,15 +178,15 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
         self.subtitleLabel.frame = CGRectMake(leftCapWidth, NAMapViewAnnotationCalloutSubtitleTopOffset, labelWidth, NAMapViewAnnotationCalloutSubtitleLabelHeight);
         [self addSubview:self.subtitleLabel];
 	}
-    
+
     // --- TITLE ---
-    
+
     self.titleLabel.text  = annotation.title;
     self.titleLabel.font  = [UIFont boldSystemFontOfSize:currentTitleFontSize];
     self.titleLabel.frame = CGRectMake(leftCapWidth, currentTitleTopOffset, labelWidth, currentTitleLabelHeight);
-    
+
     [self addSubview:self.titleLabel];
-        
+
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -197,21 +197,21 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 
 #pragma - Private helpers
 
--(void)updatePosition{
+- (void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.position];
     CGFloat xPos = point.x - (self.frame.size.width / 2.0f);
     CGFloat yPos = point.y - (self.frame.size.height) - NAMapViewAnnotationCalloutAnchorYOffset;
     self.frame = CGRectMake(floor(xPos), yPos, self.frame.size.width, self.frame.size.height);
 }
 
--(void)positionView:(UIView *)view posX:(float)x width:(float)width{
+- (void)positionView:(UIView *)view posX:(float)x width:(float)width{
     CGRect frame     = view.frame;
     frame.origin.x   = x;
     frame.size.width = width;
     view.frame       = frame;
 }
 
--(void)positionView:(UIView *)view posX:(float)x{
+- (void)positionView:(UIView *)view posX:(float)x{
     [self positionView:view posX:x width:view.frame.size.width];
 }
 

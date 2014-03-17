@@ -24,15 +24,15 @@
 // Create an annotation at a given point.
 +(id)annotationWithPoint:(CGPoint)point;
 // Create an annotation at a given point.
--(id)initWithPoint:(CGPoint)point;
+- (id)initWithPoint:(CGPoint)point;
 // Callback invoked when adding an annotation to a map view.
--(void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate;
+- (void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate;
 // Remove this annotation from its map view.
--(void)removeFromMapView;
+- (void)removeFromMapView;
 // Update the annotation position when zooming in or out.
--(void)updatePosition;
+- (void)updatePosition;
 // Override to return a custom view when the annotation is being added to a map view.
--(UIView *)createViewOnMapView:(NAMapView *)mapView;
+- (UIView *)createViewOnMapView:(NAMapView *)mapView;
 
 // A delegate to invoke map-specific events.
 @property (nonatomic, weak) NSObject<NAMapViewDelegate> *mapViewDelegate;

@@ -17,7 +17,7 @@
 
 @implementation NATiledImageDemoViewController
 
--(void)viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
 
@@ -48,12 +48,12 @@
     [mapView addAnnotation:artsyBooth animated:NO];
 }
 
--(void)viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     [self.mapView zoomToFit:animated];
 }
 
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }

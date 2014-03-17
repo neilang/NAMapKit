@@ -26,24 +26,24 @@ const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
     return self;
 }
 
--(void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate
+- (void)addToMapView:(NAMapView *)mapView animated:(BOOL)animate
 {
     NSAssert(!self.mapView, @"Annotation already added to map.");
 
     if (!self.view) {
         _view = [self createViewOnMapView:mapView];
     }
-    
+
     [mapView addSubview:self.view];
     [mapView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     _mapView = mapView;
 
     _mapViewDelegate = mapView.mapViewDelegate;
-    
+
     [self updatePosition];
 }
 
--(void)removeFromMapView
+- (void)removeFromMapView
 {
     [self.view removeFromSuperview];
     [self.mapView removeObserver:self forKeyPath:@"contentSize"];
@@ -57,7 +57,7 @@ const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
 	}
 }
 
--(void)updatePosition{
+- (void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.point];
     self.view.frame = (CGRect){
         .origin = point,
@@ -65,7 +65,7 @@ const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
     };
 }
 
--(UIView *)createViewOnMapView:(NAMapView *)mapView
+- (UIView *)createViewOnMapView:(NAMapView *)mapView
 {
     UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, NAMapViewAnnotationDotRadius*2, NAMapViewAnnotationDotRadius*2)];
     view.alpha = NAMapViewAnnotationDotOpacity;
@@ -76,7 +76,7 @@ const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
     return view;
 }
 
--(IBAction)tappedOnAnnotation:(id)sender
+- (IBAction)tappedOnAnnotation:(id)sender
 {
     [self.mapViewDelegate mapView:self.mapView tappedOnAnnotation:self];
 }

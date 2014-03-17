@@ -50,7 +50,7 @@ const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
     [self setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
 }
 
--(void)updatePosition{
+- (void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.annotation.point];
     point.x = point.x - NAMapViewAnnotationPinPointX;
     point.y = point.y - NAMapViewAnnotationPinPointY;
