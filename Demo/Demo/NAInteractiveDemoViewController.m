@@ -25,7 +25,7 @@
 
     self.annotations = [[NSMutableArray alloc] init];
 
-    UIImage *image = [UIImage imageNamed:@"australia"];
+    UIImage *image = [UIImage imageNamed:@"Maps/australia"];
 
     self.mapView.backgroundColor = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     self.mapView.mapViewDelegate = self;

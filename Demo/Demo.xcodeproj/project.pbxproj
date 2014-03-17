@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07DDEB3EBEEC4C6FAF715BF1 /* libPods-DemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DB4ADA533041DD9D9E7647 /* libPods-DemoTests.a */; };
 		273E9EE865984F44A8AF2A9D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2957D8BD1FB4630AD6F922F /* libPods.a */; };
+		3C79CCB618D71AF500F6DF9F /* Maps in Resources */ = {isa = PBXBuildFile; fileRef = 3C79CCB518D71AF500F6DF9F /* Maps */; };
 		3C7F86CD18CE609200F7091A /* NATiledImageDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F86CC18CE609200F7091A /* NATiledImageDemoViewController.m */; };
 		3C990C8518CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C990C8418CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m */; };
 		3C9F354518CA838600EA1F22 /* NAMasterViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F354418CA838600EA1F22 /* NAMasterViewControllerTests.m */; };
@@ -35,7 +36,6 @@
 		3CB0E72018C8BB08009CE8DB /* NALoadViaNIBDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0E71518C8BB08009CE8DB /* NALoadViaNIBDemoViewController.m */; };
 		3CB0E72118C8BB08009CE8DB /* NALoadViaNIBDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0E71618C8BB08009CE8DB /* NALoadViaNIBDemoViewController.xib */; };
 		3CB0E72218C8BB08009CE8DB /* NAMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0E71818C8BB08009CE8DB /* NAMasterViewController.m */; };
-		3CB0E72718C8BC0C009CE8DB /* australia.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0E72618C8BC0C009CE8DB /* australia.png */; };
 		3CB0E72A18C8BC62009CE8DB /* NAMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0E72818C8BC62009CE8DB /* NAMasterViewController.xib */; };
 		3CB0E72F18C8C9A4009CE8DB /* NAMapViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0E72E18C8C9A4009CE8DB /* NAMapViewTests.m */; };
 /* End PBXBuildFile section */
@@ -51,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C79CCB518D71AF500F6DF9F /* Maps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Maps; sourceTree = SOURCE_ROOT; };
 		3C7F86CB18CE609200F7091A /* NATiledImageDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATiledImageDemoViewController.h; sourceTree = "<group>"; };
 		3C7F86CC18CE609200F7091A /* NATiledImageDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATiledImageDemoViewController.m; sourceTree = "<group>"; };
 		3C990C8418CF60FB00BF4C44 /* NATiledImageMapViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATiledImageMapViewControllerTests.m; sourceTree = "<group>"; };
@@ -88,7 +89,6 @@
 		3CB0E71618C8BB08009CE8DB /* NALoadViaNIBDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NALoadViaNIBDemoViewController.xib; sourceTree = "<group>"; };
 		3CB0E71718C8BB08009CE8DB /* NAMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMasterViewController.h; sourceTree = "<group>"; };
 		3CB0E71818C8BB08009CE8DB /* NAMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMasterViewController.m; sourceTree = "<group>"; };
-		3CB0E72618C8BC0C009CE8DB /* australia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = australia.png; sourceTree = "<group>"; };
 		3CB0E72918C8BC62009CE8DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NAMasterViewController.xib; sourceTree = "<group>"; };
 		3CB0E72B18C8BD61009CE8DB /* DemoTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DemoTests-Prefix.pch"; sourceTree = "<group>"; };
 		3CB0E72E18C8C9A4009CE8DB /* NAMapViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMapViewTests.m; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 		3CB0E6DC18C8B9E2009CE8DB /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				3C79CCB518D71AF500F6DF9F /* Maps */,
 				3CB0E72818C8BC62009CE8DB /* NAMasterViewController.xib */,
-				3CB0E72618C8BC0C009CE8DB /* australia.png */,
 				3CB0E70B18C8BB08009CE8DB /* NAAnimatedDemoViewController.h */,
 				3CB0E70C18C8BB08009CE8DB /* NAAnimatedDemoViewController.m */,
 				3CB0E70D18C8BB08009CE8DB /* NAAppDelegate.h */,
@@ -305,10 +305,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB0E6EF18C8B9E2009CE8DB /* Images.xcassets in Resources */,
+				3C79CCB618D71AF500F6DF9F /* Maps in Resources */,
 				3CB0E6E118C8B9E2009CE8DB /* InfoPlist.strings in Resources */,
 				3CB0E71F18C8BB08009CE8DB /* NAInteractiveDemoViewController.xib in Resources */,
 				3CB0E72A18C8BC62009CE8DB /* NAMasterViewController.xib in Resources */,
-				3CB0E72718C8BC0C009CE8DB /* australia.png in Resources */,
 				3CB0E72118C8BB08009CE8DB /* NALoadViaNIBDemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

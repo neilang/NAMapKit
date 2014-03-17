@@ -15,7 +15,7 @@
 {
     [super viewDidLoad];
 
-    [self.mapView displayMap:[UIImage imageNamed:@"australia"]];
+    [self.mapView displayMap:[UIImage imageNamed:@"Maps/australia"]];
 
     self.mapView.backgroundColor = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
 
