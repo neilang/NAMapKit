@@ -15,14 +15,14 @@
  */
 @interface NAPinAnnotationView : UIButton
 
-// Associated NAPinAnnotation.
-@property (nonatomic, retain) NAPinAnnotation *annotation;
-// Animate the pin.
-@property (nonatomic, assign) BOOL animating;
+/// Associated NAPinAnnotation.
+@property (readwrite, nonatomic, strong) NAPinAnnotation *annotation;
+/// Animate the pin.
+@property (readwrite, nonatomic, assign) BOOL animating;
 
-// Create a view for a pin annotation on a map.
+/// Create a view for a pin annotation on a map.
 - (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView;
-// Update the pin position when the map is zoomed in or zoomed out.
+/// Update the pin position when the map is zoomed in or zoomed out.
 - (void)updatePosition;
 
 @end

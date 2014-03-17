@@ -8,6 +8,8 @@ Lets you drop MapKit style pins or custom annotations onto a standard `UIImage` 
 ![Melbourne, Australia](Demo/Screenshots/melbourne.png)
 ![Brisbane, Australia](Demo/Screenshots/brisbane.png)
 
+Get started by running `pod try NAMapKit` in your terminal.
+
 Usage
 -----
 
@@ -81,7 +83,7 @@ For a complete example of a tiled map, see [NATiledImageDemoViewController.m](De
 Notes
 -----
 
-Current version _requires ARC and iOS5_ (untested on iOS4). If you are developing for iOS3/4, checkout the version 1.0 tag of the repository.
+Current version _requires ARC and iOS6_. If you are developing for iOS5 and below, checkout the version `2.0` tag of the repository, for iOS3 and below use `1.0`.
 
 If you are using Interface Builder, you can add a UIScrollView to your XIB and change the class to `NAMapView` to use the framework.
 
