@@ -10,10 +10,6 @@
 
 SpecBegin(NAInteractiveDemoViewController)
 
-beforeAll(^{
-    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
-});
-
 __block NAInteractiveDemoViewController *vc = nil;
 
 beforeEach(^{
@@ -22,27 +18,26 @@ beforeEach(^{
 });
 
 it(@"doesn't display any pins", ^{
-    expect(vc.view).to.haveValidSnapshotNamed(@"default");
+    expect(vc.view).will.haveValidSnapshotNamed(@"default");
 });
 
 it(@"adds a pin", ^{
-    [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed];
-    expect(vc.view).to.haveValidSnapshotNamed(@"add");
-
+    [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed animated:NO];
+    expect(vc.view).will.haveValidSnapshotNamed(@"add");
 });
 
 it(@"removes a pin", ^{
-    [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed];
-    [vc addPinAt:CGPointMake(200, 300) withColor:NAPinColorGreen];
-    [vc removePin:nil];
-    expect(vc.view).to.haveValidSnapshotNamed(@"remove");
+    [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed animated:NO];
+    [vc addPinAt:CGPointMake(200, 300) withColor:NAPinColorGreen animated:NO];
+    [vc removePinAt:0 animated:NO];
+    expect(vc.view).will.haveValidSnapshotNamed(@"remove");
 });
 
 it(@"selects a pin", ^{
-    [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed];
-    [vc addPinAt:CGPointMake(200, 300) withColor:NAPinColorGreen];
-    [vc selectPinAt:1];
-    expect(vc.view).to.haveValidSnapshotNamed(@"select");
+    [vc addPinAt:CGPointMake(100, 200) withColor:NAPinColorRed animated:NO];
+    [vc addPinAt:CGPointMake(200, 300) withColor:NAPinColorGreen animated:NO];
+    [vc selectPinAt:1 animated:NO];
+    expect(vc.view).will.haveValidSnapshotNamed(@"select");
 });
 
 SpecEnd
