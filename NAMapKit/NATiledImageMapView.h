@@ -7,14 +7,14 @@
 //
 
 #import "NAMapView.h"
-#import "NATiledImageView.h"
+#import <ARTiledImageView/ARTiledImageViewDataSource.h>
 
 /**
  *  A tiled image map.
  */
 @interface NATiledImageMapView : NAMapView
 
-- (id)initWithFrame:(CGRect)frame tiledImageDataSource:(NSObject <NATiledImageViewDataSource> *)dataSource;
+- (id)initWithFrame:(CGRect)frame tiledImageDataSource:(NSObject <ARTiledImageViewDataSource> *)dataSource;
 
 // Zoom the map view to fit the current display.
 - (void)zoomToFit:(BOOL)animate;
@@ -24,6 +24,9 @@
 
 // Set a background image, displayed while tiles are being downloaded.
 @property (readwrite, nonatomic) NSURL *backgroundImageURL;
+
+// Set a background image, displayed while tiles are being downloaded.
+@property (readwrite, nonatomic) UIImage *backgroundImage;
 
 // Current map tile zoom level.
 @property (readonly, nonatomic, assign) NSInteger tileZoomLevel;

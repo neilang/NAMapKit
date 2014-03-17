@@ -9,8 +9,8 @@
 #import "NAAnnotation.h"
 #import "NAMapView.h"
 
-const CGFloat dotRadius = 10.0f;
-const CGFloat dotOpacity = 0.5f;
+const CGFloat NAMapViewAnnotationDotRadius = 10.0f;
+const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
 
 @implementation NAAnnotation
 
@@ -67,9 +67,9 @@ const CGFloat dotOpacity = 0.5f;
 
 -(UIView *)createViewOnMapView:(NAMapView *)mapView
 {
-    UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0,0,dotRadius*2,dotRadius*2)];
-    view.alpha = dotOpacity;
-    view.layer.cornerRadius = dotRadius;
+    UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, NAMapViewAnnotationDotRadius*2, NAMapViewAnnotationDotRadius*2)];
+    view.alpha = NAMapViewAnnotationDotOpacity;
+    view.layer.cornerRadius = NAMapViewAnnotationDotRadius;
     view.backgroundColor = [UIColor redColor];
     [view addTarget:self action:@selector(tappedOnAnnotation:) forControlEvents:UIControlEventTouchDown];
     [self updatePosition];

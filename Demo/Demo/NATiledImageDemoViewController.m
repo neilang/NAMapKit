@@ -8,10 +8,11 @@
 
 #import "NATiledImageDemoViewController.h"
 #import "NATiledImageMapView.h"
-#import "NADZTileImageDataSource.h"
+#import <ARTiledImageView/ARLocalTiledImageDataSource.h>
 
 @interface NATiledImageDemoViewController ()
 @property(nonatomic, readonly) NATiledImageMapView *mapView;
+@property(nonatomic, readonly) ARLocalTiledImageDataSource *dataSource;
 @end
 
 @implementation NATiledImageDemoViewController
@@ -20,20 +21,21 @@
 {
     [super viewDidLoad];
 
-    NADZTileImageDataSource *dzTileImageDataSource = [[NADZTileImageDataSource alloc] init];
-    dzTileImageDataSource.maxTiledHeight = 5389;
-    dzTileImageDataSource.maxTiledWidth = 5000;
-    dzTileImageDataSource.minTileLevel = 11;
-    dzTileImageDataSource.maxTileLevel = ceil(log(MAX(dzTileImageDataSource.maxTiledWidth, dzTileImageDataSource.maxTiledHeight))/log(2));
-    dzTileImageDataSource.tileSize = 512;
-    dzTileImageDataSource.tileFormat = @"jpg";
-    dzTileImageDataSource.tileBaseURL = [NSURL URLWithString:@"https://raw.github.com/dblock/NAMapKit/tiled-map-view/Demo/Maps/Armory2014/tiles"];
+    ARLocalTiledImageDataSource *dataSource = [[ARLocalTiledImageDataSource alloc] init];
+    dataSource.maxTiledHeight = 5389;
+    dataSource.maxTiledWidth = 5000;
+    dataSource.minTileLevel = 11;
+    dataSource.maxTileLevel = 13;
+    dataSource.tileSize = 512;
+    dataSource.tileFormat = @"jpg";
+    dataSource.tileBasePath = [NSString stringWithFormat:@"%@/Maps/Armory2014/tiles", [NSBundle mainBundle].resourcePath];
+    _dataSource = dataSource;
 
-    NATiledImageMapView *mapView = [[NATiledImageMapView alloc] initWithFrame:self.view.bounds tiledImageDataSource:dzTileImageDataSource];
+    NATiledImageMapView *mapView = [[NATiledImageMapView alloc] initWithFrame:self.view.bounds tiledImageDataSource:dataSource];
     mapView.backgroundColor  = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    // mapView.displayTileBorders = YES;
-    mapView.backgroundImageURL = [NSURL URLWithString:@"https://raw.github.com/dblock/NAMapKit/tiled-map-view/Demo/Maps/Armory2014/large.jpg"];
+    mapView.displayTileBorders = YES;
+    mapView.backgroundImage = [UIImage imageNamed:@"Maps/Armory2014/large.jpg"];
     mapView.zoomStep = 3.0f;
     _mapView = mapView;
 

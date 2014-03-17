@@ -8,22 +8,22 @@
 
 #import "NAPinAnnotationCallOutView.h"
 
-const CGFloat titleStandaloneLabelHeight = 22.0f;
-const CGFloat titleStandaloneFontSize = 18.0f;
-const CGFloat titleStandaloneTopOffset = 14.0f;
-const CGFloat titleTopOffset = 4.0f;
-const CGFloat titleLabelHeight = 20.0f;
-const CGFloat titleFontSize = 17.0f;
-const CGFloat subtitleTopOffset = 0.0f + titleLabelHeight;
-const CGFloat subtitleFontSize = 11.0f;
-const CGFloat subtitleLabelHeight = 25.0f;
-const CGFloat rightAccessoryLeftOffset = 2.0f;
-const CGFloat rightAccessoryTopOffset = 9.0f;
-const CGFloat anchorYOffset = 26.0f;
-static NSString *calloutImageLeft = @"callout_left.png";
-static NSString *calloutImageRight = @"callout_right.png";
-static NSString *calloutImageAnchor = @"callout_anchor.png";
-static NSString *calloutImageBG = @"callout_bg.png";
+const CGFloat NAMapViewAnnotationCalloutTitleStandaloneLabelHeight = 22.0f;
+const CGFloat NAMapViewAnnotationCalloutTitleStandaloneFontSize = 18.0f;
+const CGFloat NAMapViewAnnotationCalloutTitleStandaloneTopOffset = 14.0f;
+const CGFloat NAMapViewAnnotationCalloutTitleTopOffset = 4.0f;
+const CGFloat NAMapViewAnnotationCalloutTitleLabelHeight = 20.0f;
+const CGFloat NAMapViewAnnotationCalloutTitleFontSize = 17.0f;
+const CGFloat NAMapViewAnnotationCalloutSubtitleTopOffset = 0.0f + NAMapViewAnnotationCalloutTitleLabelHeight;
+const CGFloat NAMapViewAnnotationCalloutSubtitleFontSize = 11.0f;
+const CGFloat NAMapViewAnnotationCalloutSubtitleLabelHeight = 25.0f;
+const CGFloat NAMapViewAnnotationCalloutRightAccessoryLeftOffset = 2.0f;
+const CGFloat NAMapViewAnnotationCalloutRightAccessoryTopOffset = 9.0f;
+const CGFloat NAMapViewAnnotationCalloutAnchorYOffset = 26.0f;
+static NSString *NAMapViewAnnotationCalloutImageLeft = @"callout_left.png";
+static NSString *NAMapViewAnnotationCalloutImageRight = @"callout_right.png";
+static NSString *NAMapViewAnnotationCalloutImageAnchor = @"callout_anchor.png";
+static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 
 @interface NAPinAnnotationCallOutView()
 
@@ -49,16 +49,16 @@ static NSString *calloutImageBG = @"callout_bg.png";
 -(id)initOnMapView:(NAMapView *)mapView {
     self = [super init];
     if (self) {        
-        UIImage *calloutBG                 = [[UIImage imageNamed:calloutImageBG] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
-        self.calloutLeftCapView            = [[UIImageView alloc] initWithImage:[UIImage imageNamed:calloutImageLeft]];
-        self.calloutRightCapView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:calloutImageRight]];
-        self.calloutAnchorView             = [[UIImageView alloc] initWithImage:[UIImage imageNamed:calloutImageAnchor]];
+        UIImage *calloutBG                 = [[UIImage imageNamed:NAMapViewAnnotationCalloutImageBG] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+        self.calloutLeftCapView            = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NAMapViewAnnotationCalloutImageLeft]];
+        self.calloutRightCapView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NAMapViewAnnotationCalloutImageRight]];
+        self.calloutAnchorView             = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NAMapViewAnnotationCalloutImageAnchor]];
         self.calloutLeftCenterView         = [[UIImageView alloc] initWithImage:calloutBG];
         self.calloutRightCenterView        = [[UIImageView alloc] initWithImage:calloutBG];
         self.subtitleLabel                 = [[UILabel alloc] initWithFrame:CGRectZero];
         self.subtitleLabel.textColor       = [UIColor whiteColor];
         self.subtitleLabel.backgroundColor = [UIColor clearColor];
-        self.subtitleLabel.font            = [UIFont systemFontOfSize:subtitleFontSize];
+        self.subtitleLabel.font            = [UIFont systemFontOfSize:NAMapViewAnnotationCalloutSubtitleFontSize];
         self.titleLabel                    = [[UILabel alloc] initWithFrame:CGRectZero];
         self.titleLabel.backgroundColor    = [UIColor clearColor];
         self.titleLabel.textColor          = [UIColor whiteColor];
@@ -95,23 +95,23 @@ static NSString *calloutImageBG = @"callout_bg.png";
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     if (annotation.subtitle) {
-        CGSize subtitleSize = [annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:subtitleFontSize] constrainedToSize:CGSizeMake(maxWidth, subtitleLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
+        CGSize subtitleSize = [annotation.subtitle sizeWithFont:[UIFont boldSystemFontOfSize:NAMapViewAnnotationCalloutSubtitleFontSize] constrainedToSize:CGSizeMake(maxWidth, NAMapViewAnnotationCalloutSubtitleLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
         
         middleWidth = MAX(subtitleSize.width, middleWidth);
         
-        CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:titleFontSize] constrainedToSize:CGSizeMake(maxWidth, titleLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
+        CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NAMapViewAnnotationCalloutTitleFontSize] constrainedToSize:CGSizeMake(maxWidth, NAMapViewAnnotationCalloutTitleLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
         
         middleWidth = MAX(titleSize.width, middleWidth);
     }
     else{
-        CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:titleStandaloneFontSize] constrainedToSize:CGSizeMake(maxWidth, titleStandaloneLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
+        CGSize titleSize  = [annotation.title sizeWithFont:[UIFont boldSystemFontOfSize:NAMapViewAnnotationCalloutTitleStandaloneFontSize] constrainedToSize:CGSizeMake(maxWidth, NAMapViewAnnotationCalloutTitleStandaloneLabelHeight) lineBreakMode:NSLineBreakByTruncatingTail];
         
         middleWidth = MAX(titleSize.width, middleWidth);
     }
 #pragma clang diagnostic pop
     
     if (annotation.rightCalloutAccessoryView) {
-		middleWidth += annotation.rightCalloutAccessoryView.frame.size.width + rightAccessoryLeftOffset;
+		middleWidth += annotation.rightCalloutAccessoryView.frame.size.width + NAMapViewAnnotationCalloutRightAccessoryLeftOffset;
 	}
     
     middleWidth = MIN(maxWidth, middleWidth);
@@ -149,11 +149,11 @@ static NSString *calloutImageBG = @"callout_bg.png";
     
     if (annotation.rightCalloutAccessoryView) {
         CGFloat accesoryWidth = annotation.rightCalloutAccessoryView.frame.size.width;
-        CGFloat x = middleWidth - accesoryWidth + leftCapWidth + rightAccessoryLeftOffset;
+        CGFloat x = middleWidth - accesoryWidth + leftCapWidth + NAMapViewAnnotationCalloutRightAccessoryLeftOffset;
         
         CGRect frame = annotation.rightCalloutAccessoryView.frame;
         frame.origin.x = x;
-        frame.origin.y = rightAccessoryTopOffset;
+        frame.origin.y = NAMapViewAnnotationCalloutRightAccessoryTopOffset;
         annotation.rightCalloutAccessoryView.frame = frame;
         
         [self addSubview:annotation.rightCalloutAccessoryView];
@@ -163,19 +163,19 @@ static NSString *calloutImageBG = @"callout_bg.png";
     
     // --- LABELS ---
     
-    CGFloat currentTitleTopOffset   = titleStandaloneTopOffset;
-	CGFloat currentTitleLabelHeight = titleStandaloneLabelHeight;
-	CGFloat currentTitleFontSize    = titleStandaloneFontSize;
+    CGFloat currentTitleTopOffset   = NAMapViewAnnotationCalloutTitleStandaloneTopOffset;
+	CGFloat currentTitleLabelHeight = NAMapViewAnnotationCalloutTitleStandaloneLabelHeight;
+	CGFloat currentTitleFontSize    = NAMapViewAnnotationCalloutTitleStandaloneFontSize;
     
     
     // --- SUBTITLE ---
     
     if (annotation.subtitle) {
-		currentTitleTopOffset       = titleTopOffset;
-		currentTitleLabelHeight     = titleLabelHeight;
-		currentTitleFontSize        = titleFontSize;
+		currentTitleTopOffset       = NAMapViewAnnotationCalloutTitleTopOffset;
+		currentTitleLabelHeight     = NAMapViewAnnotationCalloutTitleLabelHeight;
+		currentTitleFontSize        = NAMapViewAnnotationCalloutTitleFontSize;
         self.subtitleLabel.text  = annotation.subtitle;
-        self.subtitleLabel.frame = CGRectMake(leftCapWidth, subtitleTopOffset, labelWidth, subtitleLabelHeight);
+        self.subtitleLabel.frame = CGRectMake(leftCapWidth, NAMapViewAnnotationCalloutSubtitleTopOffset, labelWidth, NAMapViewAnnotationCalloutSubtitleLabelHeight);
         [self addSubview:self.subtitleLabel];
 	}
     
@@ -200,7 +200,7 @@ static NSString *calloutImageBG = @"callout_bg.png";
 -(void)updatePosition{
     CGPoint point = [self.mapView zoomRelativePoint:self.position];
     CGFloat xPos = point.x - (self.frame.size.width / 2.0f);
-    CGFloat yPos = point.y - (self.frame.size.height) - anchorYOffset;
+    CGFloat yPos = point.y - (self.frame.size.height) - NAMapViewAnnotationCalloutAnchorYOffset;
     self.frame = CGRectMake(floor(xPos), yPos, self.frame.size.width, self.frame.size.height);
 }
 

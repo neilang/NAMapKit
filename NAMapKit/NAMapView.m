@@ -8,7 +8,7 @@
 
 #import "NAMapView.h"
 
-const CGFloat defaultZoomStep = 1.5f;
+const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 
 @interface NAMapView()
 
@@ -43,7 +43,7 @@ const CGFloat defaultZoomStep = 1.5f;
     [self createImageView];
     
     _annotations = [NSMutableArray array];
-    _zoomStep = defaultZoomStep;
+    _zoomStep = NAMapViewDefaultZoomStep;
     
     [self.panGestureRecognizer addTarget:self action:@selector(mapPanGestureHandler:)];
 }
