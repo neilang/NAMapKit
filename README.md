@@ -29,16 +29,16 @@ mapView.maximumZoomScale = 1.5f;
 [self.view addSubview:mapView];
 ```
 
-Add default `NAAnnotation` annotations.
+Add `NADotAnnotation` annotations.
 
 ```
-NAAnnotation *dot = [NAAnnotation annotationWithPoint:CGPointMake(543.0f, 489.0f)];
+NADotAnnotation *dot = [NADotAnnotation annotationWithPoint:CGPointMake(543.0f, 489.0f)];
 [mapView addAnnotation:dot animated:NO];
 ```
 
 #### Custom Annotations
 
-The default implementation of `NAAnnotation` places a red semi-transparent dot on the map. You can subclass [NAAnnotation](NAMapKit/NAAnnotation.h) and implement `createViewOnMapView` that returns a custom annotation view. You could also implement a custom animation to drop an annotation onto the map by implementing `addToMapView`, or center the annotation depending on your custom logic by overriding `updatePosition`.
+The implementation of `NADotAnnotation` places a red semi-transparent dot on the map. For custom annotations, subclass [NAAnnotation](NAMapKit/NAAnnotation.h) and implement `createViewOnMapView` that returns a custom annotation view. You could also implement a custom animation to drop an annotation onto the map by implementing `addToMapView`, or center the annotation depending on your custom logic by overriding `updatePosition`.
 
 You can find a complete custom annotation example of multi-colored pins in [NAPinAnnotation.h](NAMapKit/NAPinAnnotation.h)/[.m](NAMapKit/NAPinAnnotation.m).
 
@@ -74,7 +74,7 @@ See [NAAnnotationDemoViewController.m](Demo/Demo/NAAnnotationDemoViewController.
 
 #### Tiled Maps
 
-NAMapKit comes with [NATiledImageMapView](NAMapKit/NATiledImageMapView.h), which supports tiled maps. A typical organization for deep zoom map tiles consists of a folder for each zoom level and individual JPG files for each tile. You can see an example of such files [here](Demo/Maps/Armory2014/tiles). NAMapKit ships with [NADZTileImageDataSource](NAMapKit/NADZTileImageDataSource.h), which retrieves map tiles from a remote URL and stores them in *Library/Caches* (`NSCachesDirectory`).
+NAMapKit comes with [NATiledImageMapView](NAMapKit/NATiledImageMapView.h), which supports tiled maps. A typical organization for deep zoom map tiles consists of a folder for each zoom level and individual JPG files for each tile. You can see an example of such files [here](Demo/Maps/Armory2014/tiles). NAMapKit uses [ARTiledImageView](https://github.com/dblock/ARTiledImageView). You can generate tiles using [dzt](https://github.com/dblock/dzt) or any other tool listed with the [OpenSeadragon](http://openseadragon.github.io/examples/creating-zooming-images) project.
 
 For a complete example of a tiled map, see [NATiledImageDemoViewController.m](Demo/Demo/NATiledImageDemoViewController.m).
 

@@ -9,6 +9,7 @@
 #import "NATiledImageDemoViewController.h"
 #import "NATiledImageMapView.h"
 #import <ARTiledImageView/ARLocalTiledImageDataSource.h>
+#import "NADotAnnotation.h"
 
 @interface NATiledImageDemoViewController ()
 @property(nonatomic, readonly) NATiledImageMapView *mapView;
@@ -41,10 +42,14 @@
 
     [self.view addSubview:mapView];
 
-    NAAnnotation *champagneBar = [NAAnnotation annotationWithPoint:CGPointMake(1500.0f, 4850.1f)];
+    NADotAnnotation *champagneBar = [NADotAnnotation annotationWithPoint:CGPointMake(1500.0f, 4850.1f)];
+    champagneBar.radius = 50.0f;
+    champagneBar.color = [UIColor redColor];
     [mapView addAnnotation:champagneBar animated:NO];
 
-    NAAnnotation *artsyBooth = [NAAnnotation annotationWithPoint:CGPointMake(2650.0f, 916.12f)];
+    NADotAnnotation *artsyBooth = [NADotAnnotation annotationWithPoint:CGPointMake(2650.0f, 916.12f)];
+    artsyBooth.radius = 40.0f;
+    artsyBooth.color = [UIColor greenColor];
     [mapView addAnnotation:artsyBooth animated:NO];
 }
 

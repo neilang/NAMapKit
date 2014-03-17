@@ -11,6 +11,10 @@
 
 const CGFloat NAMapViewPinAnimationDuration = 0.5f;
 
+@interface NAPinAnnotation ()
+@property (nonatomic, readonly) NAPinAnnotationView *view;
+@end
+
 @implementation NAPinAnnotation
 
 - (id)initWithPoint:(CGPoint)point{
@@ -33,28 +37,25 @@ const CGFloat NAMapViewPinAnimationDuration = 0.5f;
 {
     [super addToMapView:mapView animated:animate];
 
-    NAPinAnnotationView *annotationView = (NAPinAnnotationView *) self.view;
-
     if(animate){
-        annotationView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0.0f, -annotationView.center.y);
+        self.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0.0f, -self.view.center.y);
     }
 
-    [mapView addSubview:annotationView];
+    [mapView addSubview:self.view];
 
     if(animate){
-        annotationView.animating = YES;
+        self.view.animating = YES;
         [UIView animateWithDuration:NAMapViewPinAnimationDuration animations:^{
-            annotationView.transform = CGAffineTransformIdentity;
+            self.view.transform = CGAffineTransformIdentity;
         } completion:^ (BOOL finished) {
-          annotationView.animating = NO;
+            self.view.animating = NO;
         }];
     }
 }
 
 - (void)updatePosition
 {
-    NAPinAnnotationView *annontationView = (NAPinAnnotationView *)self.view;
-    [annontationView updatePosition];
+    [self.view updatePosition];
 }
 
 @end

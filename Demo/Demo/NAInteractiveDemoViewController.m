@@ -53,7 +53,7 @@
     [self.mapView centerOnPoint:point animated:YES];
 
     NAPinAnnotation *annotation = [NAPinAnnotation annotationWithPoint:point];
-    annotation.title = [NSString stringWithFormat:@"Pin %d", self.annotations.count + 1];
+    annotation.title = [NSString stringWithFormat:@"Pin %@", @(self.annotations.count + 1)];
     annotation.color = color;
 
     [self.mapView addAnnotation:annotation animated:YES];

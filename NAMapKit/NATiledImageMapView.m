@@ -74,7 +74,7 @@
     self.minimumZoomScale = minScale;
     
     self.originalSize = imageSize;
-    self.contentSize = boundsSize;
+    self.contentSize = imageSize;
 }
 
 - (void)zoomToFit:(BOOL)animate
