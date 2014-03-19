@@ -9,10 +9,6 @@
 
 SpecBegin(NATiledImageDemoViewController)
 
-beforeAll(^{
-    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
-});
-
 __block NATiledImageDemoViewController *vc = nil;
 
 beforeEach(^{
@@ -23,11 +19,10 @@ beforeEach(^{
     [window makeKeyAndVisible];
 });
 
-// TODO: drawRect isn't called when running in a test until the test has finished
 it(@"displays map with a pin", ^AsyncBlock {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long) NULL), ^(void) {
+    dispatch_async(dispatch_get_main_queue(), ^{
         [NSThread sleepForTimeInterval:3.0];
-        expect(vc.view).to.haveValidSnapshotNamed(@"default");
+        expect(vc.view).will.haveValidSnapshotNamed(@"default");
         done();
     });
 });

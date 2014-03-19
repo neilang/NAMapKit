@@ -36,7 +36,7 @@
     mapView.backgroundColor  = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mapView.displayTileBorders = YES;
-    mapView.backgroundImage = [UIImage imageNamed:@"Maps/Armory2014/large.jpg"];
+    // mapView.backgroundImage = [UIImage imageNamed:@"Maps/Armory2014/large.jpg"];
     mapView.zoomStep = 3.0f;
     _mapView = mapView;
 

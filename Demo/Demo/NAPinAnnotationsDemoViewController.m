@@ -42,7 +42,7 @@
 	perth.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     perth.color = NAPinColorRed;
 
-	[mapView addAnnotation:perth animated:YES];
+	[mapView addAnnotation:perth animated:NO];
 
 	NAPinAnnotation * brisbane = [NAPinAnnotation annotationWithPoint:CGPointMake(679.0f, 302.0f)];
 	brisbane.title = @"Brisbane";

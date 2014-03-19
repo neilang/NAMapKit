@@ -10,14 +10,10 @@
 
 SpecBegin(NAMasterViewController)
 
-beforeAll(^{
-    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
-});
-
 it(@"displays the master menu", ^{
     NAMasterViewController *vc = [[NAMasterViewController alloc] initWithNibName:@"NAMasterViewController" bundle:nil];
     expect(vc.view).willNot.beNil();
-    expect(vc.view).to.haveValidSnapshotNamed(@"default");
+    expect(vc.view).will.haveValidSnapshotNamed(@"default");
 });
 
 SpecEnd

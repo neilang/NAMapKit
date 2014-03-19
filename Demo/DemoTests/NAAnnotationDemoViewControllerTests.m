@@ -10,14 +10,10 @@
 
 SpecBegin(NAAnnotationDemoViewController)
 
-beforeAll(^{
-    setGlobalReferenceImageDir(FB_REFERENCE_IMAGE_DIR);
-});
-
 it(@"displays map with a pin", ^{
     NADotAnnotationDemoViewController *vc = [[NADotAnnotationDemoViewController alloc] init];
     expect(vc.view).willNot.beNil();
-    expect(vc.view).to.haveValidSnapshotNamed(@"default");
+    expect(vc.view).will.haveValidSnapshotNamed(@"default");
 });
 
 SpecEnd
