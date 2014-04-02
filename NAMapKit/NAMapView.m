@@ -35,6 +35,7 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 	UITapGestureRecognizer *twoFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTwoFingerTap:)];
 
 	[doubleTap setNumberOfTapsRequired:2];
+    
 	[twoFingerTap setNumberOfTouchesRequired:2];
 
 	[self addGestureRecognizer:doubleTap];
@@ -44,6 +45,8 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 
     _annotations = [NSMutableArray array];
     _zoomStep = NAMapViewDefaultZoomStep;
+    _doubleTapGesture = doubleTap;
+    _twoFingerTapGesture = twoFingerTap;
 
     [self.panGestureRecognizer addTarget:self action:@selector(mapPanGestureHandler:)];
 }

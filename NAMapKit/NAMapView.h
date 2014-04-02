@@ -40,6 +40,10 @@
 @property (readwrite, nonatomic, assign) CGSize originalSize;
 /// Amount by which to zoom in or zoom out with every double-tap, default is 1.5f.
 @property (readwrite, nonatomic, assign) CGFloat zoomStep;
+/// The double tap gesture for zooming in
+@property (readwrite, nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
+/// The double tap gesture for zooming out
+@property (readwrite, nonatomic, strong) UITapGestureRecognizer *twoFingerTapGesture;
 
 @end
 
