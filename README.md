@@ -53,20 +53,18 @@ You can capture finger taps and zoom changes by registering a `mapViewDelegate` 
 
 - (void)viewDidLoad
 {
-    // register the view controller as the map's delegate
+    // Register the view controller as the map's delegate
     self.mapView.mapViewDelegate = self;
 }
 
-// invoked when a user taps an annotation
 - (void)mapView:(NAMapView *)mapView tappedOnAnnotation:(NAPinAnnotation *)annotation
 {
-
+    // Invoked when a user taps an annotation
 }
 
-// invoked when the map zoom level changes
 - (void)mapView:(NAMapView *)mapView hasChangedZoomLevel:(CGFloat)level
 {
-
+    // Invoked when the map zoom level changes
 }
 
 @end
@@ -79,6 +77,10 @@ See [NAAnnotationDemoViewController.m](Demo/Demo/NAAnnotationDemoViewController.
 NAMapKit comes with [NATiledImageMapView](NAMapKit/NATiledImageMapView.h), which supports tiled maps. A typical organization for deep zoom map tiles consists of a folder for each zoom level and individual JPG files for each tile. You can see an example of such files [here](Demo/Maps/Armory2014/tiles). NAMapKit uses [ARTiledImageView](https://github.com/dblock/ARTiledImageView). You can generate tiles using [dzt](https://github.com/dblock/dzt) or any other tool listed with the [OpenSeadragon](http://openseadragon.github.io/examples/creating-zooming-images) project.
 
 For a complete example of a tiled map, see [NATiledImageDemoViewController.m](Demo/Demo/NATiledImageDemoViewController.m).
+
+### Custom Gestures
+
+NAMapKit exposes it's two double tap gestures so that you can use `delaysTouchesBegan` to prioritise the double tap over a map point tap. Or to just replace them entirely yourself.
 
 Notes
 -----
