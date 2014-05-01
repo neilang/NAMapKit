@@ -1,10 +1,10 @@
-#### Next
+#### [3.1](https://github.com/neilang/NAMapKit/tree/v3.1) (5/1/2014)
 
 * Replaced tiled map image implementation with [ARTiledImageView](https://github.com/dblock/ARTiledImageView) - [@dblock](github.com/dblock).
 * Extracted [NADotAnnotation](NAMapKit/NADotAnnotation.h) out of [NAAnnotation](NAMapKit/NAAnnotation.h), which is now a pure virtual class - [@dblock](github.com/dblock).
 * Fix: `NADotAnnotation` dots resize proportionally when map zoom level changes - [@dblock](github.com/dblock).
 * Exposed `NAMapView#doubleTapGesture` and `NAMapView#twoFingerTapGesture` - [@orta](github.com/orta).
- 
+
 #### [3.0](https://github.com/neilang/NAMapKit/tree/v3.0) (3/15/2014)
 
 * [#16](https://github.com/neilang/NAMapKit/pull/16) - Extracted [NAPinAnnotationMapView](NAMapKit/NAPinAnnotationMapView.h) out of a, now mimimal, `NAMapView` - [@dblock](github.com/dblock).

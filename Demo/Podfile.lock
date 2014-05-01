@@ -1,17 +1,17 @@
 PODS:
-  - ARTiledImageView (1.0.0):
+  - ARTiledImageView (1.1.0):
     - SDWebImage
   - Expecta (0.2.4)
-  - EXPMatchers+FBSnapshotTest (HEAD based on 1.0):
+  - EXPMatchers+FBSnapshotTest (HEAD based on 1.1.0):
     - Expecta
     - FBSnapshotTestCase
   - FBSnapshotTestCase (1.1)
-  - NAMapKit (3.0.1):
+  - NAMapKit (3.1.0):
     - ARTiledImageView
     - SDWebImage
-  - SDWebImage (3.5.4):
+  - SDWebImage (3.6):
     - SDWebImage/Core
-  - SDWebImage/Core (3.5.4)
+  - SDWebImage/Core (3.6)
   - Specta (0.2.1)
 
 DEPENDENCIES:
@@ -26,12 +26,12 @@ EXTERNAL SOURCES:
     :path: ../namapkit.podspec
 
 SPEC CHECKSUMS:
-  ARTiledImageView: 6ab846b8a1b2e208587f9e9369cdd1094554a321
+  ARTiledImageView: 7f777faaa3f9ce7efea956626a7f5ec8c053beec
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
-  EXPMatchers+FBSnapshotTest: 1b9506577e494191565ff51ffd5b1e76339d727b
+  EXPMatchers+FBSnapshotTest: cf5bf37817741d89bd3a3ff80be7ff417692ab7d
   FBSnapshotTestCase: 188c80bfcb72e744eb0b99d45989d12687c40cf8
-  NAMapKit: af339ad3c614351ad93cba8e65bceaa8fcce3f9a
-  SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
+  NAMapKit: b55f80456e0886cc173edb37b77f1072fecebc3e
+  SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1

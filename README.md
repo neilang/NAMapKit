@@ -5,8 +5,7 @@ NAMapKit
 
 Lets you drop MapKit style pins or custom annotations onto a standard `UIImage` or a tiled `NATiledImageView`. Includes callouts, multi-colored pins, animation, zoom and gestures support.
 
-![Melbourne, Australia](Demo/Screenshots/melbourne.png)
-![Brisbane, Australia](Demo/Screenshots/brisbane.png)
+![Animated Demo](Demo/Screenshots/namapkit.gif)
 
 Get started by running `pod try NAMapKit` in your terminal.
 
