@@ -18,6 +18,9 @@
 /// Create a new callout view on a map.
 - (id)initOnMapView:(NAMapView *)mapView;
 
+/// Recalculate position on map according to zoom level.
+- (void)updatePosition;
+
 /// Pin annotation.
 @property(readwrite, nonatomic, strong) NAPinAnnotation *annotation;
 

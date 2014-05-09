@@ -14,6 +14,7 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, readonly) NSMutableArray *annotations;
+@property (nonatomic, assign) BOOL contentSizeObserving;
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer;
 - (void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer;
@@ -28,10 +29,11 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
     [self addSubview:self.imageView];
 }
 
-- (void)setupMap {
+- (void)setupMap
+{
     self.delegate = self;
 
-    UITapGestureRecognizer *doubleTap    = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
 	UITapGestureRecognizer *twoFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTwoFingerTap:)];
 
 	[doubleTap setNumberOfTapsRequired:2];
@@ -51,12 +53,14 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
     [self.panGestureRecognizer addTarget:self action:@selector(mapPanGestureHandler:)];
 }
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     [self setupMap];
 }
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self) {
         [self setupMap];
@@ -71,7 +75,16 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
     }
 }
 
-- (void)displayMap:(UIImage *)map{
+- (void)registerObservers
+{
+    if (!self.contentSizeObserving) {
+        [self addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+        _contentSizeObserving = YES;
+    }
+}
+
+- (void)displayMap:(UIImage *)map
+{
     self.imageView.frame = CGRectMake(0.0f, 0.0f, map.size.width, map.size.height);
     self.imageView.image = map;
     CGRect imageFrame = self.imageView.frame;
@@ -79,30 +92,35 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
     self.contentSize = self.originalSize;
 }
 
-- (void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
+- (void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate
+{
     [annotation addToMapView:self animated:animate];
     [self.annotations addObject:annotation];
 }
 
-- (void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate {
+- (void)addAnnotations:(NSArray *)annotations animated:(BOOL)animate
+{
 	for (NAAnnotation *annotation in annotations) {
         [self addAnnotation:annotation animated:animate];
 	}
 }
 
-- (void)removeAnnotation:(NAAnnotation *)annotation {
+- (void)removeAnnotation:(NAAnnotation *)annotation
+{
     [annotation removeFromMapView];
     [self.annotations removeObject:annotation];
 }
 
-- (void)centerOnPoint:(CGPoint)point animated:(BOOL)animate {
+- (void)centerOnPoint:(CGPoint)point animated:(BOOL)animate
+{
 	CGFloat x = (point.x * self.zoomScale) - (self.frame.size.width / 2.0f);
 	CGFloat y = (point.y * self.zoomScale) - (self.frame.size.height / 2.0f);
 	[self setContentOffset:CGPointMake(round(x), round(y)) animated:animate];
     _centerPoint = point;
 }
 
-- (CGPoint)zoomRelativePoint:(CGPoint)point{
+- (CGPoint)zoomRelativePoint:(CGPoint)point
+{
     CGFloat x = (self.contentSize.width / self.originalSize.width) * point.x;
     CGFloat y = (self.contentSize.height / self.originalSize.height) * point.y;
     return CGPointMake(round(x), round(y));
@@ -110,6 +128,7 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 
 - (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate
 {
+    
 }
 
 - (void)setFrame:(CGRect)frame
@@ -119,6 +138,10 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
     BOOL zoomedOut = self.zoomScale == self.minimumZoomScale;
     if (!CGPointEqualToPoint(self.centerPoint, CGPointZero) && !zoomedOut) {
         [self centerOnPoint:self.centerPoint animated:NO];
+    }
+    
+    if (!CGRectIsEmpty(frame)) {
+        [self registerObservers];
     }
 }
 
@@ -141,7 +164,8 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 
 #pragma mark - Tap to Zoom
 
-- (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
+- (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer
+{
 	// double tap zooms in, but returns to normal zoom level if it reaches max zoom
     if (self.zoomScale >= self.maximumZoomScale) {
         [self setZoomScale:self.minimumZoomScale animated:YES];
@@ -154,7 +178,8 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
     }
 }
 
-- (CGRect)rectAroundPoint:(CGPoint)point atZoomScale:(CGFloat)zoomScale {
+- (CGRect)rectAroundPoint:(CGPoint)point atZoomScale:(CGFloat)zoomScale
+{
     // define the shape of the zoom rect
     CGSize boundsSize = self.bounds.size;
     // modify the size according to the requested zoom level
@@ -167,10 +192,30 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
                       scaledBoundsSize.height);
 }
 
-- (void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer {
+- (void)handleTwoFingerTap:(UIGestureRecognizer *)gestureRecognizer
+{
 	// two-finger tap zooms out, but returns to normal zoom level if it reaches min zoom
 	CGFloat newScale = self.zoomScale <= self.minimumZoomScale ? self.maximumZoomScale : self.zoomScale / self.zoomStep;
 	[self setZoomScale:newScale animated:YES];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"contentSize"]) {
+        [self updatePositions];
+    }
+}
+
+- (void)updatePositions
+{
+    [self.annotations makeObjectsPerformSelector:@selector(updatePosition)];
+}
+
+- (void)dealloc
+{
+    if (self.contentSizeObserving) {
+        [self removeObserver:self forKeyPath:@"contentSize"];
+    }
 }
 
 @end

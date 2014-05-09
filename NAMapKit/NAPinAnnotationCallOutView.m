@@ -38,7 +38,6 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 @property (nonatomic, assign) CGPoint      position;
 @property (nonatomic, weak)   NAMapView   *mapView;
 
-- (void)updatePosition;
 - (void)positionView:(UIView *)view posX:(float)x;
 - (void)positionView:(UIView *)view posX:(float)x width:(float)width;
 
@@ -187,12 +186,6 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 
     [self addSubview:self.titleLabel];
 
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"contentSize"]) {
-        [self updatePosition];
-	}
 }
 
 #pragma - Private helpers

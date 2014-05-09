@@ -14,8 +14,12 @@ const CGFloat NAMapViewDotAnnotationDotOpacity = 0.5f;
 
 @implementation NADotAnnotation
 
-- (void)updatePosition{
-    if (! self.mapView) return;
+- (void)updatePosition
+{
+    if (!self.mapView) {
+        return;
+    }
+    
     CGFloat radius = (self.radius ?: NAMapViewDotAnnotationDotRadius) * self.mapView.zoomScale;
     CGPoint point = [self.mapView zoomRelativePoint:self.point];
     point.x -= radius;

@@ -16,7 +16,7 @@
 @interface NAPinAnnotationView : UIButton
 
 /// Associated NAPinAnnotation.
-@property (readwrite, nonatomic, strong) NAPinAnnotation *annotation;
+@property (readwrite, nonatomic, weak) NAPinAnnotation *annotation;
 /// Animate the pin.
 @property (readwrite, nonatomic, assign) BOOL animating;
 

@@ -40,6 +40,6 @@
 /// A delegate to invoke map-specific events.
 @property (nonatomic, weak) NSObject<NAMapViewDelegate> *mapViewDelegate;
 /// Map view to which the annotation currently belongs.
-@property (nonatomic, readonly) NAMapView *mapView;
+@property (nonatomic, readonly, weak) NAMapView *mapView;
 
 @end

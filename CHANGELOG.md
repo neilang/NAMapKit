@@ -1,17 +1,21 @@
+#### Next
+
+* [#31](https://github.com/neilang/NAMapKit/issues/31) - Fix: `NAPinAnnotation` and `NAPinAnnotationView` retain cycle - [@dblock](https://github.com/dblock).
+
 #### [3.1](https://github.com/neilang/NAMapKit/tree/v3.1) (5/1/2014)
 
-* Replaced tiled map image implementation with [ARTiledImageView](https://github.com/dblock/ARTiledImageView) - [@dblock](github.com/dblock).
-* Extracted [NADotAnnotation](NAMapKit/NADotAnnotation.h) out of [NAAnnotation](NAMapKit/NAAnnotation.h), which is now a pure virtual class - [@dblock](github.com/dblock).
-* Fix: `NADotAnnotation` dots resize proportionally when map zoom level changes - [@dblock](github.com/dblock).
-* Exposed `NAMapView#doubleTapGesture` and `NAMapView#twoFingerTapGesture` - [@orta](github.com/orta).
+* Replaced tiled map image implementation with [ARTiledImageView](https://github.com/dblock/ARTiledImageView) - [@dblock](https://github.com/dblock).
+* Extracted [NADotAnnotation](NAMapKit/NADotAnnotation.h) out of [NAAnnotation](NAMapKit/NAAnnotation.h), which is now a pure virtual class - [@dblock](https://github.com/dblock).
+* Fix: `NADotAnnotation` dots resize proportionally when map zoom level changes - [@dblock](https://github.com/dblock).
+* Exposed `NAMapView#doubleTapGesture` and `NAMapView#twoFingerTapGesture` - [@orta](https://github.com/orta).
 
 #### [3.0](https://github.com/neilang/NAMapKit/tree/v3.0) (3/15/2014)
 
-* [#16](https://github.com/neilang/NAMapKit/pull/16) - Extracted [NAPinAnnotationMapView](NAMapKit/NAPinAnnotationMapView.h) out of a, now mimimal, `NAMapView` - [@dblock](github.com/dblock).
-* [#18](https://github.com/neilang/NAMapKit/pull/18) - Added [NAMapViewDelegate](NAMapKit/NAMapViewDelegate.h) for easier handling of taps and zoom events - [@dblock](github.com/dblock).
-* [#19](https://github.com/neilang/NAMapKit/pull/19) - Added [NATiledImageMapView](NAMapKit/NATiledImageMapView.h) with support for deep-zoom tiled maps - [@dblock](github.com/dblock), [@orta](github.com/orta).
-* [#20](https://github.com/neilang/NAMapKit/pull/20) - Zoom now pans and rests at the point being tapped - [@orta](github.com/orta).
-* [#14](https://github.com/neilang/NAMapKit/pull/14) - Added tests and [Travis-CI](https://travis-ci.org/neilang/NAMapKit) - [@dblock](github.com/dblock).
+* [#16](https://github.com/neilang/NAMapKit/pull/16) - Extracted [NAPinAnnotationMapView](NAMapKit/NAPinAnnotationMapView.h) out of a, now mimimal, `NAMapView` - [@dblock](https://github.com/dblock).
+* [#18](https://github.com/neilang/NAMapKit/pull/18) - Added [NAMapViewDelegate](NAMapKit/NAMapViewDelegate.h) for easier handling of taps and zoom events - [@dblock](https://github.com/dblock).
+* [#19](https://github.com/neilang/NAMapKit/pull/19) - Added [NATiledImageMapView](NAMapKit/NATiledImageMapView.h) with support for deep-zoom tiled maps - [@dblock](https://github.com/dblock), [@orta](https://github.com/orta).
+* [#20](https://github.com/neilang/NAMapKit/pull/20) - Zoom now pans and rests at the point being tapped - [@orta](https://github.com/orta).
+* [#14](https://github.com/neilang/NAMapKit/pull/14) - Added tests and [Travis-CI](https://travis-ci.org/neilang/NAMapKit) - [@dblock](https://github.com/dblock).
 
 #### [2.1](https://github.com/neilang/NAMapKit/tree/v2.1)
 

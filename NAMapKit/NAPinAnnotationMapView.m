@@ -12,11 +12,10 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
 
 @interface NAPinAnnotationMapView()
 
-@property (nonatomic, strong) NAPinAnnotationCallOutView  *calloutView;
+@property (nonatomic, strong) NAPinAnnotationCallOutView *calloutView;
 
 - (IBAction)showCallOut:(id)sender;
 - (void)hideCallOut;
-
 @end
 
 @implementation NAPinAnnotationMapView
@@ -25,8 +24,7 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
 {
     [super setupMap];
 
-    self.calloutView = [[NAPinAnnotationCallOutView alloc] initOnMapView:self];
-    [self addObserver:self.calloutView forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+    _calloutView = [[NAPinAnnotationCallOutView alloc] initOnMapView:self];
     [self addSubview:self.calloutView];
 }
 
@@ -71,8 +69,9 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
     self.calloutView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4f, 0.4f);
     self.calloutView.hidden = NO;
 
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:animationDuration animations:^{
-        self.calloutView.transform = CGAffineTransformIdentity;
+        weakSelf.calloutView.transform = CGAffineTransformIdentity;
     }];
 }
 
@@ -88,10 +87,10 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
 	[super touchesEnded:touches withEvent:event];
 }
 
-- (void)dealloc {
-    if(self.calloutView) {
-        [self removeObserver:self.calloutView forKeyPath:@"contentSize"];
-    }
+- (void)updatePositions
+{
+    [self.calloutView updatePosition];
+    [super updatePositions];
 }
 
 @end

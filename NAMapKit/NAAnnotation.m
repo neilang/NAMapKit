@@ -35,7 +35,6 @@ const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
     }
 
     [mapView addSubview:self.view];
-    [mapView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     _mapView = mapView;
 
     _mapViewDelegate = mapView.mapViewDelegate;
@@ -46,19 +45,16 @@ const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
 - (void)removeFromMapView
 {
     [self.view removeFromSuperview];
-    [self.mapView removeObserver:self forKeyPath:@"contentSize"];
     _mapView = nil;
     _view = nil;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"contentSize"]) {
-        [self updatePosition];
-	}
-}
-
-- (void)updatePosition {
-    if (! self.mapView) return;
+- (void)updatePosition
+{
+    if (!self.mapView) {
+        return;
+    }
+    
     CGPoint point = [self.mapView zoomRelativePoint:self.point];
     self.view.frame = (CGRect) {
         .origin = point,
