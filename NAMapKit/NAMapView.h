@@ -29,6 +29,8 @@
 - (void)centerOnPoint:(CGPoint)point animated:(BOOL)animate;
 /// Callback invoked to setup the map.
 - (void)setupMap;
+/// Recalculate position of all elements.
+- (void)updatePositions;
 
 /// Current map zoom level.
 @property (readonly, nonatomic, assign) CGFloat zoomLevel;

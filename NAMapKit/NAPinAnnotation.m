@@ -12,12 +12,13 @@
 const CGFloat NAMapViewPinAnimationDuration = 0.5f;
 
 @interface NAPinAnnotation ()
-@property (nonatomic, readonly) NAPinAnnotationView *view;
+@property (nonatomic, readonly, weak) NAPinAnnotationView *view;
 @end
 
 @implementation NAPinAnnotation
 
-- (id)initWithPoint:(CGPoint)point{
+- (id)initWithPoint:(CGPoint)point
+{
     self = [super initWithPoint:point];
     if (self) {
         self.color = NAPinColorRed;
@@ -37,13 +38,13 @@ const CGFloat NAMapViewPinAnimationDuration = 0.5f;
 {
     [super addToMapView:mapView animated:animate];
 
-    if(animate){
+    if (animate) {
         self.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0.0f, -self.view.center.y);
     }
 
     [mapView addSubview:self.view];
 
-    if(animate){
+    if (animate) {
         self.view.animating = YES;
         [UIView animateWithDuration:NAMapViewPinAnimationDuration animations:^{
             self.view.transform = CGAffineTransformIdentity;
