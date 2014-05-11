@@ -14,7 +14,8 @@ const CGFloat NAMapViewAnnotationDotOpacity = 0.5f;
 
 @implementation NAAnnotation
 
-+ (id)annotationWithPoint:(CGPoint)point{
++ (id)annotationWithPoint:(CGPoint)point
+{
     return [[[self class] alloc] initWithPoint:point];
 }
 

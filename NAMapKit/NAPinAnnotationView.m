@@ -19,7 +19,8 @@ const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
 
 @implementation NAPinAnnotationView
 
-- (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView {
+- (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView
+{
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.mapView = mapView;
@@ -29,7 +30,8 @@ const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
     return self;
 }
 
-- (void)setAnimating:(BOOL)animating{
+- (void)setAnimating:(BOOL)animating
+{
     _animating = animating;
 
     NSString *pinImage;
@@ -50,7 +52,8 @@ const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
     [self setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
 }
 
-- (void)updatePosition{
+- (void)updatePosition
+{
     CGPoint point = [self.mapView zoomRelativePoint:self.annotation.point];
     point.x = point.x - NAMapViewAnnotationPinPointX;
     point.y = point.y - NAMapViewAnnotationPinPointY;

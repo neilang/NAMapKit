@@ -28,7 +28,8 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
     [self addSubview:self.calloutView];
 }
 
-- (void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
+- (void)addAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate
+{
     [super addAnnotation:annotation animated:animate];
     if ([annotation.view isKindOfClass:NAPinAnnotationView.class]) {
         NAPinAnnotationView *annotationView = (NAPinAnnotationView *) annotation.view;
@@ -37,19 +38,22 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
     [self bringSubviewToFront:self.calloutView];
 }
 
-- (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate {
+- (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate
+{
     [self hideCallOut];
     if([annotation isKindOfClass:NAPinAnnotation.class]) {
         [self showCalloutForAnnotation:(NAPinAnnotation *)annotation animated:animate];
     }
 }
 
-- (void)removeAnnotation:(NAAnnotation *)annotation{
+- (void)removeAnnotation:(NAAnnotation *)annotation
+{
     [self hideCallOut];
     [super removeAnnotation:annotation];
 }
 
-- (IBAction)showCallOut:(id)sender {
+- (IBAction)showCallOut:(id)sender
+{
     if([sender isKindOfClass:[NAPinAnnotationView class]]) {
         NAPinAnnotationView *annontationView = (NAPinAnnotationView *)sender;
         [self.mapViewDelegate mapView:self tappedOnAnnotation:annontationView.annotation];
@@ -57,7 +61,8 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
     }
 }
 
-- (void)showCalloutForAnnotation:(NAPinAnnotation *)annotation animated:(BOOL)animated {
+- (void)showCalloutForAnnotation:(NAPinAnnotation *)annotation animated:(BOOL)animated
+{
     [self hideCallOut];
 
     self.calloutView.annotation = annotation;
@@ -75,11 +80,13 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
     }];
 }
 
-- (void)hideCallOut {
+- (void)hideCallOut
+{
 	self.calloutView.hidden = YES;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
 	if (!self.dragging) {
 		[self hideCallOut];
 	}

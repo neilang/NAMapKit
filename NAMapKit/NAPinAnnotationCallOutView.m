@@ -45,7 +45,8 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 
 @implementation NAPinAnnotationCallOutView
 
-- (id)initOnMapView:(NAMapView *)mapView {
+- (id)initOnMapView:(NAMapView *)mapView
+{
     self = [super init];
     if (self) {
         UIImage *calloutBG                 = [[UIImage imageNamed:NAMapViewAnnotationCalloutImageBG] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
@@ -67,7 +68,8 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
     return self;
 }
 
-- (void)setAnnotation:(NAPinAnnotation *)annotation{
+- (void)setAnnotation:(NAPinAnnotation *)annotation
+{
 
     // --- RESET ---
 
@@ -190,21 +192,24 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 
 #pragma - Private helpers
 
-- (void)updatePosition{
+- (void)updatePosition
+{
     CGPoint point = [self.mapView zoomRelativePoint:self.position];
     CGFloat xPos = point.x - (self.frame.size.width / 2.0f);
     CGFloat yPos = point.y - (self.frame.size.height) - NAMapViewAnnotationCalloutAnchorYOffset;
     self.frame = CGRectMake(floor(xPos), yPos, self.frame.size.width, self.frame.size.height);
 }
 
-- (void)positionView:(UIView *)view posX:(float)x width:(float)width{
+- (void)positionView:(UIView *)view posX:(float)x width:(float)width
+{
     CGRect frame     = view.frame;
     frame.origin.x   = x;
     frame.size.width = width;
     view.frame       = frame;
 }
 
-- (void)positionView:(UIView *)view posX:(float)x{
+- (void)positionView:(UIView *)view posX:(float)x
+{
     [self positionView:view posX:x width:view.frame.size.width];
 }
 
