@@ -34,22 +34,27 @@ const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
 {
     _animating = animating;
 
-    NSString *pinImage;
+    NSString *pinImageName;
     switch (self.annotation.color) {
         case NAPinColorGreen:
-            pinImage = @"pin_green";
+            pinImageName = @"pin_green";
             break;
         case NAPinColorPurple:
-            pinImage = @"pin_purple";
+            pinImageName = @"pin_purple";
             break;
         case NAPinColorRed:
-            pinImage = @"pin_red";
+            pinImageName = @"pin_red";
             break;
     }
 
-    NSString * image = _animating ? [NSString stringWithFormat:@"%@_floating", pinImage] : pinImage;
+    if (animating) {
+        pinImageName = [NSString stringWithFormat:@"%@_floating", pinImageName];
+    }
 
-    [self setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    pinImageName = [NSString stringWithFormat:@"/%@.png", pinImageName];
+
+    UIImage *pinImage = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingString:pinImageName]];
+    [self setImage:pinImage forState:UIControlStateNormal];
 }
 
 - (void)updatePosition

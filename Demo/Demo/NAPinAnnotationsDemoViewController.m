@@ -25,7 +25,8 @@
     mapView.minimumZoomScale = 0.5f;
     mapView.maximumZoomScale = 1.5f;
 
-    [mapView displayMap:[UIImage imageNamed:@"Maps/australia"]];
+    NSString *australia = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Maps/australia.png"];
+    [mapView displayMap:[UIImage imageWithContentsOfFile:australia]];
 
     [self.view addSubview:mapView];
 
