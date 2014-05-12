@@ -19,7 +19,8 @@ const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
 
 @implementation NAPinAnnotationView
 
-- (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView {
+- (id)initWithAnnotation:(NAPinAnnotation *)annotation onMapView:(NAMapView *)mapView
+{
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.mapView = mapView;
@@ -29,28 +30,35 @@ const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
     return self;
 }
 
-- (void)setAnimating:(BOOL)animating{
+- (void)setAnimating:(BOOL)animating
+{
     _animating = animating;
 
-    NSString *pinImage;
+    NSString *pinImageName;
     switch (self.annotation.color) {
         case NAPinColorGreen:
-            pinImage = @"pinGreen";
+            pinImageName = @"pin_green";
             break;
         case NAPinColorPurple:
-            pinImage = @"pinPurple";
+            pinImageName = @"pin_purple";
             break;
         case NAPinColorRed:
-            pinImage = @"pinRed";
+            pinImageName = @"pin_red";
             break;
     }
 
-    NSString * image = _animating ? [NSString stringWithFormat:@"%@Floating", pinImage] : pinImage;
+    if (animating) {
+        pinImageName = [NSString stringWithFormat:@"%@_floating", pinImageName];
+    }
 
-    [self setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    pinImageName = [NSString stringWithFormat:@"/%@.png", pinImageName];
+
+    UIImage *pinImage = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingString:pinImageName]];
+    [self setImage:pinImage forState:UIControlStateNormal];
 }
 
-- (void)updatePosition{
+- (void)updatePosition
+{
     CGPoint point = [self.mapView zoomRelativePoint:self.annotation.point];
     point.x = point.x - NAMapViewAnnotationPinPointX;
     point.y = point.y - NAMapViewAnnotationPinPointY;

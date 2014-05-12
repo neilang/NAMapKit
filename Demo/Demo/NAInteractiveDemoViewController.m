@@ -25,10 +25,11 @@
 
     self.annotations = [[NSMutableArray alloc] init];
 
-    UIImage *image = [UIImage imageNamed:@"Maps/australia"];
-
     self.mapView.backgroundColor = [UIColor colorWithRed:0.000f green:0.475f blue:0.761f alpha:1.000f];
     self.mapView.mapViewDelegate = self;
+
+    NSString *australia = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Maps/australia.png"];
+    UIImage *image = [UIImage imageWithContentsOfFile:australia];
 
     [self.mapView displayMap:image];
 

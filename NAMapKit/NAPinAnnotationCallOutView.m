@@ -20,10 +20,10 @@ const CGFloat NAMapViewAnnotationCalloutSubtitleLabelHeight = 25.0f;
 const CGFloat NAMapViewAnnotationCalloutRightAccessoryLeftOffset = 2.0f;
 const CGFloat NAMapViewAnnotationCalloutRightAccessoryTopOffset = 9.0f;
 const CGFloat NAMapViewAnnotationCalloutAnchorYOffset = 26.0f;
-static NSString *NAMapViewAnnotationCalloutImageLeft = @"callout_left.png";
-static NSString *NAMapViewAnnotationCalloutImageRight = @"callout_right.png";
-static NSString *NAMapViewAnnotationCalloutImageAnchor = @"callout_anchor.png";
-static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
+static NSString *NAMapViewAnnotationCalloutImageLeft = @"/callout_left.png";
+static NSString *NAMapViewAnnotationCalloutImageRight = @"/callout_right.png";
+static NSString *NAMapViewAnnotationCalloutImageAnchor = @"/callout_anchor.png";
+static NSString *NAMapViewAnnotationCalloutImageBG = @"/callout_bg.png";
 
 @interface NAPinAnnotationCallOutView()
 
@@ -32,11 +32,11 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 @property (nonatomic, strong) UIImageView *calloutAnchorView;
 @property (nonatomic, strong) UIImageView *calloutLeftCenterView;
 @property (nonatomic, strong) UIImageView *calloutRightCenterView;
-@property (nonatomic, strong) UILabel     *subtitleLabel;
-@property (nonatomic, strong) UILabel     *titleLabel;
-@property (nonatomic, assign) CGPoint      point;
-@property (nonatomic, assign) CGPoint      position;
-@property (nonatomic, weak)   NAMapView   *mapView;
+@property (nonatomic, strong) UILabel *subtitleLabel;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, assign) CGPoint point;
+@property (nonatomic, assign) CGPoint position;
+@property (nonatomic, weak)   NAMapView *mapView;
 
 - (void)positionView:(UIView *)view posX:(float)x;
 - (void)positionView:(UIView *)view posX:(float)x width:(float)width;
@@ -45,13 +45,14 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 
 @implementation NAPinAnnotationCallOutView
 
-- (id)initOnMapView:(NAMapView *)mapView {
+- (id)initOnMapView:(NAMapView *)mapView
+{
     self = [super init];
     if (self) {
-        UIImage *calloutBG                 = [[UIImage imageNamed:NAMapViewAnnotationCalloutImageBG] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
-        self.calloutLeftCapView            = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NAMapViewAnnotationCalloutImageLeft]];
-        self.calloutRightCapView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NAMapViewAnnotationCalloutImageRight]];
-        self.calloutAnchorView             = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NAMapViewAnnotationCalloutImageAnchor]];
+        UIImage *calloutBG                 = [[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingString:NAMapViewAnnotationCalloutImageBG]] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+        self.calloutLeftCapView            = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingString:NAMapViewAnnotationCalloutImageLeft]]];
+        self.calloutRightCapView           = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingString:NAMapViewAnnotationCalloutImageRight]]];
+        self.calloutAnchorView             = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingString:NAMapViewAnnotationCalloutImageAnchor]]];
         self.calloutLeftCenterView         = [[UIImageView alloc] initWithImage:calloutBG];
         self.calloutRightCenterView        = [[UIImageView alloc] initWithImage:calloutBG];
         self.subtitleLabel                 = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -67,7 +68,8 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
     return self;
 }
 
-- (void)setAnnotation:(NAPinAnnotation *)annotation{
+- (void)setAnnotation:(NAPinAnnotation *)annotation
+{
 
     // --- RESET ---
 
@@ -190,21 +192,24 @@ static NSString *NAMapViewAnnotationCalloutImageBG = @"callout_bg.png";
 
 #pragma - Private helpers
 
-- (void)updatePosition{
+- (void)updatePosition
+{
     CGPoint point = [self.mapView zoomRelativePoint:self.position];
     CGFloat xPos = point.x - (self.frame.size.width / 2.0f);
     CGFloat yPos = point.y - (self.frame.size.height) - NAMapViewAnnotationCalloutAnchorYOffset;
     self.frame = CGRectMake(floor(xPos), yPos, self.frame.size.width, self.frame.size.height);
 }
 
-- (void)positionView:(UIView *)view posX:(float)x width:(float)width{
+- (void)positionView:(UIView *)view posX:(float)x width:(float)width
+{
     CGRect frame     = view.frame;
     frame.origin.x   = x;
     frame.size.width = width;
     view.frame       = frame;
 }
 
-- (void)positionView:(UIView *)view posX:(float)x{
+- (void)positionView:(UIView *)view posX:(float)x
+{
     [self positionView:view posX:x width:view.frame.size.width];
 }
 
