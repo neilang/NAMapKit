@@ -1,4 +1,4 @@
-#### Next
+#### [3.1.1](https://github.com/neilang/NAMapKit/tree/v3.1.1) (5/12/2014)
 
 * [#31](https://github.com/neilang/NAMapKit/issues/31) - Fix: `NAPinAnnotation` and `NAPinAnnotationView` retain cycle - [@dblock](https://github.com/dblock).
 * [#34](https://github.com/neilang/NAMapKit/issues/34) - Fix: `NAPinAnnotationCallOutView` uses `imageNamed` which retains memory - [@dblock](https://github.com/dblock).
