@@ -6,7 +6,7 @@ PODS:
     - Expecta
     - FBSnapshotTestCase
   - FBSnapshotTestCase (1.1)
-  - NAMapKit (3.1):
+  - NAMapKit (3.1.1):
     - ARTiledImageView
     - SDWebImage
   - SDWebImage (3.6):
@@ -30,7 +30,7 @@ SPEC CHECKSUMS:
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
   EXPMatchers+FBSnapshotTest: cf5bf37817741d89bd3a3ff80be7ff417692ab7d
   FBSnapshotTestCase: 188c80bfcb72e744eb0b99d45989d12687c40cf8
-  NAMapKit: 6018c494c8c88ed1738b4aff1a9918fa04220925
+  NAMapKit: ba330fb001e51ebdc7ce14c5b795eceaa8829a80
   SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
 
