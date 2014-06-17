@@ -19,6 +19,10 @@ describe(@"init", ^{
         expect(mapView).toNot.beNil();
         expect(mapView).to.beKindOf([NAMapView class]);
     });
+    
+    it(@"asserts on zoomRelativePoint: with a zero content size", ^{
+        expect(^{[mapView zoomRelativePoint:CGPointZero];}).to.raise(@"NSInternalInconsistencyException");
+    });
 });
 
 SpecEnd

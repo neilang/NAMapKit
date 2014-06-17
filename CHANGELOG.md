@@ -1,3 +1,7 @@
+### Next
+
+* [#37](https://github.com/neilang/NAMapKit/issues/37) - Added assert inside NAMapView#zoomRelativePoint when returning `{NaN, NaN}` - [@ashfurrow](http://github.com/ashfurrow).
+
 #### [3.1.1](https://github.com/neilang/NAMapKit/tree/v3.1.1) (5/12/2014)
 
 * [#31](https://github.com/neilang/NAMapKit/issues/31) - Fix: `NAPinAnnotation` and `NAPinAnnotationView` retain cycle - [@dblock](https://github.com/dblock).
