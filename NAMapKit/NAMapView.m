@@ -119,6 +119,13 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
     _centerPoint = point;
 }
 
+- (void)updateContentOffsetToCenterPoint:(CGPoint)point animated:(BOOL)animate
+{
+	CGFloat x = point.x - (self.frame.size.width / 2.0f);
+	CGFloat y = point.y - (self.frame.size.height / 2.0f);
+	[self setContentOffset:CGPointMake(round(x), round(y)) animated:animate];
+}
+
 - (CGPoint)zoomRelativePoint:(CGPoint)point
 {
     BOOL hasContentSize = fabsf(self.originalSize.width) > 0 && fabsf(self.originalSize.height) > 0;

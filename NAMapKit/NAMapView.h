@@ -27,6 +27,8 @@
 - (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate;
 /// Center map on a given point.
 - (void)centerOnPoint:(CGPoint)point animated:(BOOL)animate;
+/// Center map on a given point (measured relative to contentSize).
+- (void)updateContentOffsetToCenterPoint:(CGPoint)point animated:(BOOL)animate;
 /// Callback invoked to setup the map.
 - (void)setupMap;
 /// Recalculate position of all elements.
