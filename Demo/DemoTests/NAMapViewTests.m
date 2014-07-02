@@ -25,5 +25,21 @@ describe(@"init", ^{
     });
 });
 
+describe(@"a map view", ^{
+    __block NAMapView *mapView = nil;
+    
+    beforeEach(^{
+        mapView = [[NAMapView alloc] init];
+        mapView.bounds = CGRectMake(0, 0, 50, 50);
+        mapView.contentSize = CGSizeMake(100, 100);
+    });
+    
+    it(@"sets the contentOffset correctly when centring on a point", ^{
+        [mapView updateContentOffsetToCenterPoint:CGPointMake(10, 10) animated:NO];
+        expect(mapView.contentOffset.x).to.equal(-15);
+        expect(mapView.contentOffset.y).to.equal(-15);
+    });
+});
+
 SpecEnd
 
