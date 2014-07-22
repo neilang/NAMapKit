@@ -164,7 +164,9 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
-    [self.mapViewDelegate mapView:self hasChangedZoomLevel:self.zoomLevel];
+    if ([self.mapViewDelegate respondsToSelector:@selector(mapView:hasChangedZoomLevel:)]) {
+        [self.mapViewDelegate mapView:self hasChangedZoomLevel:self.zoomLevel];
+    }
 }
 
 - (CGFloat)zoomLevel
