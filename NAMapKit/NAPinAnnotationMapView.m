@@ -56,7 +56,11 @@ const CGFloat NAMapViewAnnotationCalloutAnimationDuration = 0.1f;
 {
     if([sender isKindOfClass:[NAPinAnnotationView class]]) {
         NAPinAnnotationView *annontationView = (NAPinAnnotationView *)sender;
-        [self.mapViewDelegate mapView:self tappedOnAnnotation:annontationView.annotation];
+        
+        if ([self.mapViewDelegate respondsToSelector:@selector(mapView:tappedOnAnnotation:)]) {
+            [self.mapViewDelegate mapView:self tappedOnAnnotation:annontationView.annotation];
+        }
+        
         [self showCalloutForAnnotation:annontationView.annotation animated:YES];
     }
 }

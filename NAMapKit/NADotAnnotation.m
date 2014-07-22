@@ -39,7 +39,9 @@ const CGFloat NAMapViewDotAnnotationDotOpacity = 0.5f;
 
 - (IBAction)tappedOnAnnotation:(id)sender
 {
-    [self.mapViewDelegate mapView:self.mapView tappedOnAnnotation:self];
+    if ([self.mapViewDelegate respondsToSelector:@selector(mapView:tappedOnAnnotation:)]) {
+        [self.mapViewDelegate mapView:self.mapView tappedOnAnnotation:self];
+    }
 }
 
 @end
