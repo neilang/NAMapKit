@@ -138,7 +138,7 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 
 - (void)selectAnnotation:(NAAnnotation *)annotation animated:(BOOL)animate
 {
-    
+    [self centerOnPoint:annotation.point animated:animate];
 }
 
 - (void)setFrame:(CGRect)frame

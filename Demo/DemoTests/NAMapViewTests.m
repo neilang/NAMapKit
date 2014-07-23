@@ -5,6 +5,8 @@
 //  Copyright (c) 2010-14 neilang.com. All rights reserved.
 //
 
+#import "NADotAnnotation.h"
+
 SpecBegin(NAMapView)
 
 describe(@"init", ^{
@@ -32,12 +34,23 @@ describe(@"a map view", ^{
         mapView = [[NAMapView alloc] init];
         mapView.bounds = CGRectMake(0, 0, 50, 50);
         mapView.contentSize = CGSizeMake(100, 100);
+        mapView.originalSize = CGSizeMake(100, 100);
     });
     
-    it(@"sets the contentOffset correctly when centring on a point", ^{
+    it(@"sets the contentOffset correctly when centering on a point", ^{
         [mapView updateContentOffsetToCenterPoint:CGPointMake(10, 10) animated:NO];
         expect(mapView.contentOffset.x).to.equal(-15);
         expect(mapView.contentOffset.y).to.equal(-15);
+    });
+    
+    it(@"sets the contentOffset correctly when centering on an annotation", ^{
+        NADotAnnotation *annotation = [NADotAnnotation annotationWithPoint:CGPointMake(70, 70)];
+        [mapView addAnnotation:annotation animated:NO];
+        
+        [mapView selectAnnotation:annotation animated:NO];
+        
+        expect(mapView.contentOffset.x).to.equal(45);
+        expect(mapView.contentOffset.y).to.equal(45);
     });
 });
 

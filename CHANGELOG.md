@@ -1,5 +1,6 @@
 ### Next
 
+* [#44](https://github.com/neiland/NAMapKit/issues/44) - Added `NAMapView#selectAnnotation:animated` implementation - [@frosty](http://github.com/frosty).
 * [#43](https://github.com/neilang/NAMapKit/issues/43) - Fix: `NAMapViewDelegate` protocol optional methods were called without checking `respondsToSelector:` - [@frosty](http://github.com/frosty)
 * [#39](https://github.com/neilang/NAMapKit/issues/39) - Added `NAMapView#updateContentOffsetToCenterPoint:animated:` to center map on a point without taking into account the map's `zoomScale` - [@ashfurrow](http://github.com/ashfurrow).
 * [#37](https://github.com/neilang/NAMapKit/issues/37) - Added assert inside `NAMapView#zoomRelativePoint` when returning `{NaN, NaN}` - [@ashfurrow](http://github.com/ashfurrow).
