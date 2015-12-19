@@ -10,7 +10,7 @@
 
 const CGFloat NAMapViewAnnotationCalloutTitleStandaloneLabelHeight = 22.0f;
 const CGFloat NAMapViewAnnotationCalloutTitleStandaloneFontSize = 18.0f;
-const CGFloat NAMapViewAnnotationCalloutTitleStandaloneTopOffset = 14.0f;
+const CGFloat NAMapViewAnnotationCalloutTitleStandaloneTopOffset = 12.0f;
 const CGFloat NAMapViewAnnotationCalloutTitleTopOffset = 4.0f;
 const CGFloat NAMapViewAnnotationCalloutTitleLabelHeight = 20.0f;
 const CGFloat NAMapViewAnnotationCalloutTitleFontSize = 17.0f;
