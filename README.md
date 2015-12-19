@@ -3,7 +3,7 @@ NAMapKit
 
 [![Build Status](https://travis-ci.org/neilang/NAMapKit.png)](https://travis-ci.org/neilang/NAMapKit)
 
-Lets you drop MapKit style pins or custom annotations onto a standard `UIImage` or a tiled `NATiledImageView`. Includes callouts, multi-colored pins, animation, zoom and gestures support.
+Lets you drop pins or custom annotations onto a standard `UIImage` or a tiled `NATiledImageView`. Includes callouts, multi-colored pins, animation, zoom and gestures support.
 
 ![Animated Demo](Demo/Screenshots/namapkit.gif)
 
@@ -84,8 +84,6 @@ NAMapKit exposes it's two double tap gestures so that you can use `delaysTouches
 Notes
 -----
 
-Current version _requires ARC and iOS6_. If you are developing for iOS5 and below, checkout the version `2.0` tag of the repository, for iOS3 and below use `1.0`.
-
 If you are using Interface Builder, you can add a UIScrollView to your XIB and change the class to `NAMapView` to use the framework.
 
 License
@@ -99,5 +97,3 @@ Attribution
 When using this code please include the following attribution:
 
 **Includes NAMapKit code developed by [Neil Ang](http://neilang.com/), [Tony Arnold](http://thecocoabots.com/), [Daniel Doubrovkine](http://code.dblock.org/) and [Orta Therox](http://orta.github.io/).**
-
-Have an app on the AppStore that's using NAMapKit? [Add it to the wiki](https://github.com/neilang/NAMapKit/wiki).
