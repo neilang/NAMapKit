@@ -23,7 +23,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   NAMapKit:
-    :path: "../namapkit.podspec"
+    :path: ../namapkit.podspec
 
 SPEC CHECKSUMS:
   ARTiledImageView: 8c6fd11d9e8459a853d94394adea3a5e8c9329ba
