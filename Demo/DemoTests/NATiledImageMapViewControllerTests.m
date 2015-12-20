@@ -19,12 +19,12 @@ beforeEach(^{
     [window makeKeyAndVisible];
 });
 
-it(@"displays map with a pin", ^AsyncBlock {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [NSThread sleepForTimeInterval:3.0];
-        expect(vc.view).will.haveValidSnapshotNamed(@"default");
-        done();
-    });
-});
+//it(@"displays map with a pin", ^AsyncBlock {
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [NSThread sleepForTimeInterval:3.0];
+//        expect(vc.view).will.haveValidSnapshotNamed(@"default");
+//        done();
+//    });
+//});
 
 SpecEnd
