@@ -1,7 +1,7 @@
 NAMapKit
 ========
 
-[![Build Status](https://travis-ci.org/neilang/NAMapKit.png)](https://travis-ci.org/neilang/NAMapKit)
+[![Build Status](https://travis-ci.org/neilang/NAMapKit.svg)](https://travis-ci.org/neilang/NAMapKit)
 
 Lets you drop pins or custom annotations onto a standard `UIImage` or a tiled `NATiledImageView`. Includes callouts, multi-colored pins, animation, zoom and gestures support.
 
