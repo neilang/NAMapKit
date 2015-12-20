@@ -18,8 +18,8 @@ beforeEach(^{
     expect(vc.view).willNot.beNil();
 });
 
-//it(@"displays map with a pin", ^{
-//    expect(vc.view).will.haveValidSnapshotNamed(@"default");
-//});
+it(@"displays map with a pin", ^{
+    expect(vc.view).will.haveValidSnapshotNamed(@"default");
+});
 
 SpecEnd
