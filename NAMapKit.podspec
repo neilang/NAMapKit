@@ -11,5 +11,6 @@ Pod::Spec.new do |s|
   s.resources    = "NAMapKit/*.png"
   s.frameworks   = 'Foundation', 'UIKit', 'CoreGraphics'
   s.requires_arc = true
-  s.dependencies = ['SDWebImage', 'ARTiledImageView']
+  s.dependency 'SDWebImage'
+  s.dependency 'ARTiledImageView'
 end
