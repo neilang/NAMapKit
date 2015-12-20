@@ -13,7 +13,7 @@ SpecBegin(NAMasterViewController)
 it(@"displays the master menu", ^{
     NAMasterViewController *vc = [[NAMasterViewController alloc] initWithNibName:@"NAMasterViewController" bundle:nil];
     expect(vc.view).willNot.beNil();
-//    expect(vc.view).will.haveValidSnapshotNamed(@"default");
+    expect(vc.view).will.haveValidSnapshotNamed(@"default");
 });
 
 SpecEnd
