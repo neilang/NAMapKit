@@ -1,4 +1,4 @@
-### Next
+#### [3.2.0](https://github.com/neilang/NAMapKit/tree/v3.2.0) (12/20/2015)
 
 * Changed to new push pin style - [@neilang](https://github.com/neilang).
 * [#44](https://github.com/neiland/NAMapKit/issues/44) - Added `NAMapView#selectAnnotation:animated` implementation - [@frosty](http://github.com/frosty).
