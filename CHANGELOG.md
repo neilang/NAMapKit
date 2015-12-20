@@ -1,6 +1,6 @@
 #### [3.2.0](https://github.com/neilang/NAMapKit/tree/v3.2.0) (12/20/2015)
 
-* Changed to new push pin style - [@neilang](https://github.com/neilang).
+* [#46](https://github.com/neilang/NAMapKit/pull/46) - Changed to new push pin style - [@neilang](https://github.com/neilang).
 * [#44](https://github.com/neiland/NAMapKit/issues/44) - Added `NAMapView#selectAnnotation:animated` implementation - [@frosty](http://github.com/frosty).
 * [#43](https://github.com/neilang/NAMapKit/issues/43) - Fix: `NAMapViewDelegate` protocol optional methods were called without checking `respondsToSelector:` - [@frosty](http://github.com/frosty)
 * [#39](https://github.com/neilang/NAMapKit/issues/39) - Added `NAMapView#updateContentOffsetToCenterPoint:animated:` to center map on a point without taking into account the map's `zoomScale` - [@ashfurrow](http://github.com/ashfurrow).
