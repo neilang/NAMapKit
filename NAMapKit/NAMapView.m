@@ -128,7 +128,7 @@ const CGFloat NAMapViewDefaultZoomStep = 1.5f;
 
 - (CGPoint)zoomRelativePoint:(CGPoint)point
 {
-    BOOL hasContentSize = fabsf(self.originalSize.width) > 0 && fabsf(self.originalSize.height) > 0;
+    BOOL hasContentSize = ABS(self.originalSize.width) > 0 && ABS(self.originalSize.height) > 0;
     NSAssert(hasContentSize, @"originalSize dimension is zero, will result in NaN in returned value.");
     
     CGFloat x = (self.contentSize.width / self.originalSize.width) * point.x;
