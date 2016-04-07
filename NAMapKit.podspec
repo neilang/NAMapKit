@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NAMapKit"
-  s.version      = "3.2.0"
+  s.version      = "3.2.1"
   s.summary      = "A custom and simple framework for creating custom maps. Not based on MapKit."
   s.homepage     = "https://github.com/neilang/NAMapKit"
   s.license      = 'MIT'
