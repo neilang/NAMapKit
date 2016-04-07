@@ -50,10 +50,9 @@ const CGFloat NAMapViewAnnotationPinPointY = 35.0f;
     if (animating) {
         pinImageName = [NSString stringWithFormat:@"%@_floating", pinImageName];
     }
-
-    pinImageName = [NSString stringWithFormat:@"/%@.png", pinImageName];
-
-    UIImage *pinImage = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingString:pinImageName]];
+    
+    UIImage *pinImage = [UIImage imageWithContentsOfFile:[[NSBundle bundleForClass:NAPinAnnotationView.class] pathForResource:pinImageName ofType:@"png"]];
+    
     [self setImage:pinImage forState:UIControlStateNormal];
 }
 

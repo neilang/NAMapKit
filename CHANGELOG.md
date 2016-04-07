@@ -1,3 +1,8 @@
+
+#### [3.2.1](https://github.com/neilang/NAMapKit/tree/v3.2.1) (4/7/2016)
+
+* [#59](https://github.com/neiland/NAMapKit/issues/59), [#52](https://github.com/neiland/NAMapKit/issues/52) - Fix: `NAPinAnnotationView` pin images fail to load - [@joeshi](https://github.com/joeshi).
+
 #### [3.2.0](https://github.com/neilang/NAMapKit/tree/v3.2.0) (12/20/2015)
 
 * [#46](https://github.com/neilang/NAMapKit/pull/46) - Changed to new push pin style - [@neilang](https://github.com/neilang).
