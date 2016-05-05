@@ -41,7 +41,9 @@ NADotAnnotation *dot = [NADotAnnotation annotationWithPoint:CGPointMake(543.0f, 
 
 The implementation of `NADotAnnotation` places a red semi-transparent dot on the map. For custom annotations, subclass [NAAnnotation](NAMapKit/NAAnnotation.h) and implement `createViewOnMapView` that returns a custom annotation view. You could also implement a custom animation to drop an annotation onto the map by implementing `addToMapView`, or center the annotation depending on your custom logic by overriding `updatePosition`.
 
-You can find a complete custom annotation example of multi-colored pins in [NAPinAnnotation.h](NAMapKit/NAPinAnnotation.h)/[.m](NAMapKit/NAPinAnnotation.m).
+You can find a complete custom annotation example of multi-colored pins in [NAPinAnnotation.h](NAMapKit/NAPinAnnotation.h)/[.m](NAMapKit/NAPinAnnotation.m) and a popup menu demo in [NAPinAnnotationsPopupMenuDemoViewController.h](Demo/Demo/NAPinAnnotationsPopupMenuDemoViewController.h)/[.m](Demo/Demo/NAPinAnnotationsPopupMenuDemoViewController.m).
+
+![circular pop-up animated demo](Demo/Screenshots/namapkit2.gif)
 
 #### Delegates
 

@@ -1,4 +1,5 @@
 pod "NAMapKit", :path => "../namapkit.podspec"
+pod "pop"
 
 target "DemoTests" do
   pod 'Specta', '~> 0.2.1'

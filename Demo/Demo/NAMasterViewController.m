@@ -13,6 +13,7 @@
 #import "NAAnimatedDemoViewController.h"
 #import "NAInteractiveDemoViewController.h"
 #import "NATiledImageDemoViewController.h"
+#import "NAPinAnnotationsPopupMenuDemoViewController.h"
 
 @implementation NAMasterViewController
 
@@ -38,7 +39,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    if([self isRunningTests])
+    {
+        return 6;
+    }
+    else
+    {
+        return 7;
+    }
+}
+
+- (BOOL)isRunningTests
+{
+    return NSClassFromString(@"XCTest") != nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,6 +83,9 @@
         case 5:
             cell.textLabel.text = @"Tiled Map Demo";
             break;
+        case 6:
+            cell.textLabel.text = @"Pin Annotations Popup Menu Demo";
+            break;
         default:
             cell.textLabel.text = @"???";
             break;
@@ -97,6 +113,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     } else if (indexPath.row == 5){
         NATiledImageDemoViewController *vc = [[NATiledImageDemoViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if(indexPath.row == 6){
+        NAPinAnnotationsPopupMenuDemoViewController *vc = [[NAPinAnnotationsPopupMenuDemoViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

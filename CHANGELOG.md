@@ -1,3 +1,7 @@
+#### Next
+
+* [#67](https://github.com/neilang/NAMapKit/pull/67) - Added circular pop-up menu sample to Demo project - [@troyz](https://github.com/troyz).
+* Your contribution here.
 
 #### [3.2.1](https://github.com/neilang/NAMapKit/tree/v3.2.1) (4/7/2016)
 

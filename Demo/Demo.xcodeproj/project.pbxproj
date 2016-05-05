@@ -38,6 +38,10 @@
 		3CB0E72218C8BB08009CE8DB /* NAMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0E71818C8BB08009CE8DB /* NAMasterViewController.m */; };
 		3CB0E72A18C8BC62009CE8DB /* NAMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0E72818C8BC62009CE8DB /* NAMasterViewController.xib */; };
 		3CB0E72F18C8C9A4009CE8DB /* NAMapViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0E72E18C8C9A4009CE8DB /* NAMapViewTests.m */; };
+		659BA77C1CD9C93E0035CEC9 /* NAPinAnnotationPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BA7771CD9C93E0035CEC9 /* NAPinAnnotationPopup.m */; };
+		659BA77D1CD9C93E0035CEC9 /* NAPinAnnotationPopupCircleCallOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BA7791CD9C93E0035CEC9 /* NAPinAnnotationPopupCircleCallOutView.m */; };
+		659BA77E1CD9C93E0035CEC9 /* NAPinAnnotationPopupMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BA77B1CD9C93E0035CEC9 /* NAPinAnnotationPopupMapView.m */; };
+		659BA7811CD9C9490035CEC9 /* NAPinAnnotationsPopupMenuDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BA7801CD9C9490035CEC9 /* NAPinAnnotationsPopupMenuDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,14 @@
 		3CB0E72B18C8BD61009CE8DB /* DemoTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DemoTests-Prefix.pch"; sourceTree = "<group>"; };
 		3CB0E72E18C8C9A4009CE8DB /* NAMapViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMapViewTests.m; sourceTree = "<group>"; };
 		3EA578786DAD470F3EAEAF6F /* Pods-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		659BA7761CD9C93E0035CEC9 /* NAPinAnnotationPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPinAnnotationPopup.h; sourceTree = "<group>"; };
+		659BA7771CD9C93E0035CEC9 /* NAPinAnnotationPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPinAnnotationPopup.m; sourceTree = "<group>"; };
+		659BA7781CD9C93E0035CEC9 /* NAPinAnnotationPopupCircleCallOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPinAnnotationPopupCircleCallOutView.h; sourceTree = "<group>"; };
+		659BA7791CD9C93E0035CEC9 /* NAPinAnnotationPopupCircleCallOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPinAnnotationPopupCircleCallOutView.m; sourceTree = "<group>"; };
+		659BA77A1CD9C93E0035CEC9 /* NAPinAnnotationPopupMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPinAnnotationPopupMapView.h; sourceTree = "<group>"; };
+		659BA77B1CD9C93E0035CEC9 /* NAPinAnnotationPopupMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPinAnnotationPopupMapView.m; sourceTree = "<group>"; };
+		659BA77F1CD9C9490035CEC9 /* NAPinAnnotationsPopupMenuDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPinAnnotationsPopupMenuDemoViewController.h; sourceTree = "<group>"; };
+		659BA7801CD9C9490035CEC9 /* NAPinAnnotationsPopupMenuDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPinAnnotationsPopupMenuDemoViewController.m; sourceTree = "<group>"; };
 		98DB4ADA533041DD9D9E7647 /* libPods-DemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E0B94B20F955D6CEF6E6B7 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D2957D8BD1FB4630AD6F922F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +174,7 @@
 		3CB0E6DC18C8B9E2009CE8DB /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				659BA7751CD9C92E0035CEC9 /* Popup */,
 				3C79CCB518D71AF500F6DF9F /* Maps */,
 				3CB0E72818C8BC62009CE8DB /* NAMasterViewController.xib */,
 				3CB0E70B18C8BB08009CE8DB /* NAAnimatedDemoViewController.h */,
@@ -170,6 +183,8 @@
 				3CB0E70E18C8BB08009CE8DB /* NAAppDelegate.m */,
 				3CB0E70F18C8BB08009CE8DB /* NAPinAnnotationsDemoViewController.h */,
 				3CB0E71018C8BB08009CE8DB /* NAPinAnnotationsDemoViewController.m */,
+				659BA77F1CD9C9490035CEC9 /* NAPinAnnotationsPopupMenuDemoViewController.h */,
+				659BA7801CD9C9490035CEC9 /* NAPinAnnotationsPopupMenuDemoViewController.m */,
 				3CB0E71118C8BB08009CE8DB /* NAInteractiveDemoViewController.h */,
 				3CB0E71218C8BB08009CE8DB /* NAInteractiveDemoViewController.m */,
 				3CB0E71318C8BB08009CE8DB /* NAInteractiveDemoViewController.xib */,
@@ -233,6 +248,19 @@
 				3EA578786DAD470F3EAEAF6F /* Pods-DemoTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		659BA7751CD9C92E0035CEC9 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				659BA7761CD9C93E0035CEC9 /* NAPinAnnotationPopup.h */,
+				659BA7771CD9C93E0035CEC9 /* NAPinAnnotationPopup.m */,
+				659BA7781CD9C93E0035CEC9 /* NAPinAnnotationPopupCircleCallOutView.h */,
+				659BA7791CD9C93E0035CEC9 /* NAPinAnnotationPopupCircleCallOutView.m */,
+				659BA77A1CD9C93E0035CEC9 /* NAPinAnnotationPopupMapView.h */,
+				659BA77B1CD9C93E0035CEC9 /* NAPinAnnotationPopupMapView.m */,
+			);
+			name = Popup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,10 +465,14 @@
 			files = (
 				3CB0E72218C8BB08009CE8DB /* NAMasterViewController.m in Sources */,
 				3CB0E6E318C8B9E2009CE8DB /* main.m in Sources */,
+				659BA77E1CD9C93E0035CEC9 /* NAPinAnnotationPopupMapView.m in Sources */,
 				3CB0E71E18C8BB08009CE8DB /* NAInteractiveDemoViewController.m in Sources */,
 				3CB0E71C18C8BB08009CE8DB /* NAAppDelegate.m in Sources */,
+				659BA77C1CD9C93E0035CEC9 /* NAPinAnnotationPopup.m in Sources */,
+				659BA77D1CD9C93E0035CEC9 /* NAPinAnnotationPopupCircleCallOutView.m in Sources */,
 				3CB0E71B18C8BB08009CE8DB /* NAAnimatedDemoViewController.m in Sources */,
 				3C9F354E18CA922C00EA1F22 /* NADotAnnotationDemoViewController.m in Sources */,
+				659BA7811CD9C9490035CEC9 /* NAPinAnnotationsPopupMenuDemoViewController.m in Sources */,
 				3C7F86CD18CE609200F7091A /* NATiledImageDemoViewController.m in Sources */,
 				3CB0E72018C8BB08009CE8DB /* NALoadViaNIBDemoViewController.m in Sources */,
 				3CB0E71D18C8BB08009CE8DB /* NAPinAnnotationsDemoViewController.m in Sources */,
